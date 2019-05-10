@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $profiles = DB::select('select * from Profiles where isNew = 1');
+    
+    //
+    return view('welcome',  ['profiles' => $profiles]);
 });
