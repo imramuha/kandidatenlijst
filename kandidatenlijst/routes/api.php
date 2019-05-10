@@ -21,9 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group([
     'middleware' => 'api',
 ], function () {
-    // Profiles
+   
+   /* // Profiles
     Route::get('/profiles', 'Backend\ProfileController@showProfiles');
     Route::get('/profiles/select', 'Backend\ProfileController@showProfile');
-    Route::get('/profiles/select/{id}', 'Backend\ProfileController@showProfile');
+    Route::get('/profiles/select/{id}', 'Backend\ProfileController@showProfile');*/
 
 });

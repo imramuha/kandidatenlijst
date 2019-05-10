@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', function () {
+Route::group(['namespace' => 'Backoffice'], function(){
 
-    $profiles = DB::select('select * from Profiles where isNew = 1');
-    
-    //
-    return view('welcome',  ['profiles' => $profiles]);
+    Route::get('/profiles', [ 
+        'uses' => 'ProfileController@index',
+        'as' => 'Profiles',
+    ]);    
 });
+
