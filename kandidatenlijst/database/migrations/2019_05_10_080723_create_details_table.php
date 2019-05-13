@@ -17,17 +17,17 @@ class CreateDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->string('period_or_language');
             $table->string('description');
-            $table->integer('profile_id');
-            $table->integer('detailtype_id');
+            $table->integer('ProfileId');
+            $table->integer('Type');
             $table->timestamps();
         });
 
         Schema::table('details', function($table) {
-            $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('ProfileId')->references('id')->on('profiles')->onDelete('cascade')->onUpdate('cascade');
         });
 
         Schema::table('details', function($table) {
-            $table->foreign('detailtype_id')->references('id')->on('detailstypes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('Type')->references('id')->on('detailstypes')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

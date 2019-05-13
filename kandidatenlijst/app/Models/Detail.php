@@ -7,21 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 class Detail extends Model
 {
     //
+    protected $table = 'Detail';
+
+    protected $fillable = [
+        'period_or_language',
+        'description',
+        'profile_id',
+        'Type',
+      ];
+  
 
 
-    /**
-     * Get the profile that the detail belongs to.
-     */
+
     public function profile()
     {
-        return $this->belongsTo('App\Profile', 'profile_id');
+        return $this->belongsTo(Profile::class);
     }
 
-    /**
-     * Get the detailtype that the detail belongs to.
-     */
+
     public function detailtype()
     {
-        return $this->belongsTo('App\Detailtype', 'detailtype_id');
+        return $this->belongsTo(Detailtype::class);
     }
 }

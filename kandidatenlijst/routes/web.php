@@ -14,12 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::group(['namespace' => 'Backoffice'], function(){
-
-    Route::get('/profiles', [ 
-        'uses' => 'ProfileController@index',
-        'as' => 'Profiles',
-    ]);    
-});
-
