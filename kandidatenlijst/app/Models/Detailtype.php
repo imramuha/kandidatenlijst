@@ -7,13 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Detailtype extends Model
 {
     //
+    protected $table = 'DetailType';
+    
+    //
 
-    /**
-     * Get the details that the profile belongs to.
-     */
+    protected $fillable = [
+      'type',
+    ];
+
+
     public function details()
     {
-        return $this->hasMany(Detail::class);
+        return $this->hasMany('App\Models\Detail', 'Type', 'Id');
     }
 
 }

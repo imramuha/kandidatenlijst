@@ -12,7 +12,7 @@
     <td>{{ $profile->Name }}</td>
     <td>{{ $profile->City }}</td>
     <td>{{ $profile->Email }}</td>
-    <td>Detail</td>
+    <td>{{ $profile }}</td>
     <td>Detail</td>
     </tr>
 @endforeach

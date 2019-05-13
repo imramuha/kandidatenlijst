@@ -22,9 +22,7 @@ Route::group([
     'middleware' => 'api',
 ], function () {
    
-   /* // Profiles
-    Route::get('/profiles', 'Backend\ProfileController@showProfiles');
-    Route::get('/profiles/select', 'Backend\ProfileController@showProfile');
-    Route::get('/profiles/select/{id}', 'Backend\ProfileController@showProfile');*/
+    // Profiles
+    Route::get('/profiles', 'Backoffice\ProfileController@index');
 
 });

@@ -26,18 +26,15 @@ class Profile extends Model
       'nationaliteit',
       'geslacht',
       'gsm',
-       'hobby',
+      'hobby',
       'beschikbaarheid',
       'datainserted',
     ];
 
 
-    /**
-     * Get the details that the profile belongs to.
-     */
     public function details()
     {
-        return $this->hasMany(Detail::class);
+        return $this->hasMany('App\Models\Detail', 'ProfileId', 'Id');
     }
 
 }

@@ -10,12 +10,3 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::group(['namespace' => 'Backoffice'], function(){
-
-    Route::get('/profiles', [ 
-        'uses' => 'ProfileController@index',
-        'as' => 'Profiles',
-    ]);    
-});
-
