@@ -8,7 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import VueRouter from 'vue-router'
-  
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -20,22 +20,25 @@ import VueRouter from 'vue-router'
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('home', require('./components/home.vue'));
-Vue.component('login', require('./components/login.vue'));
-Vue.component('register', require('./components/register.vue'));
-Vue.component('profile', require('./components/profile_show.vue'));
-Vue.component('profiles', require('./components/profiles_show.vue'));
+Vue.component('Home', require('./views/Home.vue'));
+Vue.component('Login', require('./views/Login.vue'));
+Vue.component('Register', require('./views/Register.vue'));
+Vue.component('Profile', require('./views/ShowProfile.vue'));
+Vue.component('Profiles', require('./views/ShowProfiles.vue'));
 
 
-   
+
 const routes = [
-  { path: '/', component: require('./components/home.vue').default },
-  { path: '/profiles', component: require('./components/profiles_show.vue').default },
-  { path: '*', redirect: '/' }
+
+  { path: '/', component: require('./views/Home.vue').default },
+  { path: '/profiles', component: require('./views/ShowProfiles.vue').default },
+  { path: '/login', component: require('./views/Login.vue').default },
+  { path: '*', redirect: '/profiles' }
 ]
-  
+
 const router = new VueRouter({
-  routes 
+  // mode: "history", When I turn this on my routes are not completly correct, somethign with laravel TODO
+  routes
 })
 
 Vue.use(VueRouter)
@@ -48,6 +51,6 @@ Vue.use(VueRouter)
  */
 
 const app = new Vue({
-    router,
-    el: '#app',
+  router,
+  el: '#app',
 });
