@@ -1917,6 +1917,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Table__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Table */ "./resources/js/components/Table.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+//
 //
 //
 //
@@ -1927,12 +1930,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Table: _components_Table__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  data: function data() {
+    return {
+      profiles: []
+    };
+  },
   mounted: function mounted() {
-    console.log("Component mounted.");
+    var _this = this;
+
+    // Can we cleaner https://github.com/gothinkster/vue-realworld-example-app/blob/master/src/common/api.service.js
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("http://127.0.0.1:8000/api/profiles").then(function (response) {
+      return _this.profiles = response.data;
+    })["catch"](function (err) {
+      return console.log(err);
+    });
   }
 });
 
@@ -38146,14 +38162,13 @@ var render = function() {
     "div",
     { staticClass: "container" },
     [
-      _vm._v("\n  All profiles\n  "),
-      _c("router-link", { attrs: { to: "/" } }, [_vm._v("Go Home")]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: "/login" } }, [_vm._v("Login")]),
+      _vm._l(_vm.profiles, function(profile) {
+        return _c("div", { key: profile.id })
+      }),
       _vm._v(" "),
       _c("Table")
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
