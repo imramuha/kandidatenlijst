@@ -12,16 +12,57 @@ use Illuminate\Support\Facades\DB;
 class ProfileController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // 0: show all proiles where IsNew is 1
     public function showProfiles()
     {
         // get all users from the db
-        $profiles = Profile::with('details', 'details.detailtype')->get();//where('isNew', '1')->get();
+        $profiles = Profile::with('details', 'details.detailtype')->where('isNew', '1')->get();
 
         return response()->json($profiles);    
+    }
+
+    // 1: show one profile based on id
+    public function showProfile ($id) {
+        $profile = Profile::with('details', 'details.detailtype')->where('id', $id)->get();
+        return response()->json($profile);
+    }
+
+    // 2: hide profile by changing the isNew to 0
+    public function hideProfile (Request $request) {
+
+        $id = $request->Input('id');
+
+        Profile::where('id', '=', $id)->update(array(
+            'isNew' => '0',
+        ));
+
+        $response = array('response' => 'The profile is now hidden.', 'succes' => true);
+        return $response;
+    }
+
+    // 3: update the profile of the selected person
+    public function updateProfile (Request $request) {
+
+        $id = $request->Input('id');
+
+        Profile::where('id', '=', $id)->update(array(
+            'Name' => $request->input('name'),
+            // otherfields
+        ));
+
+        $response = array('response' => 'The profile is now updated', 'succes' => true);
+        return $response;
+    }
+
+    // 4: push the profile to the ZOHO CRM
+    public function storeProfile(Request $request) {
+
+        $profile = Profile::create([
+            'Name' => $request->input('name'),
+            // other fields
+        ]);
+ 
+        $response = array('response' => 'Your profile has been stored!', 'succes' => true);
+        return $response;
     }
 }

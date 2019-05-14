@@ -15,9 +15,6 @@ class Detail extends Model
         'profile_id',
         'Type',
       ];
-  
-
-
 
     public function profile()
     {

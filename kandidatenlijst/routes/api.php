@@ -23,7 +23,10 @@ Route::group([
 ], function () {
    
     // Profiles
-    Route::get('/profiles', 'Backoffice\ProfileController@index');
-    Route::post('/profiles/select/hide', 'Backoffice\AccountController@hideProfile');
+    Route::get('/profiles', 'Backoffice\ProfileController@showProfiles');
+    Route::get('/profiles/{id}', 'Backoffice\ProfileController@showProfile');
+    Route::put('/profiles/{id}/hide', 'Backoffice\ProfileController@hideProfile');
+    Route::put('/profiles/{id}/update', 'Backoffice\ProfileController@updateProfile');
+    Route::post('/profiles/{id}/store', 'Backoffice\ProfileController@storeProfile');
 
 });
