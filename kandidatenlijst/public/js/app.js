@@ -1931,6 +1931,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+// It works in react, we might change vue with react...
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -38164,7 +38165,8 @@ var render = function() {
     "div",
     { staticClass: "container" },
     [
-      _c("div", [_vm._v("\n\n      " + _vm._s(_vm.profile) + " \n  ")]),
+      _c("div"),
+      _vm._v("\n  " + _vm._s(_vm.profiles) + "\n  "),
       _vm._v(" "),
       _c("Table")
     ],

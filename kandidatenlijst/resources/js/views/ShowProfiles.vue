@@ -1,16 +1,17 @@
 <template>
   <div class="container">
-    <div >
-
-        {{ profile }} 
-    </div>
+    <div></div>
+    {{profiles}}
     <!-- <router-link to="/">Go Home</router-link>
     <router-link to="/login">Login</router-link>-->
     <Table/>
   </div>
 </template>
 
+
+
 <script>
+// It works in react, we might change vue with react...
 import Table from "../components/Table";
 import axios from "axios";
 export default {
