@@ -24,5 +24,6 @@ Route::group([
    
     // Profiles
     Route::get('/profiles', 'Backoffice\ProfileController@index');
+    Route::post('/profiles/select/hide', 'Backoffice\AccountController@hideProfile');
 
 });

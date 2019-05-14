@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <div v-bind:key="profile.id" v-for="profile in profiles"></div>
-    <!-- {{profile.Vervoer}}  crashes if I uncomment-->
+    <div >
+
+        {{ profile }} 
+    </div>
     <!-- <router-link to="/">Go Home</router-link>
     <router-link to="/login">Login</router-link>-->
     <Table/>
@@ -24,7 +26,7 @@ export default {
     // Can we cleaner https://github.com/gothinkster/vue-realworld-example-app/blob/master/src/common/api.service.js
     axios
       .get("http://127.0.0.1:8000/api/profiles")
-      .then(response => (this.profiles = response.data))
+      .then(response => console.log((this.profiles = response.data)))
       .catch(err => console.log(err));
   }
 };

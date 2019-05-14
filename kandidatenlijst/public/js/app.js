@@ -1929,6 +1929,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1945,7 +1947,7 @@ __webpack_require__.r(__webpack_exports__);
 
     // Can we cleaner https://github.com/gothinkster/vue-realworld-example-app/blob/master/src/common/api.service.js
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("http://127.0.0.1:8000/api/profiles").then(function (response) {
-      return _this.profiles = response.data;
+      return console.log(_this.profiles = response.data);
     })["catch"](function (err) {
       return console.log(err);
     });
@@ -38162,13 +38164,11 @@ var render = function() {
     "div",
     { staticClass: "container" },
     [
-      _vm._l(_vm.profiles, function(profile) {
-        return _c("div", { key: profile.id })
-      }),
+      _c("div", [_vm._v("\n\n      " + _vm._s(_vm.profile) + " \n  ")]),
       _vm._v(" "),
       _c("Table")
     ],
-    2
+    1
   )
 }
 var staticRenderFns = []
@@ -53571,8 +53571,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\School\schooljaar_2018_2019\2de_semester\Stage\week_5\code_git\kandidatenlijst\kandidatenlijst\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\School\schooljaar_2018_2019\2de_semester\Stage\week_5\code_git\kandidatenlijst\kandidatenlijst\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\natur\Desktop\Stage\02. Werk\04 week\KandidatenLijst\kandidatenlijst\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\natur\Desktop\Stage\02. Werk\04 week\KandidatenLijst\kandidatenlijst\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
