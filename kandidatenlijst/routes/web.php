@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('profiles', 'ProfilesController');
+  // for soft delete
+  Route::get('/profiles', [ 
+    'uses' => 'Backoffice\ProfileController@showProfiles',
+]);

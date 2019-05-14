@@ -17,18 +17,11 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function showProfiles()
     {
         // get all users from the db
         $profiles = Profile::with('details', 'details.detailtype')->get();//where('isNew', '1')->get();
 
-        
-
-        //return view('profiles_show', ['profiles' => $profiles]);
-        //$profiles = DB::table('Profiles')->get();
-        //return view('profiles_show', ['profiles' => $profiles]);
-
-        return response()->json($profiles);
-    
+        return response()->json($profiles);    
     }
 }

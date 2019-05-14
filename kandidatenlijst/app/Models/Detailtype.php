@@ -18,7 +18,8 @@ class Detailtype extends Model
 
     public function details()
     {
-        return $this->hasMany('App\Models\Detail', 'Type', 'Id');
+      return $this->belongsTo(Detail::class);
+
     }
 
 }
