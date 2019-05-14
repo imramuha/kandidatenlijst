@@ -24,6 +24,7 @@ class PersonList extends React.Component {
           <ul>
             <li>{person.Name}</li>
             <li>{person.Email}</li>
+            <li></li>
           </ul>)}
       </ul>
     )
