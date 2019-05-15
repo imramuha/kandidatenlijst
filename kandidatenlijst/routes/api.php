@@ -13,13 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
 Route::group([
-    'middleware' => 'auth:api',
+    'middleware' => 'jwt.auth:api',
 ], function () {
    
     // Profiles
@@ -30,3 +25,6 @@ Route::group([
     Route::post('/profiles/{id}/store', 'Backoffice\ProfileController@storeProfile');
 
 });
+
+// Route::post('/register', 'Auth\LoginController@register');
+Route::post('/login', 'Auth\LoginController@login');

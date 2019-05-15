@@ -15,15 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });*/
 
+Route::middleware(['auth:web'])->group(function () {
 
-Route::view('/{path?}', 'app');
-
-Route::group([
-    'middleware' => 'web',
-], function () {
-   
-    
-    Auth::routes();
-    Route::get('/home', 'HomeController@index')->name('home');
-
+    Route::get('profiles', 'Backoffice\ProfileController@showProfiles');
 });
+
+
+// Route::view('/{path?}', 'app');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
