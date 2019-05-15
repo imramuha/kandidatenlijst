@@ -19,12 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::group([
-    'middleware' => 'api',
+    'middleware' => 'auth:api',
 ], function () {
-
-    // auth
-    Route::post('/login', 'Auth\LoginController@login');
-    Route::post('/logout', 'Auth\LoginController@logout');
    
     // Profiles
     Route::get('/profiles', 'Backoffice\ProfileController@showProfiles');

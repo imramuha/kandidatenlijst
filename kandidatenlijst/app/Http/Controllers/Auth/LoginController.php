@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Auth;
 
 class LoginController extends Controller
@@ -29,13 +30,20 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/profiles';
 
+    // username: yesterday
+    // password: yes123
+
     public function login(Request $request)
     {
-        // $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
 
-        if (Auth::attempt(['email' => 'imosh@i.com', 'password' => '123456'])) {
+        if (Auth::attempt(['username' => $request['username'], 'password' => $request['password']])) {
             // Authentication passed...
-            return redirect()->intended('/profiles');
+
+           // return response()->json(['message' => 'Successfully logged in']);
+           return redirect()->intended('/home');
+        } else {
+            return response()->json(['message' => 'Successfully logged out']);
         }
     }
 
