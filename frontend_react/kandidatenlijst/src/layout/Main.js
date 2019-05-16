@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import Login from '../views/login';
-import ProfileDetail from '../views/profile/ProfileDetail';
-import Profiles from '../views/profile/Profiles';
-import Home from '../views/home';
+import LoginView from '../views/login-view/LoginView';
+import ProfileView from '../views/profile-view/ProfileView';
+import HomeView from '../views/home-view/HomeView';
 
-import AuthComponent from '../components/AuthComponent';
+import Login from '../components/login/Login';
 
 class Main extends Component {
   render() {
@@ -16,11 +15,11 @@ class Main extends Component {
 
           {/* <Route exact path="/auth" component={AuthComponent} /> */}
 
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={HomeView} />
           {/* <AuthComponent> */}
-          <Route exact path="/profiles" component={Profiles} />
-          <Route exact path="/profiles:id" component={ProfileDetail} />
-          <Route exact path="/login" component={Login} />
+          { /*<Route exact path="/profiles" component={ProfileView} /> */}
+          <Route exact path="/profiles:id" component={ProfileView} />
+          <Route exact path="/login" component={LoginView} />
           {/* </AuthComponent> */}
         </Switch>
       </React.Fragment>

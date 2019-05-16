@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import Sidebar from '../../components/Sidebar';
-import StickyFooter from '../../components/StickyFooter';
-import PersonList from '../../components/PersonList';
-import Table from '../../components/table';
+import StickyFooter from '../../components/stickyfooter/StickyFooter';
 import { Link } from 'react-router-dom';
 
-class Home extends Component {
+class HomeView extends Component {
   render() {
     return (
       <React.Fragment>
@@ -22,4 +19,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default HomeView

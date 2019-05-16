@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import AddButton from './AddButton'
-import HideButton from './HideButton'
-import UpdateButton from './UpdateButton'
-import './buttons.css'
+import AddButton from './addbutton/AddButton'
+import HideButton from './hidebutton/HideButton'
+import UpdateButton from './updatebutton/UpdateButton'
+
+
+import './Buttons.css'
 
 export default class Buttons extends Component {
   render() {

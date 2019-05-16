@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-import './table.css'
 
 import axios from 'axios'
+
+import './Table.css'
 
 class Table extends Component {
 

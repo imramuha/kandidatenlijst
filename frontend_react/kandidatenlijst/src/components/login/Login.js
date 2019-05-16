@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import helpers from '../helpers';
+import helpers from '../../helpers';
 
 // Deze tutorial volgen: https://www.youtube.com/watch?v=Nq9RmAB9eag
 // Werkt nog niet volledig

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import './arrows.css';
-import LeftArrow from './LeftArrow';
-import RightArrow from './RightArrow';
+import LeftArrow from './leftarrow/LeftArrow';
+import RightArrow from './rightarrow/RightArrow';
+
+import './Arrows.css';
 
 class Arrows extends Component {
   render() {

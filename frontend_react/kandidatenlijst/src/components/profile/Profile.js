@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import Spinner from './spinner';
 
-import helpers from '../helpers'
+import helpers from '../../helpers'
 
 class PersonList extends React.Component {
   state = {

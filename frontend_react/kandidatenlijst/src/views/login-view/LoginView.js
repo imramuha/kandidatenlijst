@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import './login.css'
+
+import './LoginView.css'
+
 import axios from 'axios';
 
 // yes123
 // yesterday
 
-class Login extends Component {
+class LoginView extends Component {
 
   constructor(props) {
     super(props)
@@ -81,4 +83,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default LoginView
