@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
-    protected $table = 'Profiles';
     public $timestamps = false;
     //
 
@@ -35,7 +34,7 @@ class Profile extends Model
 
     public function details()
     {
-        return $this->hasMany('App\Models\Detail', 'ProfileId', 'Id');
+        return $this->hasMany('App\Models\Detail', 'profile_id', 'id');
     }
 
 }

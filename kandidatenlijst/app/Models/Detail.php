@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Detail extends Model
 {
     //
-    protected $table = 'Detail';
 
     protected $fillable = [
         'period_or_language',
         'description',
         'profile_id',
-        'Type',
+        'detailtyp_id',
       ];
 
     public function profile()
@@ -24,6 +23,6 @@ class Detail extends Model
 
     public function detailtype()
     {
-        return $this->hasMany('App\Models\Detailtype', 'Id', 'Type');
+        return $this->hasMany('App\Models\Detailtype', 'id', 'detailtype_id');
     }
 }

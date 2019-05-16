@@ -16,7 +16,7 @@ class ProfileController extends Controller
     public function showProfiles()
     {
         // get all users from the db
-        $profiles = Profile::with('details', 'details.detailtype')->where('isNew', '1')->get();
+        $profiles = Profile::with('details', 'details.detailtype')->where('is_new', '1')->get();
 
         return response()->json($profiles);    
     }
@@ -33,7 +33,7 @@ class ProfileController extends Controller
         $id = $request->Input('id');
 
         Profile::where('id', '=', $id)->update(array(
-            'isNew' => '0',
+            'is_new' => '2',
         ));
 
         $response = array('response' => 'The profile is now hidden.', 'succes' => true);
@@ -46,7 +46,7 @@ class ProfileController extends Controller
         $id = $request->Input('id');
 
         Profile::where('id', '=', $id)->update(array(
-            'Name' => $request->input('name'),
+            'name' => $request->input('name'),
             // otherfields
         ));
 
@@ -58,7 +58,7 @@ class ProfileController extends Controller
     public function storeProfile(Request $request) {
 
         $profile = Profile::create([
-            'Name' => $request->input('name'),
+            'name' => $request->input('name'),
             // other fields
         ]);
  

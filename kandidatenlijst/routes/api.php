@@ -12,9 +12,9 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::group([
-    'middleware' => 'jwt.auth:api',
+// jwt.auth:api -> 
+ Route::group([
+    'middleware' => 'api',
 ], function () {
    
     // Profiles
