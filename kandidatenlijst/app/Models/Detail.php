@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Detail extends Model
 {
     //
+    protected $table = 'details';
 
     protected $fillable = [
         'period_or_language',
         'description',
         'profile_id',
-        'detailtyp_id',
+        'detailtype_id',
       ];
 
     public function profile()

@@ -30,28 +30,52 @@ class ProfileController extends Controller
     // 2: hide profile by changing the isNew to 0
     public function hideProfile (Request $request) {
 
-        $id = $request->Input('id');
+        $id = $request->route('id');
 
-        Profile::where('id', '=', $id)->update(array(
-            'is_new' => '2',
-        ));
+        if(Profile::where('id', '=', $id)->update(array(
+            'is_new' => '1',
+        ))) {
+            $response = array('response' => 'The profile is now hidden.', 'succes' => true);
+            return $response;
+        } else {
+            $response = array('response' => 'The profile is not updated', 'succes' => false);
+            return $response;
+        }
 
-        $response = array('response' => 'The profile is now hidden.', 'succes' => true);
-        return $response;
     }
 
     // 3: update the profile of the selected person
     public function updateProfile (Request $request) {
 
-        $id = $request->Input('id');
+        $id = $request->route('id');
 
-        Profile::where('id', '=', $id)->update(array(
+        if(Profile::where('id', '=', $id)->update(array(
             'name' => $request->input('name'),
-            // otherfields
-        ));
-
-        $response = array('response' => 'The profile is now updated', 'succes' => true);
-        return $response;
+            'city' => $request->input('city'),
+            'email' => $request->input('email'),
+            'last_mailed_time' => $request->input('last_mailed_time'),
+            'candidate_id' => $request->input('cadidate_id'),
+            'vdab_id' => $request->input('vdab_id'),
+            'is_new' => $request->input('is_new'),
+            'samenvatting' => $request->input('samenvatting'),
+            'persoongebonden_competenties' => $request->input('persoongebonden_competenties'),
+            'vervoer' => $request->input('vervoer'),
+            'extra_info' => $request->input('extra_info'),
+            'adres' => $request->input('adres'),
+            'geboortedatum'  => $request->input('geboortedatum'),
+            'nationaliteit' => $request->input('nationaliteit'),
+            'geslacht' => $request->input('geslacht'),
+            'gsm' => $request->input('gsm'),
+            'hobby' => $request->input('hobby'),
+            'beschikbaarheid' => $request->input('beschikbaarheid'),
+            'date_inserted' => $request->input('date_inserted'),
+        ))) {            
+            $response = array('response' => 'The profile is now updated.', 'succes' => true);
+            return $response;
+        } else {
+            $response = array('response' => 'The profile is not updated.', 'succes' => false);
+            return $response;
+        };
     }
 
     // 4: push the profile to the ZOHO CRM
@@ -59,7 +83,24 @@ class ProfileController extends Controller
 
         $profile = Profile::create([
             'name' => $request->input('name'),
-            // other fields
+            'city' => $request->input('city'),
+            'email' => $request->input('email'),
+            'last_mailed_time' => $request->input('last_mailed_time'),
+            'candidate_id' => $request->input('cadidate_id'),
+            'vdab_id' => $request->input('vdab_id'),
+            'is_new' => $request->input('is_new'),
+            'samenvatting' => $request->input('samenvatting'),
+            'persoongebonden_competenties' => $request->input('persoongebonden_competenties'),
+            'vervoer' => $request->input('vervoer'),
+            'extra_info' => $request->input('extra_info'),
+            'adres' => $request->input('adres'),
+            'geboortedatum'  => $request->input('geboortedatum'),
+            'nationaliteit' => $request->input('nationaliteit'),
+            'geslacht' => $request->input('geslacht'),
+            'gsm' => $request->input('gsm'),
+            'hobby' => $request->input('hobby'),
+            'beschikbaarheid' => $request->input('beschikbaarheid'),
+            'date_inserted' => $request->input('date_inserted'),
         ]);
  
         $response = array('response' => 'Your profile has been stored!', 'succes' => true);

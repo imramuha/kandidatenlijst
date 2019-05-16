@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Detailtype extends Model
 {
     //
+    protected $table = 'detailtypes';
     
     //
 

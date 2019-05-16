@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
+    protected $table = 'profiles';
     public $timestamps = false;
     //
 
@@ -28,7 +29,7 @@ class Profile extends Model
       'gsm',
       'hobby',
       'beschikbaarheid',
-      'datainserted',
+      'date_inserted',
     ];
 
 

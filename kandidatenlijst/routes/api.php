@@ -28,3 +28,4 @@ use Illuminate\Http\Request;
 
 // Route::post('/register', 'Auth\LoginController@register');
 Route::post('/login', 'Auth\LoginController@login');
+Route::post('/logout', 'Auth\LoginController@logout');
