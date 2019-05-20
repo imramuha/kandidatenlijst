@@ -17,8 +17,8 @@ class Main extends Component {
 
           <Route exact path="/" component={HomeView} />
           {/* <AuthComponent> */}
-          { /*<Route exact path="/profiles" component={ProfileView} /> */}
-          <Route exact path="/profiles:id" component={ProfileView} />
+          { /*<Route exact path="/profiles:id" component={ProfileView} /> */}
+          <Route exact path="/profiles" component={ProfileView} />
           <Route exact path="/login" component={LoginView} />
           {/* </AuthComponent> */}
         </Switch>

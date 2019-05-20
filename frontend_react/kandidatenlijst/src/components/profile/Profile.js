@@ -12,13 +12,17 @@ class PersonList extends React.Component {
   componentDidMount() {
     const token = helpers.getLocalStorage();
     let config = {
-      headers: { 'Authorization': token }
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      }
     };
-    axios.get(`http://127.0.0.1:8000/api/profiles`, config)
+    axios.get(`http://localhost:81/profiles/profiles`)
       .then(res => {
         const persons = res.data;
         this.setState({ persons });
       })
+
+
   }
 
   render() {
@@ -26,7 +30,7 @@ class PersonList extends React.Component {
     return (
       <ul>
         {this.state.persons.map(person =>
-          <ul>
+          <ul key={person.id}>
             <li>{person.vervoer}</li>
             <li>{person.email}</li>
           </ul>)}
