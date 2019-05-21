@@ -7,7 +7,7 @@ class UpdateButton extends Component {
   render() {
     return (
       <div>
-
+        <button>Update</button>
       </div>
     )
   }

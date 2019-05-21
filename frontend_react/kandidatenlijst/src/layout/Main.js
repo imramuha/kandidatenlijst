@@ -7,6 +7,9 @@ import HomeView from '../views/home-view/HomeView';
 
 import Login from '../components/login/Login';
 
+import PrivateRoute from '../components/private/PrivateRoute';
+import ProfilesView from '../views/profiles-view/ProfilesView';
+
 class Main extends Component {
   render() {
     return (
@@ -16,10 +19,15 @@ class Main extends Component {
           {/* <Route exact path="/auth" component={AuthComponent} /> */}
 
           <Route exact path="/" component={HomeView} />
-          {/* <AuthComponent> */}
-          { /*<Route exact path="/profiles" component={ProfileView} /> */}
-          <Route exact path="/profiles:id" component={ProfileView} />
           <Route exact path="/login" component={LoginView} />
+          {/* <AuthComponent> */}
+          {/* <Switch> */}
+          {/* <PrivateRoute exact path="/profiles" component={Profile} />
+          <PrivateRoute exact path="/profiles:id" component={ProfileView} /> */}
+          <Route exact path="/profiles" component={ProfilesView} /> {/*  Alle profiles */}
+          <Route exact path="/profiles/:profile_id" component={ProfileView} /> {/* Specifieke profiel */}
+          {/* </Switch> */}
+
           {/* </AuthComponent> */}
         </Switch>
       </React.Fragment>

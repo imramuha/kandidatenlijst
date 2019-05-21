@@ -4,16 +4,16 @@ import HideButton from './hidebutton/HideButton'
 import UpdateButton from './updatebutton/UpdateButton'
 
 
-import './Buttons.css'
+import './buttons.css'
 
 export default class Buttons extends Component {
   render() {
     return (
-      <React.Fragment>
+      <div className="buttons">
         <AddButton />
         <HideButton />
         <UpdateButton />
-      </React.Fragment>
+      </div>
     )
   }
 }

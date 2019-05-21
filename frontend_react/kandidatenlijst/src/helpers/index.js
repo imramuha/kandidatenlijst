@@ -1,24 +1,25 @@
-const getLocalStorage = () => {
-  return 'bearer' + localStorage.getItem('token');
+
+import axios from 'axios';
+
+export const getLocalStorage = () => {
+  return localStorage.getItem('token');
 }
 
-const logout = () => {
-  localStorage.clear();
-  // Redirect...
-}
-
-// BIj hide request
-const getIdFromProfile = (id) => {
+// Bij hide request
+export const getIdFromProfile = (id) => {
   return id;
 }
 
-const sendTokenWithHeader = () => {
-
+export const sendTokenWithHeader = (token) => {
+  if (token) {
+    axios.defaults.headers.common['x-auth-token'] = token;
+  } else {
+    delete axios.defaults.headers.common['x-auth-token'];
+  }
 }
 
-module.exports = {
-  getLocalStorage,
-  logout,
-  getIdFromProfile,
-  sendTokenWithHeader,
-}
+// module.exports = {
+//   getLocalStorage,
+//   getIdFromProfile,
+//   sendTokenWithHeader,
+// }

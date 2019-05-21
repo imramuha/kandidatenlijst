@@ -1,0 +1,1 @@
+export const FETCH_PROFILES = 'FETCH_PROFILES';

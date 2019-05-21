@@ -4,8 +4,13 @@ import './LoginView.css'
 
 import axios from 'axios';
 
+// Oude api:
 // yes123
 // yesterday
+
+// Nieuwe api:
+// yesterday
+// yes123
 
 class LoginView extends Component {
 
@@ -17,34 +22,29 @@ class LoginView extends Component {
       error: ''
     }
 
-    this.change = this.change.bind(this);
-    this.submit = this.submit.bind(this);
+    this.OnChange = this.OnChange.bind(this);
+    this.OnSubmit = this.OnSubmit.bind(this);
   }
 
   componentDidMount() {
 
   }
 
-  change(e) {
+  OnChange(e) {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  submit(e) {
+  OnSubmit(e) {
     e.preventDefault();
-    // Make post request to auth
-    axios.post('http://127.0.0.1:8000/api/login', {
+
+    axios.post('http://vdab.i4m.be/api/login', {
       username: this.state.username,
       password: this.state.password
-      // retrieve the bearer token
-      // Store it into localstorage
-    }, { "Content-Type": "application/x-www-form-urlencoded", })
+
+    }, { "Content-Type": "application/x-www-form-urlencoded" })
       .then(res =>
         localStorage.setItem('token', res.data.token))
-      // this.props.history.push('/profiles') doesnt work here yet
-      // Go into new route
-      //.then()
-
-
+      //this.props.history.push('/profiles') // doesnt work here yet
       //this.props.history.push('/profiles');
       .catch(() => this.setState({
 
@@ -61,14 +61,14 @@ class LoginView extends Component {
       <React.Fragment>
         <div className="grid">
           <div className="card">
-            <form onSubmit={e => this.submit(e)}>
+            <form onSubmit={e => this.OnSubmit(e)}>
               <div className="login_title"></div>
               <div className="login_body">
                 <div className="form_field">
-                  <input name="username" type="text" placeholder="Gebruikersnaam" required onChange={e => this.change(e)} value={this.state.username} />
+                  <input name="username" type="text" placeholder="Gebruikersnaam" required onChange={e => this.OnChange(e)} value={this.state.username} />
                 </div>
                 <div className="form_field">
-                  <input name="password" type="password" placeholder="Paswoord" required onChange={e => this.change(e)} value={this.state.password} />
+                  <input name="password" type="password" placeholder="Paswoord" required onChange={e => this.OnChange(e)} value={this.state.password} />
                 </div>
                 <div className="button_container">
                   <input type="submit" value="Login" />

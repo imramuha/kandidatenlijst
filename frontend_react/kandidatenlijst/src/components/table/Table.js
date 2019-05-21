@@ -4,7 +4,7 @@ import "react-table/react-table.css";
 
 import axios from 'axios'
 
-import './Table.css'
+import './table.css'
 
 class Table extends Component {
 

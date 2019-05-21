@@ -1,0 +1,21 @@
+.profiles-grid {
+  display: flex;  
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.profiles-card {
+  background: rgb(141, 141, 141);
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  flex: 0 1 calc(20% - 1em);
+  flex-direction: column;
+  border-radius: 2rem;
+}
+
+.profile-name {
+  font-weight: bold;
+  font-size: 1rem;
+}
