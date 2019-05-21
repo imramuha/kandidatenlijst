@@ -7,7 +7,7 @@ class HideButton extends Component {
   render() {
     return (
       <div>
-
+        <button>Hide</button>
       </div>
     )
   }

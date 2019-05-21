@@ -4,15 +4,26 @@ import './App.css';
 import Main from './layout/Main';
 import Table from './components/table/Table';
 
+import { Provider } from 'react-redux';
+import store from './store';
+
+import sendTokenWithHeader from './helpers';
+
+// if (localStorage.token) {
+//   sendTokenWithHeader(localStorage.token);
+// }
+
 class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <React.Fragment>
-          <Main />
-        </React.Fragment>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <React.Fragment>
+            <Main />
+          </React.Fragment>
+        </BrowserRouter>
+      </Provider>
     );
   }
 }

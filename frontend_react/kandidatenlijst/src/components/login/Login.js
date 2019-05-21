@@ -19,7 +19,7 @@ class AuthComponent extends Component {
   }
 
   getUser() {
-    const token = helpers.getLocalStorage();
+    const token = localStorage.getItem('token');
     if (!token) {
       this.props.history.push('/login');
     }
@@ -32,7 +32,7 @@ class AuthComponent extends Component {
       })
     }).catch(err => {
       localStorage.removeItem('token');
-      this.props.history.push('/login')
+      // this.props.history.push('/login')
     });
   }
   render() {
