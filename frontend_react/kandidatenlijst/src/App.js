@@ -7,7 +7,7 @@ import Table from './components/table/Table';
 import { Provider } from 'react-redux';
 import store from './store';
 
-import sendTokenWithHeader from './helpers';
+import { sendTokenWithHeader } from './helpers';
 
 // if (localStorage.token) {
 //   sendTokenWithHeader(localStorage.token);

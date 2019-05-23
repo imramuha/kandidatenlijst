@@ -9,6 +9,7 @@ import Login from '../components/login/Login';
 
 import PrivateRoute from '../components/private/PrivateRoute';
 import ProfilesView from '../views/profiles-view/ProfilesView';
+import ProfileTest from '../views/profile-view/ProfileTest';
 
 class Main extends Component {
   render() {
@@ -25,7 +26,7 @@ class Main extends Component {
           {/* <PrivateRoute exact path="/profiles" component={Profile} />
           <PrivateRoute exact path="/profiles:id" component={ProfileView} /> */}
           <Route exact path="/profiles" component={ProfilesView} /> {/*  Alle profiles */}
-          <Route exact path="/profiles/:profile_id" component={ProfileView} /> {/* Specifieke profiel */}
+          <Route exact path="/profiles/:profile_id" component={ProfileTest} /> {/* Specifieke profiel */}
           {/* </Switch> */}
 
           {/* </AuthComponent> */}

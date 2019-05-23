@@ -1,1 +1,2 @@
 export const FETCH_PROFILES = 'FETCH_PROFILES';
+export const FETCH_PROFILE = 'FETCH_PROFILE';
