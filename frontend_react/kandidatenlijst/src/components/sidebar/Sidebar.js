@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
-import './sidebar.css'
+import { Link } from 'react-router-dom'
 
-class Sidebar extends Component {
-  render() {
-    return (
-      <div className="sidebar">
-        Hello, I'm a sidebar
-      </div>
-    )
-  }
-}
+
+import './Sidebar.css'
+
+const Sidebar = ({ profiles, onClick }) => {
+  return (
+    <div className="sidenav">
+      <h1 className="title-sidenav">PROFILES</h1>
+      <ul>
+        {profiles.map(profile => ( // href={`/profiles/${profile.id}`}
+          <a id={`${profile.id}`} onClick={onClick}>{profile.name}</a>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
 
 export default Sidebar;

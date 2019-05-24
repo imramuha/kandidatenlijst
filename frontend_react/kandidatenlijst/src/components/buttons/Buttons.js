@@ -4,7 +4,7 @@ import HideButton from './hidebutton/HideButton'
 import UpdateButton from './updatebutton/UpdateButton'
 
 
-import './buttons.css'
+import './Buttons.css'
 
 export default class Buttons extends Component {
   render() {

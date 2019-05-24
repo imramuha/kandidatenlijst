@@ -1,23 +1,20 @@
 import React, { Component } from 'react'
-import Table from '../../components/table/Table';
-import Arrows from '../../components/arrows/Arrows';
-
 import { Link } from 'react-router-dom';
-
-import './ProfileView.css';
+import { connect } from 'react-redux'
+//import { withRouter } from 'react-router-dom'
 import axios from 'axios';
 
 import helpers from '../../helpers'
 import { getLocalStorage } from '../../helpers'
 import Spinner from '../../components/spinner/Spinner';
-
-import { connect } from 'react-redux'
-//import { withRouter } from 'react-router-dom'
 import { fetchProfile } from '../../actions/profilesActions';
 import StickyFooter from '../../components/stickyfooter/StickyFooter';
-
+import Arrows from '../../components/arrows/Arrows';
 import BottomArrow from '../../components/arrows/bottomarrow/BottomArrow';
 import TopArrow from '../../components/arrows/toparrow/TopArrow';
+import Sidebar from '../../components/sidebar/Sidebar';
+
+import './ProfileView.css';
 
 // For one specific profile
 
@@ -32,9 +29,7 @@ class ProfileView extends Component {
 
   componentDidMount() {
     let id = this.props.match.params.profile_id;
-    this.props.fetchProfile(id) // We fetch data from a specific profile
-    // this.props.fetchProfiles() // Fetch all the profiles, werkt niet zoals ik wil, TODO remove
-    // We also need to fetch data from all profiles, because name is included there
+    this.props.fetchProfile(id) 
   }
 
   render() {
@@ -92,7 +87,6 @@ class ProfileView extends Component {
             <div className="clear"></div>
           </section> */}
 
-
               <section>
                 <div className="sectionTitle">
                   <h1>Work Experience</h1>
@@ -109,7 +103,6 @@ class ProfileView extends Component {
                 </div>
                 <div className="clear"></div>
               </section>
-
 
               <section>
                 {this.props.profile.map(x =>
@@ -132,7 +125,6 @@ class ProfileView extends Component {
                 </div>
                 <div className="clear"></div>
               </section>
-
 
               <section>
                 <div className="sectionTitle">
@@ -159,18 +151,14 @@ class ProfileView extends Component {
           </div>
         </div>
 
-
-
       </React.Fragment>
 
     ) : (
         <Spinner />
       )
-
     return (
       <div>
         {/* <Arrows />
-        <Table /> */}
 
         {/* TODO: clean up in clean css */}
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
