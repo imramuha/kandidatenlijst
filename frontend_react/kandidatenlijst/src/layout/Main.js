@@ -10,11 +10,13 @@ import Login from '../components/login/Login';
 import PrivateRoute from '../components/private/PrivateRoute';
 import ProfilesView from '../views/profiles-view/ProfilesView';
 import ProfileTest from '../views/profile-view/ProfileTest';
+import Sidebar from '../components/sidebar/Sidebar';
 
 class Main extends Component {
   render() {
     return (
       <React.Fragment>
+        <Sidebar />
         <Switch>
 
           {/* <Route exact path="/auth" component={AuthComponent} /> */}

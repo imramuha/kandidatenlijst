@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { getLocalStorage } from '../../helpers'
 import Spinner from '../../components/spinner/Spinner';
+import BottomArrow from '../../components/arrows/bottomarrow/BottomArrow';
+import TopArrow from '../../components/arrows/toparrow/TopArrow';
 
 class ProfileTest extends Component {
 
@@ -29,6 +31,13 @@ class ProfileTest extends Component {
         console.log(profileProfileData);
         //const person = res.data.profiles;
         // console.log(person)
+
+        // TODO: remove them
+        // let json = JSON.stringify(profileDetails);
+        // console.log(json)
+        // let escape = json.replace(new RegExp('\r?\n', 'g'), '<br />')
+        // console.log(escape);
+        // https://stackoverflow.com/questions/4253367/how-to-escape-a-json-string-containing-newline-characters-using-javascript
         this.setState({ profileDetails })
         this.setState({ profileProfileData })
       })
@@ -40,9 +49,16 @@ class ProfileTest extends Component {
     /*** PROFILES ***/
     const profileProfilePersonal = this.state.profileProfileData ? (
       <div>
-        <h1 className="quickFade delayTwo">{this.state.profileProfileData.name}</h1>
-        <h1 className="quickFade delayTwo">{this.state.profileProfileData.email}</h1>
-        <h2 className="quickFade delayThree">{this.state.profileProfileData.gsm}</h2>
+        <div id="name">
+          <h1 className="quickFade delayTwo">{this.state.profileProfileData.name}</h1>
+        </div>
+        <div id="contactDetails" className="quickFade delayFour">
+          <ul>
+            <li>email: <a href={`mailto:${this.state.profileProfileData.email}`} >{this.state.profileProfileData.email}</a></li>
+            <li>gsm: <a href={`tel:${this.state.profileProfileData.gsm}`}> {this.state.profileProfileData.gsm}</a></li>
+            <li>address: <a>{this.state.profileProfileData.adres}</a></li>
+          </ul>
+        </div>
       </div>
     ) : <Spinner /> // Show a global spinner when the whole component loads
 
@@ -53,8 +69,11 @@ class ProfileTest extends Component {
         </ul>
       </div>
     ) : <div>
-        Geen gegevens voor deze persoon!
-    </div>
+        <ul className="keySkills">
+          <li>Geen gegevens voor deze persoon!</li>
+        </ul>
+
+      </div>
 
     const profileProfileDesiredJob = this.state.profileProfileData ? (
       <div>
@@ -62,9 +81,17 @@ class ProfileTest extends Component {
           <li>{this.state.profileProfileData.gewenste_job}</li>
         </ul>
       </div>
-    ) : <div>
-        Geen gegevens voor deze persoon!
-</div>
+    ) : <div>Geen gegevens voor deze persoon!</div>
+
+    const profileProfileTransport = this.state.profileProfileData ? (
+      <div>
+        <ul className="keySkills">
+          <li>{this.state.profileProfileData.vervoer}</li>
+        </ul>
+      </div>
+    ) : (
+        <div>Geen gegevens voor deze persoon!</div>
+      )
 
     /*** DETAILS ***/
     // Details: only two items that can be shown
@@ -79,25 +106,23 @@ class ProfileTest extends Component {
       )
     })
 
+    const random = Math.floor(Math.random() * 90) + 1;
+
     // const profileProfileData = { this.state.profileProfileData }
     return (
       <React.Fragment>
-        <Link to="/profiles">Naar profiles</Link>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          Specific profile:
+          <Link to="/profiles">Back to profiles</Link>
+          <BottomArrow />
+        </div>
+
         <div id="cv" className="instaFade">
           <div className="mainDetails">
             <div id="headshot" className="quickFade">
-              <img src="https://loremflickr.com/320/240?random=1" alt="headshot" />
+              <img src={`https://randomuser.me/api/portraits/men/${random}.jpg`} alt="headshot" />
             </div>
-            <div id="name">
-              {profileProfilePersonal}
-            </div>
-            <div id="contactDetails" className="quickFade delayFour">
-              <ul>
-                <li>email: <a href="mailto:john@smith.com" target="_blank">john@smith.com</a></li>
-                <li>website: <a href="http://www.smith.com">www.smith.com</a></li>
-                <li>phone: 01234567890</li>
-              </ul>
-            </div>
+            {profileProfilePersonal}
             <div className="clear"></div>
             <div id="mainArea" className="quickFade delayFive">
               <section>
@@ -139,12 +164,23 @@ class ProfileTest extends Component {
                 </div>
                 <div className="clear"></div>
               </section>
+
+              <section>
+                <div className="sectionTitle">
+                  <h1>Vervoer</h1>
+                </div>
+                <div className="sectionContent">
+                  {profileProfileTransport}
+                </div>
+                <div className="clear"></div>
+              </section>
             </div>
           </div>
         </div>
 
-        {/* {profileProfileData} */}
-        {/* {profileDetails} */}
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }} >
+          <TopArrow />
+        </div>
       </React.Fragment>
 
       // Error boundry
