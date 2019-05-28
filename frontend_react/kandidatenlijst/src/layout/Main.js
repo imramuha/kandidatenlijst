@@ -15,8 +15,6 @@ import { connect } from 'react-redux';
 class Main extends Component {
   render() {
     const { isAuthenticated } = this.props.auth;
-    //   const checkAuth = { if(isAuthenticated === true) { <Redirect to="/login" />
-    // } else { <Redirect to="/login" /> }}
 
     return (
       <React.Fragment>
@@ -29,13 +27,9 @@ class Main extends Component {
               )
           )} />
 
-
           <Route exact path="/login" component={LoginView} />
           <PrivateRoute exact path="/profiles" component={ProfilesView} /> {/*  Alle profiles */}
           <PrivateRoute exact path="/profiles/:profile_id" component={ProfileTest} /> {/* Specifieke profiel */}
-          {/* </Switch> */}
-
-          {/* </AuthComponent> */}
         </Switch>
       </React.Fragment >
     )

@@ -6,7 +6,7 @@ import React, { Component } from 'react'
 class AddButton extends Component {
   render() {
     return (
-      <a href="/profiles" class="action-button animate green">add</a>
+      <a href="/profiles" className="action-button animate green">add</a>
     )
   }
 }

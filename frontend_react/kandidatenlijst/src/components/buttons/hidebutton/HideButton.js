@@ -6,7 +6,7 @@ import React, { Component } from 'react'
 class HideButton extends Component {
   render() {
     return (
-      <a href="/profiles" class="action-button animate pink">do nothing</a>
+      <a href="/profiles" className="action-button animate pink">do nothing</a>
     )
   }
 }
