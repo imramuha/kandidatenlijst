@@ -50,7 +50,7 @@ class ProfilesView extends Component {
     return (
       <React.Fragment>
         <Sidebar profiles={this.props.profiles} onClick={this.onClick} />
-        {/*<StickyFooter />*/}
+        <StickyFooter />
         <Cv profile={this.state.profile} />
 
       </React.Fragment>

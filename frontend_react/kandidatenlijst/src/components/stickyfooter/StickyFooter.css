@@ -2,7 +2,7 @@
 .sticky {
     position: fixed;
     bottom: 0;
-    background-color: rgb(41, 41, 41);
+    background-color: rgba(88, 88, 88, 0.082);
     padding: 30px;
     -webkit-box-sizing: border-box;
     /* Safari/Chrome, other WebKit */
@@ -40,6 +40,17 @@
     border-radius: 50%;
     font-family: 'Roboto';
     padding: 5px 18px;
+    text-align: center;
+    font-size: 18px;
+    color: #FFF;
+    text-decoration: none;
+  }
+
+    
+  .logout-button {
+    border-radius: 50%;
+    font-family: 'Roboto';
+    padding: 5px 15px;
     text-align: center;
     font-size: 18px;
     color: #FFF;
@@ -88,12 +99,12 @@
   
   .pink {
     background-color: #1C1C1C;
-    border-bottom: 3px solid rgb(243, 129, 148);
+    border-bottom: 3px solid rgb(190, 64, 184);
   }
   
   .pink:hover {
     transition-duration: 0.4s;
-    color: rgb(240, 124, 195);
+    color: rgb(221, 116, 235);
   }
   
   .action-button:active, .info-button:active {
