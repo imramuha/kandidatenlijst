@@ -1,8 +1,12 @@
-import React, { Component } from 'react'
-
-import './LoginView.css'
-
+import React, { Component } from 'react';
 import axios from 'axios';
+
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/authActions'
+
+import { withRouter } from 'react-router-dom';
+
+import './LoginView.css';
 
 // Oude api:
 // yes123
@@ -19,7 +23,9 @@ class LoginView extends Component {
     this.state = {
       username: '',
       password: '',
-      error: ''
+      // error: '',
+      // errors: []
+      errors: {}
     }
 
     this.OnChange = this.OnChange.bind(this);
@@ -27,36 +33,36 @@ class LoginView extends Component {
   }
 
   componentDidMount() {
+    console.log('loginpage')
+    console.log(this.props.auth.isAuthenticated);
+  }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push('/profiles');
+    }
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
   }
 
   OnChange(e) {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  OnSubmit(e) {
+  OnSubmit(e) { // Put this to LoginUser in redux
     e.preventDefault();
 
-    axios.post('http://vdab.i4m.be/api/login', {
+    const data = {
       username: this.state.username,
       password: this.state.password
-
-    }, { "Content-Type": "application/x-www-form-urlencoded" })
-      .then(res =>
-        localStorage.setItem('token', res.data.token))
-      //this.props.history.push('/profiles') // doesnt work here yet
-      //this.props.history.push('/profiles');
-      .catch(() => this.setState({
-
-        error: true
-      }));
-
-
-
+    }
+    this.props.loginUser(data);
   }
 
   render() {
-    const { error } = this.state;
+    // const { isAuthenticated } = this.props.auth; voor in header dynamish logout knop te tonen
+    const { errors } = this.props;
     return (
       <React.Fragment>
         <div className="grid">
@@ -75,7 +81,10 @@ class LoginView extends Component {
                 </div>
               </div>
             </form>
-            {error && <p>Invalid credentials</p>}
+            {/* <div className="error-msg">{errors && <p>Verkeerde gegevens!</p>}</div> */}
+            {/* {errors.map(err => (<div>{err}</div>))} */}
+            {/* <div className="error-msg">{errors.error}</div> */}
+            {/* doesn't work yet */}
           </div>
         </div>
       </React.Fragment>
@@ -83,4 +92,9 @@ class LoginView extends Component {
   }
 }
 
-export default LoginView
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+})
+
+export default connect(mapStateToProps, { loginUser })(LoginView)

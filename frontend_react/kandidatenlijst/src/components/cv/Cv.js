@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Cv.css'
+import './cv.css'
 
 const Cv = ({ profile }) => {
     console.log(profile.profiles)
@@ -35,12 +35,12 @@ const Cv = ({ profile }) => {
                                 <div>
                                     <ul>
                                         {profile.details.map((detail) =>
-                                            <div>                                        
-                                                    {detail.period_or_language === "" ?
-                                                        null :
-                                                        <li>{detail.period_or_language}</li>
-                                                    }
-                                                    <li>{detail.description}</li>                                             
+                                            <div>
+                                                {detail.period_or_language === "" ?
+                                                    null :
+                                                    <li>{detail.period_or_language}</li>
+                                                }
+                                                <li>{detail.description}</li>
                                             </div>
                                         )}
                                     </ul>
@@ -79,7 +79,7 @@ const Cv = ({ profile }) => {
                                 </div>
                                 <div className="sectionContent">
                                     <p>{profile.profiles.vervoer}</p>
-                            
+
                                 </div>
                                 <div className="clear"></div>
                             </section>
@@ -91,7 +91,7 @@ const Cv = ({ profile }) => {
                                 <div className="sectionContent">
                                     <p>{profile.profiles.extra_info}</p>
                                     <p>{profile.profiles.hobby}</p>
-                                    <p>{profile.profiles.samenvatting}</p> 
+                                    <p>{profile.profiles.samenvatting}</p>
                                 </div>
                                 <div className="clear"></div>
                             </section>

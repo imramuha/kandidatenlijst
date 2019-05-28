@@ -25,8 +25,8 @@ class Main extends Component {
           {/* <Switch> */}
           {/* <PrivateRoute exact path="/profiles" component={Profile} />
           <PrivateRoute exact path="/profiles:id" component={ProfileView} /> */}
-          <Route exact path="/profiles" component={ProfilesView} /> {/*  Alle profiles */}
-          <Route exact path="/profiles/:profile_id" component={ProfileTest} /> {/* Specifieke profiel */}
+          <PrivateRoute exact path="/profiles" component={ProfilesView} /> {/*  Alle profiles */}
+          <PrivateRoute exact path="/profiles/:profile_id" component={ProfileTest} /> {/* Specifieke profiel */}
           {/* </Switch> */}
 
           {/* </AuthComponent> */}
