@@ -3,7 +3,6 @@ import { Redirect, Route, Switch } from "react-router-dom";
 
 import LoginView from '../views/login-view/LoginView';
 import ProfileView from '../views/profile-view/ProfileView';
-import HomeView from '../views/home-view/HomeView';
 
 import Login from '../components/login/Login';
 
@@ -22,17 +21,16 @@ class Main extends Component {
     return (
       <React.Fragment>
         <Switch>
+          <Route exact path="/" render={() => (
+            isAuthenticated ? (
+              <Redirect to="/profiles" />
+            ) : (
+                <Redirect to="/login" />
+              )
+          )} />
 
-          {/* <Route exact path="/auth" component={AuthComponent} /> */}
 
-          {/* <Redirect exact from="/" to="/login" component={HomeView} /> */}
-          <Route exact path="/" component={HomeView} />
           <Route exact path="/login" component={LoginView} />
-          {/* {!isAuthenticated ? <Route exact to="/login" component={LoginView} /> : <Redirect to="/profiles" exact to={ProfilesView} />} */}
-          {/* <AuthComponent> */}
-          {/* <Switch> */}
-          {/* <PrivateRoute exact path="/profiles" component={Profile} />
-          <PrivateRoute exact path="/profiles:id" component={ProfileView} /> */}
           <PrivateRoute exact path="/profiles" component={ProfilesView} /> {/*  Alle profiles */}
           <PrivateRoute exact path="/profiles/:profile_id" component={ProfileTest} /> {/* Specifieke profiel */}
           {/* </Switch> */}
