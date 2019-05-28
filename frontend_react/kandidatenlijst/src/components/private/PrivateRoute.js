@@ -1,21 +1,27 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import { authenticationService } from '../../services/auth.service'
-
-/* Helper component to create private routes */
-// https://www.youtube.com/watch?v=oRL-pttfNSc&t=321s
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, auth, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      authenticationService.checkAuth.isAuthenticated === true ? ( // Logged in go, you can use the component?
+      auth.isAuthenticated === true ? (
         <Component {...props} />
       ) : (
-          <Redirect to="/login" /> // Not logged in? Go back to login
+          <Redirect to="/login" />
         )
     }
   />
 );
 
-export default PrivateRoute;
+PrivateRoute.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps)(PrivateRoute);

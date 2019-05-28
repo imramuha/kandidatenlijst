@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 
-import './Sidebar.css'
+import './sidebar.css'
 
 const Sidebar = ({ profiles, onClick }) => {
   return (

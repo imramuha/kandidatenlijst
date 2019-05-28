@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import LeftArrow from './leftarrow/LeftArrow';
 import RightArrow from './rightarrow/RightArrow';
 
-import './Arrows.css';
+import './arrows.css';
 
 class Arrows extends Component {
   render() {
