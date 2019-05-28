@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
-import Buttons from './../buttons/Buttons';
-import Arrows from './../arrows/Arrows';
+import AddButton from './../buttons/addbutton/AddButton';
+import UpdateButton from './../buttons/updatebutton/UpdateButton';
+import HideButton from './../buttons/hidebutton/HideButton';
+import InfoButton from './../buttons/infobutton/InfoButton';
+import LogoutButton from './../buttons/logoutbutton/LogoutButton';
+
+import './StickyFooter.css';
 
 class StickyFooter extends Component {
   render() {
     return (
-      <div>
-        <Arrows />
-        <Buttons />
+      <div className="sticky">
+        <HideButton />
+        <UpdateButton />
+        <AddButton />
+        <InfoButton />
+        <LogoutButton />
       </div>
     )
   }

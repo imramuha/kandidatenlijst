@@ -3,13 +3,13 @@ import React, { Component } from 'react'
 // Toevoegen aan crm, even laten voor wat het is
 // We moeten dit sturen naar zoho api, laten we even zo. 
 // Aan Christophe vragen
-class AddButton extends Component {
-  render() {
-    return (
-      <a href="/profiles" class="action-button animate green">add</a>
-    )
-  }
+class LogoutButton extends Component {
+    render() {
+        return (
+            <a href="#" class="info-button animate red">*</a>
+        )
+    }
 }
 
 
-export default AddButton
+export default LogoutButton

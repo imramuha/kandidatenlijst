@@ -29,15 +29,6 @@ class ProfileTest extends Component {
         const profileDetails = res.data.details; // Loopen
         const profileProfileData = res.data.profiles; // niet loopen?
         console.log(profileProfileData);
-        //const person = res.data.profiles;
-        // console.log(person)
-
-        // TODO: remove them
-        // let json = JSON.stringify(profileDetails);
-        // console.log(json)
-        // let escape = json.replace(new RegExp('\r?\n', 'g'), '<br />')
-        // console.log(escape);
-        // https://stackoverflow.com/questions/4253367/how-to-escape-a-json-string-containing-newline-characters-using-javascript
         this.setState({ profileDetails })
         this.setState({ profileProfileData })
       })
@@ -45,7 +36,6 @@ class ProfileTest extends Component {
 
   render() {
 
-    // TODO: structure this or make cleaner because omg... so dirty
     /*** PROFILES ***/
     const profileProfilePersonal = this.state.profileProfileData ? (
       <div>
@@ -182,131 +172,6 @@ class ProfileTest extends Component {
           <TopArrow />
         </div>
       </React.Fragment>
-
-      // Error boundry
-      // const person = this.props.profile ? (
-      //   <React.Fragment>
-
-      //     {/* {this.props.profile.map(x =>
-      //       // <ul key={x.id}>
-      //       //   <li>{x.period_or_language}</li>
-      //       //   <li>{x.description}</li>
-      //       // </ul>
-      //       <div></div>
-      //     )} */}
-      //     <div>
-      //       {/* {x.description}
-      //         {x.period_or_language} */}
-      //       {/* In aparte component rights side */}
-
-      //       <div id="cv" className="instaFade">
-      //         <div className="mainDetails">
-      //           <div id="headshot" className="quickFade">
-      //             <img src="https://loremflickr.com/320/240?random=1" alt="headshot" />
-      //           </div>
-      //           {/* {this.props.profiles.map(profile => */}
-
-      //           <div id="name">
-      //             {/* <h1 className="quickFade delayTwo">{profile.name}</h1> */}
-      //             <h1 className="quickFade delayTwo">Profiel naam</h1>
-      //             <h2 className="quickFade delayThree">Job Title</h2>
-      //           </div>
-      //           {/* )} */}
-
-      //           <div id="contactDetails" className="quickFade delayFour">
-      //             <ul>
-      //               <li>email: <a href="mailto:john@smith.com" target="_blank">john@smith.com</a></li>
-      //               <li>website: <a href="http://www.smith.com">www.smith.com</a></li>
-      //               <li>phone: 01234567890</li>
-      //             </ul>
-      //           </div>
-      //           <div className="clear"></div>
-      //         </div>
-
-      //         <div id="mainArea" className="quickFade delayFive">
-      //           {/* <section>
-      //         <article>
-      //           <div className="sectionTitle">
-      //             <h1>Personal Profile</h1>
-      //           </div>
-
-      //           <div className="sectionContent">
-      //             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor metus, interdum at scelerisque in, porta at lacus. Maecenas dapibus luctus cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-      //           </div>
-      //         </article>
-      //         <div className="clear"></div>
-      //       </section> */}
-
-
-      //           <section>
-      //             <div className="sectionTitle">
-      //               <h1>Work Experience</h1>
-      //             </div>
-
-      //             <div className="sectionContent">
-      //               {this.props.profile.map(x =>
-      //                 <article key={x.id}>
-      //                   <li style={{ fontWeight: 'bold' }}>{x.period_or_language}</li>
-      //                   <li style={{ padding: '1rem 0' }}>{x.description}</li>
-      //                 </article>
-      //               )}
-
-      //             </div>
-      //             <div className="clear"></div>
-      //           </section>
-
-
-      //           <section>
-      //             {this.props.profile.map(x =>
-      //               <div className="sectionTitle">
-      //                 <h1>Key Skills</h1>
-      //               </div>
-      //             )}
-
-      //             <div className="sectionContent">
-      //               <ul className="keySkills">
-      //                 <li>A Key Skill</li>
-      //                 <li>A Key Skill</li>
-      //                 <li>A Key Skill</li>
-      //                 <li>A Key Skill</li>
-      //                 <li>A Key Skill</li>
-      //                 <li>A Key Skill</li>
-      //                 <li>A Key Skill</li>
-      //                 <li>A Key Skill</li>
-      //               </ul>
-      //             </div>
-      //             <div className="clear"></div>
-      //           </section>
-
-
-      //           <section>
-      //             <div className="sectionTitle">
-      //               <h1>Education</h1>
-      //             </div>
-
-      //             <div className="sectionContent">
-      //               <article>
-      //                 <h2>College/University</h2>
-      //                 <p className="subDetails">Qualification</p>
-      //                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim.</p>
-      //               </article>
-
-      //               <article>
-      //                 <h2>College/University</h2>
-      //                 <p className="subDetails">Qualification</p>
-      //                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim.</p>
-      //               </article>
-      //             </div>
-      //             <div className="clear"></div>
-      //           </section>
-
-      //         </div>
-      //       </div>
-      //     </div>
-
-
-
-      //   </React.Fragment>
     )
   }
 }

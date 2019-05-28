@@ -8,6 +8,7 @@ import { fetchProfiles } from '../../actions/profilesActions';
 import { fetchProfile } from '../../actions/profilesActions';
 import Spinner from '../../components/spinner/Spinner'
 import Sidebar from '../../components/sidebar/Sidebar'
+import StickyFooter from '../../components/stickyfooter/StickyFooter'
 import Cv from '../../components/cv/Cv'
 
 class ProfilesView extends Component {
@@ -15,7 +16,7 @@ class ProfilesView extends Component {
   constructor() {
     super();
     this.state = {
-      id: null,
+      profile: []
     }
     this.onClick = this.handleClick.bind(this);
   }
@@ -24,11 +25,17 @@ class ProfilesView extends Component {
     this.props.fetchProfiles()
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.profile !== this.props.profile) {
+      this.setState({
+        profile: this.props.profile
+      });
+    }
+  }
 
   handleClick(event) {
-    console.log(this.state.id)
     const { id } = event.target;
-    //console.log(id);
+    console.log(id);
 
     setTimeout(() => {
       this.props.fetchProfile(id);
@@ -37,13 +44,16 @@ class ProfilesView extends Component {
 
   render() {
 
+    console.log(this.props.profile);
+    console.log(this.state.prof)
+
     return (
       <React.Fragment>
         <Sidebar profiles={this.props.profiles} onClick={this.onClick} />
-        <Cv profile={this.props.profile} />
+        {/*<StickyFooter />*/}
+        <Cv profile={this.state.profile} />
 
       </React.Fragment>
-
     )
     /*
     return (
@@ -53,11 +63,8 @@ class ProfilesView extends Component {
   }
 }
 
-// We kunnen de data dan werkelijk gebruiken 
 const mapStateToProps = state => ({
-  // we hebben in de rootreducer profiles deze naam gegeven daarom key, wat willen we? De items want we hebben het zo genoemd in profileReducer
-  profiles: state.profiles.items, // Noemen we items anders onduidelijk, dan is het state.profiles.profiles
-  // We kunnen nu aan this.props.profiles
+  profiles: state.profiles.items,
   profile: state.profiles.item
 })
 

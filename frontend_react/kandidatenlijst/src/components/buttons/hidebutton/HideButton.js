@@ -6,9 +6,7 @@ import React, { Component } from 'react'
 class HideButton extends Component {
   render() {
     return (
-      <div>
-        <button>Hide</button>
-      </div>
+      <a href="/profiles" class="action-button animate pink">do nothing</a>
     )
   }
 }

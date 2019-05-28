@@ -6,9 +6,7 @@ import React, { Component } from 'react'
 class UpdateButton extends Component {
   render() {
     return (
-      <div>
-        <button>Update</button>
-      </div>
+      <a href="/profiles" class="action-button animate yellow">update</a>
     )
   }
 }

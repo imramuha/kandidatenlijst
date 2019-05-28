@@ -1,0 +1,103 @@
+
+.sticky {
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(41, 41, 41);
+    padding: 30px;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
+    right: 10px;
+    bottom: 10px;
+    height: 100px;
+    width: 50%;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .animate {
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+  }
+  
+  .action-button {
+    border-radius: 8px;
+    font-family: 'Roboto';
+    padding: 5px 0;
+    width: 125px;
+    text-align: center;
+    font-size: 18px;
+    font-variant: small-caps;
+    color: #FFF;
+    text-decoration: none;
+  }
+  
+  .info-button {
+    border-radius: 50%;
+    font-family: 'Roboto';
+    padding: 5px 18px;
+    text-align: center;
+    font-size: 18px;
+    color: #FFF;
+    text-decoration: none;
+  }
+  
+  .red {
+    background-color: rgb(28, 28, 28);
+    border-bottom: 3px solid #BD3E31;
+  }
+  
+  .red:hover {
+    transition-duration: 0.7s;
+    color: #BD3E31;
+  }
+  
+  .green {
+    background-color: #1C1C1C;
+    border-bottom: 3px solid #669644;
+  }
+  
+  .green:hover {
+    transition-duration: 0.7s;
+    color: #669644;
+  }
+  
+  .yellow {
+    background-color: #1C1C1C;
+    border-bottom: 3px solid #D1B358;
+  }
+  
+  .yellow:hover {
+    transition-duration: 0.7s;
+    color: #D1B358;
+  }
+  
+  .blue {
+    background-color: #1C1C1C;
+    border-bottom: 3px solid #2980B9;
+  }
+  
+  .blue:hover {
+    transition-duration: 0.4s;
+    color: #2980B9;
+  }
+  
+  .pink {
+    background-color: #1C1C1C;
+    border-bottom: 3px solid rgb(243, 129, 148);
+  }
+  
+  .pink:hover {
+    transition-duration: 0.4s;
+    color: rgb(240, 124, 195);
+  }
+  
+  .action-button:active, .info-button:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    border-bottom: 1px solid;
+  }
