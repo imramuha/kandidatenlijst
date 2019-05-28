@@ -1,16 +1,23 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
-// Toevoegen aan crm, even laten voor wat het is
-// We moeten dit sturen naar zoho api, laten we even zo. 
-// Aan Christophe vragen
+import { connect } from 'react-redux';
+import { logoutUser } from '../../../actions/authActions'
 class LogoutButton extends Component {
-    render() {
-        return (
-            <Link to={`/logout`} className="logout-button animate red">x</Link>
-        )
-    }
+
+	logout = () => {
+		this.props.logoutUser(); // We do with redux, redirect is inside here
+	}
+
+	render() {
+		return (
+			<Link to="/login" onClick={this.logout} className="logout-button animate red">X</Link>
+		)
+	}
 }
 
+const mapStateToProps = state => ({
+	auth: state.auth
+})
 
-export default LogoutButton
+export default connect(mapStateToProps, { logoutUser })(LogoutButton)
