@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 // Toevoegen aan crm, even laten voor wat het is
 // We moeten dit sturen naar zoho api, laten we even zo. 
@@ -6,7 +7,7 @@ import React, { Component } from 'react'
 class LogoutButton extends Component {
     render() {
         return (
-            <a href="#" class="logout-button animate red">x</a>
+            <Link to={`/logout`} className="logout-button animate red">x</Link>
         )
     }
 }

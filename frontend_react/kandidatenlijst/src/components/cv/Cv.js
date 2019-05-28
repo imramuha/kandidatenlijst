@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './cv.css'
+import './Cv.css'
 
 const Cv = ({ profile }) => {
     console.log(profile.profiles)
