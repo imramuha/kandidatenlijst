@@ -24,11 +24,11 @@ const Cv = ({ profile }) => {
                         </div>
                     </div>
                 }
-                <div id="mainArea" className="quickFade delayFive">
+                <div>
                     {profile.details &&
                         <section>
                             <div className="sectionTitle">
-                                <h1>werkervaring</h1>
+                                <h1>werk <br /> ervaring</h1>
                             </div>
 
                             <div className="sectionContent werkErvaring">
@@ -53,48 +53,56 @@ const Cv = ({ profile }) => {
 
                     {profile.profiles &&
                         <div>
-                            <section>
-                                <div className="sectionTitle">
-                                    <h1>vaardigheden</h1>
-                                </div>
-                                <div className="sectionContent">
-                                    {profile.profiles.persoonsgebonden_competenties}
-                                </div>
-                                <div className="clear"></div>
-                            </section>
+                            {profile.profiles.persoonsgebonden_competenties === "" ? null :
+                                <section>
+                                    <div className="sectionTitle">
+                                        <h1>vaardigheden</h1>
+                                    </div>
+                                    <div className="sectionContent">
+                                        {profile.profiles.persoonsgebonden_competenties}
+                                    </div>
+                                    <div className="clear"></div>
+                                </section>
+                            }
 
-                            <section>
-                                <div className="sectionTitle">
-                                    <h1>gewenste job</h1>
-                                </div>
-                                <div className="sectionContent">
-                                    {profile.profiles.gewenste_job}
-                                </div>
-                                <div className="clear"></div>
-                            </section>
+                            {profile.profiles.gewenste_job === "" ? null :
+                                <section>
+                                    <div className="sectionTitle">
+                                        <h1>gewenste job</h1>
+                                    </div>
+                                    <div className="sectionContent">
+                                        {profile.profiles.gewenste_job}
+                                    </div>
+                                    <div className="clear"></div>
+                                </section>
+                            }
 
-                            <section>
-                                <div className="sectionTitle">
-                                    <h1>vervoer</h1>
-                                </div>
-                                <div className="sectionContent">
-                                    <p>{profile.profiles.vervoer}</p>
+                            {profile.profiles.vervoer === "" ? null :
+                                <section>
+                                    <div className="sectionTitle">
+                                        <h1>vervoer</h1>
+                                    </div>
+                                    <div className="sectionContent">
+                                        <p>{profile.profiles.vervoer}</p>
 
-                                </div>
-                                <div className="clear"></div>
-                            </section>
+                                    </div>
+                                    <div className="clear"></div>
+                                </section>
+                            }
 
-                            <section>
-                                <div className="sectionTitle">
-                                    <h1>extra</h1>
-                                </div>
-                                <div className="sectionContent">
-                                    <p>{profile.profiles.extra_info}</p>
-                                    <p>{profile.profiles.hobby}</p>
-                                    <p>{profile.profiles.samenvatting}</p>
-                                </div>
-                                <div className="clear"></div>
-                            </section>
+                            {profile.profiles.extra_info === "" && profile.profiles.hobby === "" && profile.profiles.samenvatting === "" ? null :
+                                <section>
+                                    <div className="sectionTitle">
+                                        <h1>extra <br /> info</h1>
+                                    </div>
+                                    <div className="sectionContent">
+                                        <p>{profile.profiles.extra_info}</p>
+                                        <p>{profile.profiles.hobby}</p>
+                                        <p>{profile.profiles.samenvatting}</p>
+                                    </div>
+                                    <div className="clear"></div>
+                                </section>
+                            }
                         </div>
                     }
                 </div>

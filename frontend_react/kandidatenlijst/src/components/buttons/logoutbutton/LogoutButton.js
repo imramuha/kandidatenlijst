@@ -6,7 +6,7 @@ import React, { Component } from 'react'
 class LogoutButton extends Component {
     render() {
         return (
-            <a href="#" class="info-button animate red">*</a>
+            <a href="#" class="logout-button animate red">x</a>
         )
     }
 }
