@@ -19,6 +19,7 @@ class ProfilesView extends Component {
       profile: []
     }
     this.onClick = this.handleClick.bind(this);
+    this.add = this.handleAdd.bind(this)
   }
 
   componentDidMount() {
@@ -42,6 +43,12 @@ class ProfilesView extends Component {
     }, 100)
   }
 
+  handleAdd(event) {
+    // hierin doe je iets
+    console.log("de add button works");
+
+  }
+
   render() {
 
     console.log(this.props.profile);
@@ -50,7 +57,7 @@ class ProfilesView extends Component {
     return (
       <React.Fragment>
         <Sidebar profiles={this.props.profiles} onClick={this.onClick} />
-        <StickyFooter />
+        <StickyFooter add={this.add} />
         <Cv profile={this.state.profile} />
 
       </React.Fragment>
