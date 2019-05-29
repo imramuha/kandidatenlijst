@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import moment from 'moment';
 
 import './Cv.css'
 
@@ -13,7 +14,12 @@ const Cv = ({ profile }) => {
                 {profile.profiles &&
                     <div>
                         <div className="name">
+                            {/* <p>{profile.profiles.id}</p> */}
                             <p>{profile.profiles.name}</p>
+                            {/* Leeftijd */}
+                            {/* Format date to YYYY-MM-DD, nu is het DD-MM-YYYY */}
+                            <p>{moment().diff(`"${profile.profiles.geboortedatum.split("-").reverse().join("-")}"`, 'years')} jaar</p>
+
                         </div>
                         <div className="contactDetails">
                             <ul>
@@ -28,7 +34,7 @@ const Cv = ({ profile }) => {
                     {profile.details &&
                         <section>
                             <div className="sectionTitle">
-                                <h1>werk <br /> ervaring</h1>
+                                <h1>werk ervaring</h1>
                             </div>
 
                             <div className="sectionContent werkErvaring">

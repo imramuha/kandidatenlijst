@@ -3,6 +3,7 @@ import InfoButton from './../buttons/infobutton/InfoButton';
 import LogoutButton from './../buttons/logoutbutton/LogoutButton';
 
 import './StickyFooter.css';
+import RefreshButton from '../buttons/refreshbutton/RefreshButton';
 
 const StickyFooter = ({ id, add, update, info, refresh, logout }) => {
   return (
@@ -15,5 +16,6 @@ const StickyFooter = ({ id, add, update, info, refresh, logout }) => {
     </div>
   )
 }
+
 
 export default StickyFooter

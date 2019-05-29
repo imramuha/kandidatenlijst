@@ -11,6 +11,8 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import StickyFooter from '../../components/stickyfooter/StickyFooter'
 import Cv from '../../components/cv/Cv'
 
+import { addToCrm } from '../../actions/profilesActions';
+
 class ProfilesView extends Component {
 
   constructor() {
@@ -46,7 +48,6 @@ class ProfilesView extends Component {
   handleAdd(event) {
     // hierin doe je iets
     console.log("de add button works");
-
   }
 
   render() {
@@ -75,4 +76,4 @@ const mapStateToProps = state => ({
   profile: state.profiles.item
 })
 
-export default connect(mapStateToProps, { fetchProfiles, fetchProfile })(ProfilesView); // We connecteren aan onze redux store en halen de fetchProfiles action er uit
+export default connect(mapStateToProps, { fetchProfiles, fetchProfile, addToCrm })(ProfilesView); // We connecteren aan onze redux store en halen de fetchProfiles action er uit
