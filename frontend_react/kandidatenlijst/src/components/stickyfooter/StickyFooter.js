@@ -6,6 +6,7 @@ import InfoButton from './../buttons/infobutton/InfoButton';
 import LogoutButton from './../buttons/logoutbutton/LogoutButton';
 
 import './StickyFooter.css';
+import RefreshButton from '../buttons/refreshbutton/RefreshButton';
 
 class StickyFooter extends Component {
   render() {
@@ -14,8 +15,11 @@ class StickyFooter extends Component {
         <HideButton />
         <UpdateButton />
         <AddButton />
+        {/* <div style={{ display: 'flex', justifyContent: 'space-evenly' }}> */}
         <InfoButton />
         <LogoutButton />
+        <RefreshButton />
+        {/* </div> */}
       </div>
     )
   }

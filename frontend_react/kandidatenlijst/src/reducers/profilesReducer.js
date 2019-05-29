@@ -1,4 +1,4 @@
-import { FETCH_PROFILES, FETCH_PROFILE } from '../actions/types'; // Waarom types? Zo weet de reducer welke state hij moet returnen?
+import { FETCH_PROFILES, FETCH_PROFILE, SEND_TO_CRM } from '../actions/types'; // Waarom types? Zo weet de reducer welke state hij moet returnen?
 
 const initialState = {
   items: [], // Profiles from our action
@@ -16,6 +16,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         item: action.payload
+      }
+    case SEND_TO_CRM:
+      return {
+        ...state,
+        newlyAddedProfile: action.payload
       }
     default:
       return state;

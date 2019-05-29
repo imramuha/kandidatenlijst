@@ -11,6 +11,8 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import StickyFooter from '../../components/stickyfooter/StickyFooter'
 import Cv from '../../components/cv/Cv'
 
+import { addToCrm } from '../../actions/profilesActions';
+
 class ProfilesView extends Component {
 
   constructor() {
@@ -18,7 +20,7 @@ class ProfilesView extends Component {
     this.state = {
       profile: []
     }
-    this.onClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +44,11 @@ class ProfilesView extends Component {
     }, 100)
   }
 
+  AddToCrm(event) {
+    const { id } = event.target;
+    this.props.addToCrm(id, this.state.profile)
+  }
+
   render() {
 
     console.log(this.props.profile);
@@ -49,7 +56,7 @@ class ProfilesView extends Component {
 
     return (
       <React.Fragment>
-        <Sidebar profiles={this.props.profiles} onClick={this.onClick} />
+        <Sidebar profiles={this.props.profiles} onClick={this.handleClick} />
         <StickyFooter />
         <Cv profile={this.state.profile} />
 
@@ -68,4 +75,4 @@ const mapStateToProps = state => ({
   profile: state.profiles.item
 })
 
-export default connect(mapStateToProps, { fetchProfiles, fetchProfile })(ProfilesView); // We connecteren aan onze redux store en halen de fetchProfiles action er uit
+export default connect(mapStateToProps, { fetchProfiles, fetchProfile, addToCrm })(ProfilesView); // We connecteren aan onze redux store en halen de fetchProfiles action er uit
