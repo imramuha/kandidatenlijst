@@ -1,4 +1,4 @@
-import { FETCH_PROFILES, FETCH_PROFILE } from './types';
+import { FETCH_PROFILES, FETCH_PROFILE, SEND_TO_CRM } from './types';
 import axios from 'axios';
 import { getLocalStorage } from '../helpers'
 
@@ -24,12 +24,6 @@ export const fetchProfiles = () => dispatch => {
     })
 }
 
-// export function fetchProfiles() { Is hetzelfde maar geen es6 -> es5
-//   return function (dispatch) {
-
-//   }
-// }
-
 // Fetch a specific profile, with data more specific for a person
 export const fetchProfile = (id) => dispatch => {
 
@@ -46,6 +40,21 @@ export const fetchProfile = (id) => dispatch => {
       dispatch({
         type: FETCH_PROFILE,
         payload: person
+      })
+    })
+}
+
+export const addToCrm = (id, userData) => dispatch => {
+  const token = getLocalStorage();
+  let config = {
+    headers: { 'Authorization': token }
+  };
+  axios.post(`http://vdab.i4m.be/profiles/addorignoreinzoho/${id}/Right`, userData, config)
+    .then(res => {
+      console.log(res);
+      dispatch({
+        type: SEND_TO_CRM,
+        payload: res.data
       })
     })
 }

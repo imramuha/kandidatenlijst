@@ -11,7 +11,7 @@ class LogoutButton extends Component {
 
 	render() {
 		return (
-			<Link to="/login" onClick={this.logout} className="logout-button animate red">X</Link>
+			<Link to="/login" onClick={this.logout} className="logout-button animate red"><i className="fa fa-times"></i></Link>
 		)
 	}
 }

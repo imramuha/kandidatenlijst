@@ -39,7 +39,7 @@
   .info-button {
     border-radius: 50%;
     font-family: 'Roboto';
-    padding: 5px 18px;
+    padding: 8px 18px;
     text-align: center;
     font-size: 18px;
     color: #FFF;
@@ -51,11 +51,22 @@
   .logout-button {
     border-radius: 50%;
     font-family: 'Roboto';
-    padding: 5px 15px;
+    padding: 8px 15px;
     text-align: center;
     font-size: 18px;
     color: #FFF;
     text-decoration: none;
+  }
+
+  .refresh-button {
+    border-radius: 50%;
+    font-family: 'Roboto';
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 18px;
+    color: #FFF;
+    text-decoration: none;
+    cursor: pointer;
   }
   
   .red {
@@ -107,6 +118,16 @@
     transition-duration: 0.4s;
     color: rgb(221, 116, 235);
   }
+
+  .purple {
+    background-color: #1C1C1C;
+    border-bottom: 3px solid rgb(98, 53, 96);
+  }
+
+  .purple:hover {
+    transition-duration: 0.4s;
+    color: rgb(117, 65, 115);
+  }
   
   .action-button:active, .info-button:active {
     transform: translate(0px, 5px);
@@ -115,5 +136,21 @@
   }
 
   .buttons-in-modal {
-    background-color: red;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .buttons-in-modal a {
+    margin: 2rem;
+  }
+
+  .button-and-modal {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .button-and-modal p {
+    font-weight: bold;
   }
