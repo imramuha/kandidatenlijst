@@ -18,7 +18,8 @@ class ProfilesView extends Component {
   constructor() {
     super();
     this.state = {
-      profile: []
+      profile: [],
+      id: null
     }
     this.onClick = this.handleClick.bind(this);
     this.add = this.handleAdd.bind(this)
@@ -40,12 +41,17 @@ class ProfilesView extends Component {
     const { id } = event.target;
     console.log(id);
 
+    this.setState({
+      id: id
+    });
+
     setTimeout(() => {
       this.props.fetchProfile(id);
     }, 100)
   }
 
   handleAdd(event) {
+    console.log(this.state.id);
     // hierin doe je iets
     console.log("de add button works");
   }
@@ -58,7 +64,7 @@ class ProfilesView extends Component {
     return (
       <React.Fragment>
         <Sidebar profiles={this.props.profiles} onClick={this.onClick} />
-        <StickyFooter add={this.add} />
+        <StickyFooter id={this.state.id} add={this.add} />
         <Cv profile={this.state.profile} />
 
       </React.Fragment>

@@ -9,9 +9,12 @@ const StickyFooter = ({ id, add, update, info, refresh, logout }) => {
   return (
     <div className="sticky">
 
-      <a className="action-button animate green" onClick={add}>add</a>
+      <a className="action-button animate green" id={`${id}`} onClick={add}>add</a>
       <a className="action-button animate pink">do nothing</a>
       <a className="action-button animate yellow">update</a>
+      <LogoutButton />
+      <RefreshButton />
+      <InfoButton />
 
     </div>
   )

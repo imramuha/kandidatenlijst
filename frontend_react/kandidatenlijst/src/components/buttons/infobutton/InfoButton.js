@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import SkyLight from 'react-skylight';
-import UpdateButton from '../updatebutton/UpdateButton';
-import HideButton from '../hidebutton/HideButton';
-import AddButton from '../addbutton/AddButton';
 
 class InfoButton extends Component {
   render() {
