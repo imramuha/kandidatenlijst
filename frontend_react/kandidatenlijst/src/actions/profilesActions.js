@@ -1,4 +1,4 @@
-import { FETCH_PROFILES, FETCH_PROFILE, SEND_TO_CRM } from './types';
+import { FETCH_PROFILES, FETCH_PROFILE, SEND_TO_CRM, HIDE_ITEM } from './types';
 import axios from 'axios';
 import { getLocalStorage } from '../helpers'
 
@@ -54,6 +54,21 @@ export const addToCrm = (id, userData) => dispatch => {
       console.log(res);
       dispatch({
         type: SEND_TO_CRM,
+        payload: res.data
+      })
+    })
+}
+
+export const doNothing = (id, userData) => dispatch => {
+  const token = getLocalStorage();
+  let config = {
+    headers: { 'Authorization': token }
+  };
+  axios.post(`http://vdab.i4m.be/profiles/addorignoreinzoho/${id}/Left`, userData, config)
+    .then(res => {
+      // console.log(res);
+      dispatch({
+        type: HIDE_ITEM,
         payload: res.data
       })
     })

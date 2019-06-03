@@ -6,3 +6,4 @@ export const LOGOUT_USER = "LOGOUT_USER"
 export const GET_ERRORS = "GET_ERRORS"
 
 export const SEND_TO_CRM = "SEND_TO_CRM"
+export const HIDE_ITEM = "HIDE_ITEM"

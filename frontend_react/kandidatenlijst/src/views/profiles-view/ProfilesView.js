@@ -11,18 +11,19 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import StickyFooter from '../../components/stickyfooter/StickyFooter'
 import Cv from '../../components/cv/Cv'
 
-import { addToCrm } from '../../actions/profilesActions';
+import { addToCrm, doNothing } from '../../actions/profilesActions';
 
 class ProfilesView extends Component {
 
   constructor() {
     super();
     this.state = {
-      profile: [],
-      id: null
+      profile: []
     }
     this.onClick = this.handleClick.bind(this);
-    this.add = this.handleAdd.bind(this)
+    this.add = this.handleAdd.bind(this);
+    this.update = this.handleUpdate.bind(this);
+    this.hide = this.handleHide.bind(this);
   }
 
   componentDidMount() {
@@ -39,11 +40,7 @@ class ProfilesView extends Component {
 
   handleClick(event) {
     const { id } = event.target;
-    console.log(id);
-
-    this.setState({
-      id: id
-    });
+    // console.log(id);
 
     setTimeout(() => {
       this.props.fetchProfile(id);
@@ -51,9 +48,25 @@ class ProfilesView extends Component {
   }
 
   handleAdd(event) {
-    console.log(this.state.id);
     // hierin doe je iets
+    const { id } = this.state.profile.profiles;
+    console.log(id);
+    // How to find the id from the profile we selected?
+    this.props.addToCrm(id, this.state.profile)
     console.log("de add button works");
+  }
+
+  handleUpdate() {
+    console.log('update werkt!')
+  }
+
+  handleHide() {
+    console.log('do nothing, set is_new to 0')
+    const { id } = this.state.profile.profiles;
+    const { is_new } = this.state.profile.profiles;
+
+    this.props.doNothing(id, this.state.profile);
+    console.log(is_new)
   }
 
   render() {
@@ -64,7 +77,7 @@ class ProfilesView extends Component {
     return (
       <React.Fragment>
         <Sidebar profiles={this.props.profiles} onClick={this.onClick} />
-        <StickyFooter id={this.state.id} add={this.add} />
+        <StickyFooter add={this.add} update={this.update} hide={this.hide} />
         <Cv profile={this.state.profile} />
 
       </React.Fragment>
@@ -82,4 +95,4 @@ const mapStateToProps = state => ({
   profile: state.profiles.item
 })
 
-export default connect(mapStateToProps, { fetchProfiles, fetchProfile, addToCrm })(ProfilesView); // We connecteren aan onze redux store en halen de fetchProfiles action er uit
+export default connect(mapStateToProps, { fetchProfiles, fetchProfile, addToCrm, doNothing })(ProfilesView); // We connecteren aan onze redux store en halen de fetchProfiles action er uit
