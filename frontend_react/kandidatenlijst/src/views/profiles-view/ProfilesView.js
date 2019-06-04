@@ -40,7 +40,6 @@ class ProfilesView extends Component {
 
   handleClick(event) {
     const { id } = event.target;
-    // console.log(id);
 
     setTimeout(() => {
       this.props.fetchProfile(id);
@@ -48,7 +47,6 @@ class ProfilesView extends Component {
   }
 
   handleAdd(event) {
-    // hierin doe je iets
     const { id } = this.state.profile.profiles;
     console.log(id);
     // How to find the id from the profile we selected?
@@ -58,6 +56,29 @@ class ProfilesView extends Component {
 
   handleUpdate() {
     console.log('update werkt!')
+    const { id } = this.state.profile.profiles.name;
+
+    // Optionally the request above could also be done as
+    axios.get('https://recruit.zoho.com/recruit/private/json/Candidates/getSearchRecords?', {
+      params: {
+        "authtoken": "6b9f2097aa50b55830b3f2d717e8a7df",
+        "scope": "recruitapi",
+        "selectColumn": "Candidates(Last Name)",
+        "searchCondition": "(Last Name|contains|*" + this.state.profile.profiles.name + "*)",
+      }
+    })
+      .then(function (response) {
+        console.log(response)
+        const zoho_name = response.data.response.result.Candidates.row[0].FL[2].content + " " + response.data.response.result.Candidates.row[0].FL[3].content;
+        console.log(response.data.response.result.Candidates.row[0].FL[2].content + " " + response.data.response.result.Candidates.row[0].FL[3].content);
+        console.log(zoho_name)
+        if (id == zoho_name) {
+          console.log("Names match");
+        } else {
+          console.log("Name doesnt match")
+        }
+      })
+
   }
 
   handleHide() {
@@ -95,4 +116,4 @@ const mapStateToProps = state => ({
   profile: state.profiles.item
 })
 
-export default connect(mapStateToProps, { fetchProfiles, fetchProfile, addToCrm, doNothing })(ProfilesView); // We connecteren aan onze redux store en halen de fetchProfiles action er uit
+export default connect(mapStateToProps, { fetchProfiles, fetchProfile, addToCrm, doNothing })(ProfilesView); 
