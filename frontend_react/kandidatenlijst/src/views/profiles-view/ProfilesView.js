@@ -102,6 +102,7 @@ class ProfilesView extends Component {
           .then((response) => {
             console.log("hierin doen wij de popups")
             this.customDialog.show()
+            this.custommDialog.show()
 
             this.setState({
               profileChanges: response
@@ -136,16 +137,41 @@ class ProfilesView extends Component {
 
     console.log(this.state.profileChanges)
 
+    let leftBoxStyle = {
+      backgroundColor: '#92b93a',
+      color: '#000',
+      width: '25%',
+      minHeight: 0
+      // height: '600px',
+      // marginTop: '-300px',
+      // marginLeft: '-35%',
+    };
+    let rightBoxStyle = {
+      backgroundColor: 'red',
+      color: '#000',
+      width: '25%',
+      minHeight: 0,
+      height: '297px',
+      marginLeft: '15%'
+      // height: '600px',
+      // marginTop: '-300px',
+      // marginLeft: '-35%',
+    };
+
     return (
       <React.Fragment>
 
         {this.state.profile.profiles &&
-          <SkyLight hideOnOverlayClicked ref={ref => this.customDialog = ref} title="A Custom Modal">
-            <div>{this.state.profile.profiles.name}</div>
-            {this.state.profileChanges &&
-              <div>{this.state.profileChanges.data.response.result.Candidates.row.FL[2].content}</div>
-            }
-          </SkyLight>
+          <div>
+            <SkyLight hideOnOverlayClicked dialogStyles={leftBoxStyle} transitionDuration={500} ref={ref => this.customDialog = ref} title="A Custom Modal">
+              <div>{this.state.profile.profiles.name}</div>
+            </SkyLight>
+            <SkyLight hideOnOverlayClicked dialogStyles={rightBoxStyle} transitionDuration={500} ref={ref => this.custommDialog = ref} title="A Custom Modal">
+              {this.state.profileChanges &&
+                <div>{this.state.profileChanges.data.response.result.Candidates.row.FL[2].content}</div>
+              }
+            </SkyLight>
+          </div>
         }
 
         {this.state.profileChanges && <UpdateForm profileChanges={this.state.profileChanges} />}
