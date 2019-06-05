@@ -23,7 +23,7 @@ class ProfilesView extends Component {
     super();
     this.state = {
       profile: [],
-      profileChanges: 0
+      profileZoho: 0
     }
     this.onClick = this.handleClick.bind(this);
     this.add = this.handleAdd.bind(this);
@@ -102,10 +102,9 @@ class ProfilesView extends Component {
           .then((response) => {
             console.log("hierin doen wij de popups")
             this.customDialog.show()
-            this.custommDialog.show()
 
             this.setState({
-              profileChanges: response
+              profileZoho: response
             });
 
           })
@@ -117,6 +116,9 @@ class ProfilesView extends Component {
         console.log(errorMsg)
 
       }
+    } else {
+      let errorMsg = "Please select a profiel before trying to update its content."
+      alert(errorMsg)
     }
   }
 
@@ -135,27 +137,17 @@ class ProfilesView extends Component {
 
   render() {
 
-    console.log(this.state.profileChanges)
+    console.log(this.state.profileZoho)
 
     let leftBoxStyle = {
-      backgroundColor: '#92b93a',
-      color: '#000',
-      width: '25%',
-      minHeight: 0
-      // height: '600px',
-      // marginTop: '-300px',
-      // marginLeft: '-35%',
-    };
-    let rightBoxStyle = {
-      backgroundColor: 'red',
-      color: '#000',
-      width: '25%',
+      // backgroundColor: 'rgb(41, 41, 41)',
+      backgroundColor: '#1C1C1C',
+      color: '#F7F7F7',
+      width: '85%',
       minHeight: 0,
-      height: '297px',
-      marginLeft: '15%'
-      // height: '600px',
-      // marginTop: '-300px',
-      // marginLeft: '-35%',
+      height: '80vh',
+      marginTop: '-300px',
+      marginLeft: '-45%',
     };
 
     return (
@@ -163,18 +155,21 @@ class ProfilesView extends Component {
 
         {this.state.profile.profiles &&
           <div>
-            <SkyLight hideOnOverlayClicked dialogStyles={leftBoxStyle} transitionDuration={500} ref={ref => this.customDialog = ref} title="A Custom Modal">
-              <div>{this.state.profile.profiles.name}</div>
-            </SkyLight>
-            <SkyLight hideOnOverlayClicked dialogStyles={rightBoxStyle} transitionDuration={500} ref={ref => this.custommDialog = ref} title="A Custom Modal">
-              {this.state.profileChanges &&
-                <div>{this.state.profileChanges.data.response.result.Candidates.row.FL[2].content}</div>
-              }
+            <SkyLight hideOnOverlayClicked dialogStyles={leftBoxStyle} transitionDuration={500} ref={ref => this.customDialog = ref}>
+              <div className="updateForm">
+                {this.state.profileZoho &&
+                  <div className="ZohoForm form "><h1>Profiel uit Zoho</h1> <br /> {this.state.profileZoho.data.response.result.Candidates.row.FL[2].content} {this.state.profileZoho.data.response.result.Candidates.row.FL[3].content}</div>
+                }
+
+                {/* in een form cause we might send it to zoho, */}
+
+                <div className="newForm form"><h1>Changes to profiel</h1> <br /> {this.state.profile.profiles.name}</div>
+              </div>
             </SkyLight>
           </div>
         }
 
-        {this.state.profileChanges && <UpdateForm profileChanges={this.state.profileChanges} />}
+        {this.state.profileZoho && <UpdateForm profileChanges={this.state.profileZoho} />}
         <Sidebar profiles={this.props.profiles} onClick={this.onClick} />
         <StickyFooter add={this.add} update={this.update} hide={this.hide} />
         <Cv profile={this.state.profile} />

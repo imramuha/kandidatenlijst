@@ -11,7 +11,7 @@ const UpdateForm = ({ profileChanges, updateForm }) => {
 
   var myBigGreenDialog = {
     backgroundColor: '#00897B',
-    color: '#ffffff',
+    color: '#F7F7F7',
     width: '70%',
     height: '600px',
     marginTop: '-300px',

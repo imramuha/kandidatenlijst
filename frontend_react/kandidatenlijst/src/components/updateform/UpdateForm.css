@@ -1,3 +1,14 @@
-.update {
-    width: 1000px;
+.updateForm {
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+.form {
+    width: 40%;
+    background-color: rgb(41, 41, 41);
+}
+
+.form h1 {
+    background-color: #1C1C1C;
 }
