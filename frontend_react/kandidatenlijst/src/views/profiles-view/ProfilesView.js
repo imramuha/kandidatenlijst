@@ -13,6 +13,9 @@ import Cv from '../../components/cv/Cv'
 
 import { addToCrm, doNothing } from '../../actions/profilesActions';
 
+/* Pop ups */
+import SkyLight from 'react-skylight';
+
 class ProfilesView extends Component {
 
   constructor() {
@@ -90,14 +93,12 @@ class ProfilesView extends Component {
           params: {
             "authtoken": "6b9f2097aa50b55830b3f2d717e8a7df",
             "scope": "recruitapi",
-            //"selectColumn": "Candidates(Email)",
-            //"searchCondition": "(Email|contains|" + candidate_id + ")",
             "id": candidate_id
           }
         })
-          .then(function (response) {
-            console.log("Hierin doen wij de compare.")
-             
+          .then((response) => {
+            console.log("hierin doen wij de popups")
+
             /* console.log(email)
              const zoho_email = response.data.response.result.Candidates.row.FL[4].content;
              console.log(zoho_email)
@@ -106,12 +107,32 @@ class ProfilesView extends Component {
              } else {
                console.log("Name doesnt match")
              }*/
+              let myBigGreenDialog = {
+      backgroundColor: '#92b93a',
+      color: '#000',
+      width: '65%',
+      minHeight: 0
+      // height: '600px',
+      // marginTop: '-300px',
+      // marginLeft: '-35%',
+    };
+
+            return (
+              <React.Fragment>
+                {() => this.updateDialog.show()}
+                < SkyLight
+                  hideOnOverlayClicked
+                  ref={ref => this.updateDialog = ref}
+                  transitionDuration={500} > {console.log("does skylight work?")}Hello</SkyLight >
+              </React.Fragment>
+            )
           })
           .catch((err) => {
             console.log(err);
           })
       } else {
-        console.log("Profiel doesn't exist in zoho, please add before you try to update it.")
+        let errorMsg = "Profiel doesn't exist in zoho, please add before you try to update it."
+        console.log(errorMsg)
       }
     }
   }

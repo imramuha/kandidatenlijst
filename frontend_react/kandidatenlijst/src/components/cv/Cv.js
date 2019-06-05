@@ -18,7 +18,9 @@ const Cv = ({ profile }) => {
                             <p>{profile.profiles.name}</p>
                             {/* Leeftijd */}
                             {/* Format date to YYYY-MM-DD, nu is het DD-MM-YYYY */}
-                            <p>{moment().diff(`"${profile.profiles.geboortedatum.split("-").reverse().join("-")}"`, 'years')} jaar</p>
+                            {profile.profiles.geboortedatum &&
+                                <p>{moment().diff(`"${profile.profiles.geboortedatum.split("-").reverse().join("-")}"`, 'years')} jaar</p>
+                            }
 
                         </div>
                         <div className="contactDetails">
