@@ -1,33 +1,35 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import SkyLight from 'react-skylight';
 import { Link } from 'react-router-dom'
 import { getLocalStorage } from '../../helpers'
-
 import { connect } from 'react-redux';
+
+
 import { fetchProfiles } from '../../actions/profilesActions';
 import { fetchProfile } from '../../actions/profilesActions';
+import { addToCrm, doNothing } from '../../actions/profilesActions';
+
+
 import Spinner from '../../components/spinner/Spinner'
 import Sidebar from '../../components/sidebar/Sidebar'
 import StickyFooter from '../../components/stickyfooter/StickyFooter'
 import Cv from '../../components/cv/Cv'
 import UpdateForm from '../../components/updateform/UpdateForm';
 
-import { addToCrm, doNothing } from '../../actions/profilesActions';
-
-/* Pop ups */
-import SkyLight from 'react-skylight';
-
 class ProfilesView extends Component {
 
   constructor() {
     super();
     this.state = {
-      profile: []
+      profile: [],
+      profileChanges: 0
     }
     this.onClick = this.handleClick.bind(this);
     this.add = this.handleAdd.bind(this);
     this.update = this.handleUpdate.bind(this);
     this.hide = this.handleHide.bind(this);
+
   }
 
   componentDidMount() {
@@ -37,7 +39,7 @@ class ProfilesView extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.profile !== this.props.profile) {
       this.setState({
-        profile: this.props.profile
+        profile: this.props.profile,
       });
     }
   }
@@ -99,16 +101,12 @@ class ProfilesView extends Component {
         })
           .then((response) => {
             console.log("hierin doen wij de popups")
+            this.customDialog.show()
 
-            return (
-              <React.Fragment>
-                {() => this.simpleDialog.show()}
-                < SkyLight
-                  hideOnOverlayClicked
-                  ref={ref => this.simpleDialog = ref}
-                  transitionDuration={500} > {response}</SkyLight >
-              </React.Fragment>
-            )
+            this.setState({
+              profileChanges: response
+            });
+
           })
           .catch((err) => {
             console.log(err);
@@ -116,15 +114,7 @@ class ProfilesView extends Component {
       } else {
         let errorMsg = "Profiel doesn't exist in zoho, please add before you try to update it."
         console.log(errorMsg)
-        return (
-          <React.Fragment>
-            {() => this.simpleDialog.show()}
-            < SkyLight
-              hideOnOverlayClicked
-              ref={ref => this.simpleDialog = ref}
-              transitionDuration={500} > {errorMsg}</SkyLight >
-          </React.Fragment>
-        )
+
       }
     }
   }
@@ -144,12 +134,21 @@ class ProfilesView extends Component {
 
   render() {
 
-    console.log(this.props.profile);
-    console.log(this.state.prof)
+    console.log(this.state.profileChanges)
 
     return (
       <React.Fragment>
-        {this.state.profile && <UpdateForm differences={this.state.profile}></UpdateForm>}
+
+        {this.state.profile.profiles &&
+          <SkyLight hideOnOverlayClicked ref={ref => this.customDialog = ref} title="A Custom Modal">
+            <div>{this.state.profile.profiles.name}</div>
+            {this.state.profileChanges &&
+              <div>{this.state.profileChanges.data.response.result.Candidates.row.FL[2].content}</div>
+            }
+          </SkyLight>
+        }
+
+        {this.state.profileChanges && <UpdateForm profileChanges={this.state.profileChanges} />}
         <Sidebar profiles={this.props.profiles} onClick={this.onClick} />
         <StickyFooter add={this.add} update={this.update} hide={this.hide} />
         <Cv profile={this.state.profile} />

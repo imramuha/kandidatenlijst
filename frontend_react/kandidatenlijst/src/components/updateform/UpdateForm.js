@@ -1,30 +1,34 @@
 import React from 'react';
 import SkyLight from 'react-skylight';
 
-const UpdateForm = ({ differences, error }) => {
-  console.log(differences.profiles + "hello, this comp works")
-  let myBigGreenDialog = {
-    backgroundColor: '#92b93a',
-    color: '#000',
-    width: '65%',
-    minHeight: 0
-    // height: '600px',
-    // marginTop: '-300px',
-    // marginLeft: '-35%',
+import './UpdateForm.css';
+
+const UpdateForm = ({ profileChanges, updateForm }) => {
+  // rest of your constructor
+  /*this.profileChanges = React.createRef();
+  this.profileChanges.show()
+  console.log(profileChanges)*/
+
+  var myBigGreenDialog = {
+    backgroundColor: '#00897B',
+    color: '#ffffff',
+    width: '70%',
+    height: '600px',
+    marginTop: '-300px',
+    marginLeft: '-35%',
   };
 
   return (
-    <React.Fragment>
-      <a onClick={() => this.simpleDialog.show()}>Click</a>
-      <SkyLight
-        dialogStyles={myBigGreenDialog}
-        hideOnOverlayClicked
-        ref={ref => this.simpleDialog = ref}
-        transitionDuration={500} >
-
-      </SkyLight>
-    </React.Fragment>
+    <div>
+      <section>
+        <h1>React SkyLight</h1>
+      </section>
+      <SkyLight dialogStyles={myBigGreenDialog} hideOnOverlayClicked ref={updateForm} title="A Custom Modal">
+        I'm a custom modale!
+        </SkyLight>
+    </div>
   )
+
 }
 
 export default UpdateForm;
