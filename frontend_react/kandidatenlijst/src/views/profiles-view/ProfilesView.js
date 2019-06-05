@@ -96,7 +96,8 @@ class ProfilesView extends Component {
           }
         })
           .then(function (response) {
-            console.log(response)
+            console.log("Hierin doen wij de compare.")
+             
             /* console.log(email)
              const zoho_email = response.data.response.result.Candidates.row.FL[4].content;
              console.log(zoho_email)
