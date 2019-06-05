@@ -56,8 +56,6 @@ class ProfilesView extends Component {
 
   handleUpdate() {
     console.log('update werkt!')
-    const { candidate_id } = this.state.profile.profiles;
-    console.log(candidate_id);
 
     /* Profiel dat momenteel in zoho zit -> zal gebruiken voor testing
     0: {val: "CANDIDATEID", content: "303681000001177824"}
@@ -82,31 +80,37 @@ class ProfilesView extends Component {
     19: {val: "Onmiddellijk Beschikbaar", content: "false"}
     20: {val: "Opt-In Status", content: "Opt-In Requested"}
     */
-    /*
+    if (this.state.profile.profiles) {
+      if (this.state.profile.profiles.candidate_id) {
+
+        const { candidate_id } = this.state.profile.profiles;
+        console.log(candidate_id);
         // Optionally the request above could also be done as
-        axios.get('https://recruit.zoho.com/recruit/private/json/Candidates/getSearchRecords?', {
+        axios.get('https://recruit.zoho.com/recruit/private/json/Candidates/getRecordById?', {
           params: {
             "authtoken": "6b9f2097aa50b55830b3f2d717e8a7df",
             "scope": "recruitapi",
-            "selectColumn": "Candidates(Email)",
-            "searchCondition": "(Email|contains|" + email + ")",
+            //"selectColumn": "Candidates(Email)",
+            //"searchCondition": "(Email|contains|" + candidate_id + ")",
+            "id": candidate_id
           }
         })
           .then(function (response) {
             console.log(response)
-            console.log(email)
-            const zoho_email = response.data.response.result.Candidates.row.FL[4].content;
-            console.log(zoho_email)
-            if (email == zoho_email) {
-              console.log("Names match");
-            } else {
-              console.log("Name doesnt match")
-            }
+            /* console.log(email)
+             const zoho_email = response.data.response.result.Candidates.row.FL[4].content;
+             console.log(zoho_email)
+             if (email == zoho_email) {
+               console.log("Names match");
+             } else {
+               console.log("Name doesnt match")
+             }*/
           })
           .catch((err) => {
             console.log(err);
           })
-    */
+      }
+    }
   }
 
   handleHide() {
