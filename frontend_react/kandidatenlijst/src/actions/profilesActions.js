@@ -14,7 +14,7 @@ export const fetchProfiles = () => dispatch => {
   // https://jsonplaceholder.typicode.com/posts
   // http://127.0.0.1:8000/api/profiles
 
-  axios.get(`http://vdab.i4m.be/profiles/profiles`, config)
+  axios.get(`http://vdab.i4m.be/profiles/newandexistingprofiles`, config)
     .then(res => {
       const persons = res.data;
       dispatch({ // The this.setState equivalent of redux, dispatch to the reducer
