@@ -68,16 +68,18 @@ class LoginView extends Component {
         <div className="grid">
           <div className="card">
             <form onSubmit={e => this.OnSubmit(e)}>
-              <div className="login_title"></div>
+              <div className="login_title">LOGIN</div>
               <div className="login_body">
                 <div className="form_field">
+                  <label for="username">USERNAME</label>
                   <input name="username" type="text" placeholder="Gebruikersnaam" required onChange={e => this.OnChange(e)} value={this.state.username} />
                 </div>
                 <div className="form_field">
-                  <input name="password" type="password" placeholder="Paswoord" required onChange={e => this.OnChange(e)} value={this.state.password} />
+                  <label for="password">PASSWORD</label>
+                  <input name="password" type="password" placeholder="Password" required onChange={e => this.OnChange(e)} value={this.state.password} />
                 </div>
                 <div className="button_container">
-                  <input type="submit" value="Login" />
+                  <input type="submit" value="LOGIN" />
                 </div>
               </div>
             </form>

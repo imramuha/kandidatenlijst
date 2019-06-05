@@ -4,43 +4,58 @@
   height: 100vh;
   justify-content: center;
   align-items: center;
+  font-family: 'Montserrat';
+  color: #FFF;
   background-color: #1C1C1C;
+  box-sizing: border-box;
 }
 
 .card {
-  padding: 2rem;
-  border-radius: 5px;
-  width: 30%;
+  border-radius: 2px;
+  width: 450px;
   background-color: rgb(41, 41, 41);
+  padding: 28px;
+  box-sizing: border-box;
 }
 
 .login_title {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 24px;
   text-align: center;
-  padding: 1rem 0;
+  margin-bottom: 50px;
+  font-weight: 400;
+  letter-spacing: 4px;
+}
+
+.form_field {
+  width: 100%;
 }
 
 .form_field input {
   border: 0.0625em solid #e5e5e5;
-  padding: 1em 1.25em;
-  border-radius: 0.5rem;
-  margin: 1rem;
-  color: #1C1C1C;
-  font-weight: bold;
+  width: 100%;
+  border-radius: 2px;
+  color: rgba(28, 28, 28, 0.692);
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+.form_field label {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
 }
 
 .button_container {
-  display: flex;
-  justify-content: flex-end;
-  margin: 1rem 0;
+  width: 100%;
 }
 
 .button_container input {
-  background: #92b93a;
-  font-weight: 400;
-  color: #fff;
-  padding: 0.5rem 3rem;
   border: none;
-  border-radius: 2rem;
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  color: rgb(41, 41, 41);
 }

@@ -63,29 +63,43 @@ class ProfilesView extends Component {
   handleUpdate() {
     // console.log('update werkt!')
 
-    /* Profiel dat momenteel in zoho zit -> zal gebruiken voor testing
-    0: {val: "CANDIDATEID", content: "303681000001177824"}
-    1: {val: "Candidate ID", content: "ZR_31687_CAND"}
-    2: {val: "First Name", content: "Maya"}
-    3: {val: "Last Name", content: "Stoyanova Gadzheva"}
-    4: {val: "Email", content: "maya.gadzheva@gmail.com"}
-    5: {val: "Created Time", content: "2015-03-20 09:09:08"}
-    6: {val: "Updated On", content: "2018-05-31 14:58:36"}
-    7: {val: "Currency", content: "EUR"}
-    8: {val: "Exchange Rate", content: "1.000000000"}
-    9: {val: "Last Activity Time", content: "2018-05-31 14:58:36"}
-    10: {val: "SMOWNERID", content: "303681000000080003"}
-    11: {val: "Candidate Owner", content: "Rudy Campe"}
-    12: {val: "Email Opt Out", content: "false"}
-    13: {val: "Is Locked", content: "false"}
-    14: {val: "Is Unqualified", content: "false"}
-    15: {val: "Is Attachment Present", content: "true"}
-    16: {val: "Career Page Invite Status", content: "0"}
-    17: {val: "Payroll", content: "false"}
-    18: {val: "I4M beschikbaar", content: "false"}
-    19: {val: "Onmiddellijk Beschikbaar", content: "false"}
-    20: {val: "Opt-In Status", content: "Opt-In Requested"}
-    */
+    /* 
+    {id: "67", name: "JIMMY HEYNS", city: "", email: "jimheyns@gmail.com", last_mailed_time: "", …}
+     adres: "De Heide 3
+     ↵BE-2288 BOUWEL
+     ↵BELGIE"
+     beschikbaarheid: ""
+     candidate_id: "303681000006551005"
+     city: ""
+     date_inserted: "201905221356"
+     email: "jimheyns@gmail.com"
+     extra_info: ""
+     geboortedatum: "26-08-1974"
+     geslacht: "Mannelijk"
+     gewenste_job: "VDAB referentie: 10519022
+     ↵Laatst gewijzigd: 22 mei 2019
+     ↵Gegenereerd door MLB: 22-05-2019 10:13
+     ↵Gewenste job(s): Analist - informatica (Meer dan 5 jaar ) , Directeur van een kleine of middelgrote organisatie (m/v) (Meer dan 5 jaar ) , Financieel en/of administratief verantwoordelijke (Tussen 2 en 5 jaar ) , PROJECT MANAGER (Meer dan 5 jaar ) , SPECIALIST RISICO MANAGEMENT (Meer dan 5 jaar )
+     ↵Gewenste regio: Provincie Antwerpen , Regio Herentals - Westerlo , Regio Kontich - Mortsel - Ranst , Regio Lier - Heist o/d Berg
+     ↵Gewenst arbeidsregime: deeltijds: Zelfstandige activiteit , Dagwerk , Volcontinu systeem , Nachtwerk , 3 ploegenstelsel , 2 ploegenstelsel , Weekend
+     ↵voltijds: Dagwerk , 2 ploegenstelsel , Weekend , Zelfstandige activiteit , 3 ploegenstelsel , Nachtwerk , Volcontinu systeem"
+     gsm: ""
+     hobby: "Vliegvissen, Houder van al de vier categories Sportschutterlicentie, Guitaar"
+     id: "67"
+     img_url: ""
+     is_new: "1"
+     last_mailed_time: ""
+     name: "JIMMY HEYNS"
+     nationaliteit: "Belg"
+     persoonsgebonden_competenties: "Regels en afspraken nakomen
+     ↵Creatief denken (Inventiviteit)
+     ↵Commercieel zijn
+     ↵Contactvaardig zijn
+     ↵Klantgerichtheid"
+     samenvatting: ""
+     vdab_id: "10519022"
+     vervoer: "B - Auto's <. 3,5t en max. 8 plaatsen"
+     */
     if (this.state.profile.profiles) {
       if (this.state.profile.profiles.candidate_id) {
 
