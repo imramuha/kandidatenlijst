@@ -149,7 +149,7 @@ class ProfilesView extends Component {
 
     return (
       <React.Fragment>
-        {this.state.profile && <UpdateForm differences={this.state.profile}></UpdateForm>}
+        {/* {this.state.profile && <UpdateForm differences={this.state.profile}></UpdateForm>} */}
         <Sidebar profiles={this.props.profiles} onClick={this.onClick} />
         <StickyFooter add={this.add} update={this.update} hide={this.hide} />
         <Cv profile={this.state.profile} />
