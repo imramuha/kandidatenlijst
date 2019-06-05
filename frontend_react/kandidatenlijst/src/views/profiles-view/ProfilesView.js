@@ -13,6 +13,9 @@ import Cv from '../../components/cv/Cv'
 
 import { addToCrm, doNothing } from '../../actions/profilesActions';
 
+/* Pop ups */
+import SkyLight from 'react-skylight';
+
 class ProfilesView extends Component {
 
   constructor() {
@@ -95,8 +98,8 @@ class ProfilesView extends Component {
             "id": candidate_id
           }
         })
-          .then(function (response) {
-            console.log(response)
+          .then((response) => {
+            console.log("hierin doen wij de popups")
             /* console.log(email)
              const zoho_email = response.data.response.result.Candidates.row.FL[4].content;
              console.log(zoho_email)
@@ -105,12 +108,20 @@ class ProfilesView extends Component {
              } else {
                console.log("Name doesnt match")
              }*/
+
+            return (
+              < SkyLight hideOnOverlayClicked transitionDuration={500} >Hello</SkyLight >
+            )
           })
           .catch((err) => {
             console.log(err);
           })
       } else {
-        console.log("Profiel doesn't exist in zoho, please add before you try to update it.")
+        let errorMsg = "Profiel doesn't exist in zoho, please add before you try to update it."
+        console.log(errorMsg)
+        return (
+          < SkyLight hideOnOverlayClicked transitionDuration={500}>{errorMsg}</SkyLight >
+        )
       }
     }
   }
