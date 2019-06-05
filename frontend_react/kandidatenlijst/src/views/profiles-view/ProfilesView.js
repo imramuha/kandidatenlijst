@@ -144,7 +144,7 @@ class ProfilesView extends Component {
   render() {
 
     console.log(this.props.profile);
-    console.log(this.state.prof)
+    console.log(this.state.prof);
 
     return (
       <React.Fragment>
