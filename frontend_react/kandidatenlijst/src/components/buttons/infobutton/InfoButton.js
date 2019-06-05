@@ -36,8 +36,6 @@ class InfoButton extends Component {
               <a className="action-button animate green">Add</a>
               <p>Voeg de kandidaat toe aan Zoho CRM.</p>
             </div>
-
-
           </div>
         </SkyLight>
       </React.Fragment>

@@ -93,6 +93,7 @@ class ProfilesView extends Component {
         axios.get('https://recruit.zoho.com/recruit/private/json/Candidates/getRecordById?', {
           params: {
             "authtoken": "6b9f2097aa50b55830b3f2d717e8a7df",
+            "scope": "recruitapi",
             "id": candidate_id
           }
         })
