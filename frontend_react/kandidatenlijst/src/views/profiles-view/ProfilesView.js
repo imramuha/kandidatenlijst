@@ -30,6 +30,13 @@ class ProfilesView extends Component {
     this.update = this.handleUpdate.bind(this);
     this.hide = this.handleHide.bind(this);
 
+    // Form
+    this.OnChange = this.OnChange.bind(this);
+    this.OnSubmit = this.OnSubmit.bind(this);
+
+    this.close = this.cancelPopup.bind(this);
+    this.send = this.UpdateCrm.bind(this);
+
   }
 
   componentDidMount() {
@@ -149,6 +156,23 @@ class ProfilesView extends Component {
     console.log(is_new)
   }
 
+  OnChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  OnSubmit(e) {
+    e.preventDefault();
+    console.log('send the form')
+  }
+
+  cancelPopup() {
+    console.log('close the pop up')
+  }
+
+  UpdateCrm() {
+    console.log('update data and send to crm')
+  }
+
   render() {
 
     console.log(this.state.profileZoho)
@@ -172,12 +196,38 @@ class ProfilesView extends Component {
             <SkyLight hideOnOverlayClicked dialogStyles={leftBoxStyle} transitionDuration={500} ref={ref => this.customDialog = ref}>
               <div className="updateForm">
                 {this.state.profileZoho &&
-                  <div className="ZohoForm form "><h1>Profiel uit Zoho</h1> <br /> {this.state.profileZoho.data.response.result.Candidates.row.FL[2].content} {this.state.profileZoho.data.response.result.Candidates.row.FL[3].content}</div>
+                  <div className="ZohoForm form "><h1>Profiel uit Zoho</h1> <br />
+                    {/* First name and last name */}
+                    {this.state.profileZoho.data.response.result.Candidates.row.FL[2].content} &nbsp;
+                    {this.state.profileZoho.data.response.result.Candidates.row.FL[3].content} <br />
+
+                    {/* Email */}
+                    {this.state.profileZoho.data.response.result.Candidates.row.FL[4].content} <br />
+
+                    {/* Adres */}
+                    {this.state.profileZoho.data.response.result.Candidates.row.FL[6].content} &nbsp;
+                    {this.state.profileZoho.data.response.result.Candidates.row.FL[7].content} &nbsp;
+                    {this.state.profileZoho.data.response.result.Candidates.row.FL[8].content} &nbsp;
+
+
+                  </div>
                 }
 
                 {/* in een form cause we might send it to zoho, */}
 
-                <div className="newForm form"><h1>Changes to profiel</h1> <br /> {this.state.profile.profiles.name}</div>
+                <div className="newForm form"><h1>Aanpassen van profiel gegevens</h1> <br />
+                  <form onSubmit={e => this.OnSubmit(e)}>
+                    <input type="text" name="name" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.name}></input> <br />
+                    <input type="text" name="email" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.email}></input> <br />
+                    <input type="text" name="adres" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.adres}></input> <br />
+                  </form>
+                </div>
+
+              </div>
+              <div className="form-buttons">
+                <button onClick={this.close}>Cancel</button>
+                <button onClick={this.send}>Send</button>
+                {/* <button onClick={}>Save to CRM</button> */}
               </div>
             </SkyLight>
           </div>
