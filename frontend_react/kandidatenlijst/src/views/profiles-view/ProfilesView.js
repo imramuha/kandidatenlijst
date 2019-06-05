@@ -56,29 +56,57 @@ class ProfilesView extends Component {
 
   handleUpdate() {
     console.log('update werkt!')
-    const { id } = this.state.profile.profiles.name;
+    const { candidate_id } = this.state.profile.profiles;
+    console.log(candidate_id);
 
-    // Optionally the request above could also be done as
-    axios.get('https://recruit.zoho.com/recruit/private/json/Candidates/getSearchRecords?', {
-      params: {
-        "authtoken": "6b9f2097aa50b55830b3f2d717e8a7df",
-        "scope": "recruitapi",
-        "selectColumn": "Candidates(Last Name)",
-        "searchCondition": "(Last Name|contains|*" + this.state.profile.profiles.name + "*)",
-      }
-    })
-      .then(function (response) {
-        console.log(response)
-        const zoho_name = response.data.response.result.Candidates.row[0].FL[2].content + " " + response.data.response.result.Candidates.row[0].FL[3].content;
-        console.log(response.data.response.result.Candidates.row[0].FL[2].content + " " + response.data.response.result.Candidates.row[0].FL[3].content);
-        console.log(zoho_name)
-        if (id == zoho_name) {
-          console.log("Names match");
-        } else {
-          console.log("Name doesnt match")
-        }
-      })
-
+    /* Profiel dat momenteel in zoho zit -> zal gebruiken voor testing
+    0: {val: "CANDIDATEID", content: "303681000001177824"}
+    1: {val: "Candidate ID", content: "ZR_31687_CAND"}
+    2: {val: "First Name", content: "Maya"}
+    3: {val: "Last Name", content: "Stoyanova Gadzheva"}
+    4: {val: "Email", content: "maya.gadzheva@gmail.com"}
+    5: {val: "Created Time", content: "2015-03-20 09:09:08"}
+    6: {val: "Updated On", content: "2018-05-31 14:58:36"}
+    7: {val: "Currency", content: "EUR"}
+    8: {val: "Exchange Rate", content: "1.000000000"}
+    9: {val: "Last Activity Time", content: "2018-05-31 14:58:36"}
+    10: {val: "SMOWNERID", content: "303681000000080003"}
+    11: {val: "Candidate Owner", content: "Rudy Campe"}
+    12: {val: "Email Opt Out", content: "false"}
+    13: {val: "Is Locked", content: "false"}
+    14: {val: "Is Unqualified", content: "false"}
+    15: {val: "Is Attachment Present", content: "true"}
+    16: {val: "Career Page Invite Status", content: "0"}
+    17: {val: "Payroll", content: "false"}
+    18: {val: "I4M beschikbaar", content: "false"}
+    19: {val: "Onmiddellijk Beschikbaar", content: "false"}
+    20: {val: "Opt-In Status", content: "Opt-In Requested"}
+    */
+    /*
+        // Optionally the request above could also be done as
+        axios.get('https://recruit.zoho.com/recruit/private/json/Candidates/getSearchRecords?', {
+          params: {
+            "authtoken": "6b9f2097aa50b55830b3f2d717e8a7df",
+            "scope": "recruitapi",
+            "selectColumn": "Candidates(Email)",
+            "searchCondition": "(Email|contains|" + email + ")",
+          }
+        })
+          .then(function (response) {
+            console.log(response)
+            console.log(email)
+            const zoho_email = response.data.response.result.Candidates.row.FL[4].content;
+            console.log(zoho_email)
+            if (email == zoho_email) {
+              console.log("Names match");
+            } else {
+              console.log("Name doesnt match")
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+    */
   }
 
   handleHide() {
