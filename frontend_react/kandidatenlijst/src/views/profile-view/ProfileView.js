@@ -14,6 +14,7 @@ import BottomArrow from '../../components/arrows/bottomarrow/BottomArrow';
 import TopArrow from '../../components/arrows/toparrow/TopArrow';
 import Sidebar from '../../components/sidebar/Sidebar';
 
+
 import './ProfileView.css';
 
 // For one specific profile
@@ -29,7 +30,7 @@ class ProfileView extends Component {
 
   componentDidMount() {
     let id = this.props.match.params.profile_id;
-    this.props.fetchProfile(id) 
+    this.props.fetchProfile(id)
   }
 
   render() {
