@@ -109,6 +109,8 @@ class ProfilesView extends Component {
           .catch((err) => {
             console.log(err);
           })
+      } else {
+        console.log("Profiel doesn't exist in zoho, please add before you try to update it.")
       }
     }
   }
