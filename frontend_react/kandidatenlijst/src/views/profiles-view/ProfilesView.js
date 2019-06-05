@@ -10,6 +10,7 @@ import Spinner from '../../components/spinner/Spinner'
 import Sidebar from '../../components/sidebar/Sidebar'
 import StickyFooter from '../../components/stickyfooter/StickyFooter'
 import Cv from '../../components/cv/Cv'
+import UpdateForm from '../../components/updateform/UpdateForm';
 
 import { addToCrm, doNothing } from '../../actions/profilesActions';
 
@@ -58,7 +59,7 @@ class ProfilesView extends Component {
   }
 
   handleUpdate() {
-    console.log('update werkt!')
+    // console.log('update werkt!')
 
     /* Profiel dat momenteel in zoho zit -> zal gebruiken voor testing
     0: {val: "CANDIDATEID", content: "303681000001177824"}
@@ -92,25 +93,20 @@ class ProfilesView extends Component {
         axios.get('https://recruit.zoho.com/recruit/private/json/Candidates/getRecordById?', {
           params: {
             "authtoken": "6b9f2097aa50b55830b3f2d717e8a7df",
-            "scope": "recruitapi",
-            //"selectColumn": "Candidates(Email)",
-            //"searchCondition": "(Email|contains|" + candidate_id + ")",
             "id": candidate_id
           }
         })
           .then((response) => {
             console.log("hierin doen wij de popups")
-            /* console.log(email)
-             const zoho_email = response.data.response.result.Candidates.row.FL[4].content;
-             console.log(zoho_email)
-             if (email == zoho_email) {
-               console.log("Names match");
-             } else {
-               console.log("Name doesnt match")
-             }*/
 
             return (
-              < SkyLight hideOnOverlayClicked transitionDuration={500} >Hello</SkyLight >
+              <React.Fragment>
+                {() => this.simpleDialog.show()}
+                < SkyLight
+                  hideOnOverlayClicked
+                  ref={ref => this.simpleDialog = ref}
+                  transitionDuration={500} > {response}</SkyLight >
+              </React.Fragment>
             )
           })
           .catch((err) => {
@@ -120,10 +116,20 @@ class ProfilesView extends Component {
         let errorMsg = "Profiel doesn't exist in zoho, please add before you try to update it."
         console.log(errorMsg)
         return (
-          < SkyLight hideOnOverlayClicked transitionDuration={500}>{errorMsg}</SkyLight >
+          <React.Fragment>
+            {() => this.simpleDialog.show()}
+            < SkyLight
+              hideOnOverlayClicked
+              ref={ref => this.simpleDialog = ref}
+              transitionDuration={500} > {errorMsg}</SkyLight >
+          </React.Fragment>
         )
       }
     }
+  }
+
+  showUpdatePopUps() {
+
   }
 
   handleHide() {
@@ -142,10 +148,10 @@ class ProfilesView extends Component {
 
     return (
       <React.Fragment>
+        {this.state.profile && <UpdateForm differences={this.state.profile}></UpdateForm>}
         <Sidebar profiles={this.props.profiles} onClick={this.onClick} />
         <StickyFooter add={this.add} update={this.update} hide={this.hide} />
         <Cv profile={this.state.profile} />
-
       </React.Fragment>
     )
     /*
