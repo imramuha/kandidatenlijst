@@ -101,7 +101,7 @@ const Cv = ({ profile }) => {
                             {profile.profiles.extra_info === "" && profile.profiles.hobby === "" && profile.profiles.samenvatting === "" ? null :
                                 <section>
                                     <div className="sectionTitle">
-                                        <h1>extra <br /> info</h1>
+                                        <h1>extra info</h1>
                                     </div>
                                     <div className="sectionContent">
                                         <p>{profile.profiles.extra_info}</p>
