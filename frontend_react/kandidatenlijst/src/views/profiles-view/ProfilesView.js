@@ -34,8 +34,8 @@ class ProfilesView extends Component {
     this.OnChange = this.OnChange.bind(this);
     this.OnSubmit = this.OnSubmit.bind(this);
 
-    this.close = this.cancelPopup.bind(this);
-    this.send = this.UpdateCrm.bind(this);
+    this.closeUpdateForm = this.cancelPopup.bind(this);
+    this.sendUpdateForm = this.UpdateCrm.bind(this);
 
   }
 
@@ -170,11 +170,18 @@ class ProfilesView extends Component {
   }
 
   UpdateCrm() {
-    console.log('update data and send to crm')
+    console.log('update data and send to crm')/*
+    axios.post('http://vdab.i4m.be/api/login', userData,
+    { "Content-Type": "application/x-www-form-urlencoded" })
+    .then(res => {
+      const { token } = res.data;
+      localStorage.setItem('token', token);
+
+    })
+*/
   }
 
   render() {
-
     console.log(this.state.profileZoho)
 
     let leftBoxStyle = {
@@ -225,8 +232,8 @@ class ProfilesView extends Component {
 
               </div>
               <div className="form-buttons">
-                <button onClick={this.close}>Cancel</button>
-                <button onClick={this.send}>Send</button>
+                <button onClick={this.closeUpdateForm}>Cancel</button>
+                <button onClick={this.sendUpdateForm}>Send</button>
                 {/* <button onClick={}>Save to CRM</button> */}
               </div>
             </SkyLight>
