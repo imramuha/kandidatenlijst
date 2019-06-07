@@ -86,41 +86,38 @@ class ProfilesView extends Component {
     // console.log('update werkt!')
 
     /* 
-    {id: "67", name: "JIMMY HEYNS", city: "", email: "jimheyns@gmail.com", last_mailed_time: "", …}
-     adres: "De Heide 3
-     ↵BE-2288 BOUWEL
-     ↵BELGIE"
-     beschikbaarheid: ""
-     candidate_id: "303681000006551005"
-     city: ""
-     date_inserted: "201905221356"
-     email: "jimheyns@gmail.com"
-     extra_info: ""
-     geboortedatum: "26-08-1974"
-     geslacht: "Mannelijk"
-     gewenste_job: "VDAB referentie: 10519022
-     ↵Laatst gewijzigd: 22 mei 2019
-     ↵Gegenereerd door MLB: 22-05-2019 10:13
-     ↵Gewenste job(s): Analist - informatica (Meer dan 5 jaar ) , Directeur van een kleine of middelgrote organisatie (m/v) (Meer dan 5 jaar ) , Financieel en/of administratief verantwoordelijke (Tussen 2 en 5 jaar ) , PROJECT MANAGER (Meer dan 5 jaar ) , SPECIALIST RISICO MANAGEMENT (Meer dan 5 jaar )
-     ↵Gewenste regio: Provincie Antwerpen , Regio Herentals - Westerlo , Regio Kontich - Mortsel - Ranst , Regio Lier - Heist o/d Berg
-     ↵Gewenst arbeidsregime: deeltijds: Zelfstandige activiteit , Dagwerk , Volcontinu systeem , Nachtwerk , 3 ploegenstelsel , 2 ploegenstelsel , Weekend
-     ↵voltijds: Dagwerk , 2 ploegenstelsel , Weekend , Zelfstandige activiteit , 3 ploegenstelsel , Nachtwerk , Volcontinu systeem"
-     gsm: ""
-     hobby: "Vliegvissen, Houder van al de vier categories Sportschutterlicentie, Guitaar"
-     id: "67"
-     img_url: ""
-     is_new: "1"
-     last_mailed_time: ""
-     name: "JIMMY HEYNS"
-     nationaliteit: "Belg"
-     persoonsgebonden_competenties: "Regels en afspraken nakomen
-     ↵Creatief denken (Inventiviteit)
-     ↵Commercieel zijn
-     ↵Contactvaardig zijn
-     ↵Klantgerichtheid"
-     samenvatting: ""
-     vdab_id: "10519022"
-     vervoer: "B - Auto's <. 3,5t en max. 8 plaatsen"
+    adres: "Apostoliekenstraat 2 bus: B004
+    ↵BE-2300 TURNHOUT
+    ↵BELGIE"
+    beschikbaarheid: "ja"
+    candidate_id: "303681000001397690"
+    city: "TURNHOUT"
+    date_inserted: "201905221356"
+    email: "franksmet@hotmail.com"
+    extra_info: ""
+    geboortedatum: "18-01-1968"
+    geslacht: "Mannelijk"
+    gewenste_job: "VDAB referentie: 757555
+    ↵Laatst gewijzigd: 06 juni 2019
+    ↵Gegenereerd door MLB: 06-06-2019 10:06
+    ↵Gewenste job(s): Computeroperator (m/v) (Tussen 2 en 5 jaar ) , Installateur van datacommunicatienetwerken (m/v) (Minder dan 2 jaar) , Integratie en implementatie expert ICT (m/v) (Minder dan 2 jaar) , Koerier besteller (Minder dan 2 jaar) , Netwerkbeheerder (m/v) (Geen) , PC -technicus (Geen) , Programmeur (Tussen 2 en 5 jaar ) , Technicus automatisatie (Geen) , technicus communicatienetwerken (Geen)
+    ↵Gewenste regio: Regio Geel - Mol , Regio Herentals - Westerlo , Regio Kalmthout - Schoten - Zoersel , Regio Turnhout
+    ↵Gewenst arbeidsregime: deeltijds: 2 ploegenstelsel , Weekend , Dagwerk
+    ↵voltijds: 2 ploegenstelsel , Dagwerk , Weekend"
+    gsm: "32494451552"
+    hobby: ""
+    id: "63"
+    img_url: ""
+    is_new: "1"
+    last_mailed_time: ""
+    name: "FRANK SMET"
+    nationaliteit: "Belg"
+    persoonsgebonden_competenties: ""
+    samenvatting: ""
+    vdab_id: "757555"
+    vervoer: "B - Auto's <. 3,5t en max. 8 plaatsen
+    ↵
+    ↵Beschikking over een eigen wagen"
      */
     if (this.state.profile.profiles) {
       if (this.state.profile.profiles.candidate_id) {
