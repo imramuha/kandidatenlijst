@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import SkyLight from 'react-skylight';
-import { Link } from 'react-router-dom'
-import { getLocalStorage } from '../../helpers'
+
+/* Redux */
 import { connect } from 'react-redux';
+import {
+  fetchProfiles,
+  fetchProfile,
+  getSpecificProfileFromZoho,
+  addToCrm,
+  doNothing,
+  updateSpecificProfileZoho
+} from '../../actions/profilesActions';
 
-
-import { fetchProfiles } from '../../actions/profilesActions';
-import { fetchProfile } from '../../actions/profilesActions';
-import { addToCrm, doNothing } from '../../actions/profilesActions';
-
-
+/* Components */
+import SkyLight from 'react-skylight';
 import Spinner from '../../components/spinner/Spinner'
 import Sidebar from '../../components/sidebar/Sidebar'
 import StickyFooter from '../../components/stickyfooter/StickyFooter'
 import Cv from '../../components/cv/Cv'
 import UpdateForm from '../../components/updateform/UpdateForm';
+
+/* Helpers */
+import { getLocalStorage } from '../../helpers';
 
 class ProfilesView extends Component {
 
@@ -25,6 +31,8 @@ class ProfilesView extends Component {
       profile: [],
       profileZoho: 0
     }
+
+    // Different names
     this.onClick = this.handleClick.bind(this);
     this.add = this.handleAdd.bind(this);
     this.update = this.handleUpdate.bind(this);
@@ -32,10 +40,10 @@ class ProfilesView extends Component {
 
     // Form
     this.OnChange = this.OnChange.bind(this);
-    this.OnSubmit = this.OnSubmit.bind(this);
+    // this.OnSubmit = this.OnSubmit.bind(this);
 
-    this.closeUpdateForm = this.cancelPopup.bind(this);
-    this.sendUpdateForm = this.UpdateCrm.bind(this);
+    this.closeUpdateForm = this.closeUpdateForm.bind(this);
+    this.sendUpdateForm = this.sendUpdateForm.bind(this);
 
   }
 
@@ -51,6 +59,9 @@ class ProfilesView extends Component {
     }
   }
 
+  /* Show a profile accordingly 
+     to the item in the sidebar selected 
+  */
   handleClick(event) {
     const { id } = event.target;
 
@@ -67,6 +78,10 @@ class ProfilesView extends Component {
     console.log("de add button works");
   }
 
+  /* Open the pop-up windows and see the difference 
+    between the data in the database and 
+    the data that is in zoho CRM 
+  */
   handleUpdate() {
     // console.log('update werkt!')
 
@@ -112,16 +127,16 @@ class ProfilesView extends Component {
 
         const { candidate_id } = this.state.profile.profiles;
         console.log(candidate_id);
+
         // Optionally the request above could also be done as
         // TODO nog 2de api call voor andere data
-
         const token = getLocalStorage();
         let config = {
           headers: { 'Authorization': token }
         };
         axios.get(`http://vdab.i4m.be/profiles/profileZoho/${candidate_id}`, config)
           .then((response) => {
-            console.log("hierin doen wij de popups")
+            console.log(response)
             this.customDialog.show()
 
             this.setState({
@@ -160,17 +175,26 @@ class ProfilesView extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  OnSubmit(e) {
+  // OnSubmit(e) {
+  //   e.preventDefault();
+  //   console.log('send the form')
+
+  //   this.props.updateSpecificProfileZoho()
+  // }
+
+  closeUpdateForm() {
+    this.customDialog.hide()
+  }
+
+  sendUpdateForm(e) {
     e.preventDefault();
-    console.log('send the form')
-  }
-
-  cancelPopup() {
-    console.log('close the pop up')
-  }
-
-  UpdateCrm() {
-    console.log('update data and send to crm')/*
+    console.log('update data and send to crm')
+    const { candidate_id } = this.state.profile.profiles;
+    const data = {
+      userData: this.state.profileZoho
+    }
+    this.props.updateSpecificProfileZoho(candidate_id, data)
+    /*
     axios.post('http://vdab.i4m.be/api/login', userData,
     { "Content-Type": "application/x-www-form-urlencoded" })
     .then(res => {
@@ -222,7 +246,7 @@ class ProfilesView extends Component {
                 {/* in een form cause we might send it to zoho, */}
 
                 <div className="newForm form"><h1>Aanpassen van profiel gegevens</h1> <br />
-                  <form onSubmit={e => this.OnSubmit(e)}>
+                  <form>
                     <input type="text" name="name" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.name}></input> <br />
                     <input type="text" name="email" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.email}></input> <br />
                     <input type="text" name="adres" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.adres}></input> <br />
@@ -255,7 +279,15 @@ class ProfilesView extends Component {
 
 const mapStateToProps = state => ({
   profiles: state.profiles.items,
-  profile: state.profiles.item
+  profile: state.profiles.item,
+  dataZoho: state.profiles.dataZoho
 })
 
-export default connect(mapStateToProps, { fetchProfiles, fetchProfile, addToCrm, doNothing })(ProfilesView); 
+export default connect(mapStateToProps, {
+  fetchProfiles,
+  fetchProfile,
+  addToCrm,
+  doNothing,
+  getSpecificProfileFromZoho,
+  updateSpecificProfileZoho
+})(ProfilesView); 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SkyLight from 'react-skylight';
 
-class InfoButton extends Component {
+class MailTrackingButton extends Component {
   render() {
     let myBigGreenDialog = {
       backgroundColor: '#92b93a',
@@ -14,7 +14,7 @@ class InfoButton extends Component {
     };
     return (
       <React.Fragment>
-        <a onClick={() => this.simpleDialog.show()} className="info-button animate blue"><i className="fa fa-info"></i></a>
+        <a onClick={() => this.simpleDialog.show()} className="info-button animate blue"><i className="fa fa-envelope"></i></a>
         <SkyLight
           dialogStyles={myBigGreenDialog}
           hideOnOverlayClicked
@@ -44,4 +44,4 @@ class InfoButton extends Component {
 }
 
 
-export default InfoButton
+export default MailTrackingButton

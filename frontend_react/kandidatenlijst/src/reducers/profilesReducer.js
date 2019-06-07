@@ -1,8 +1,15 @@
-import { FETCH_PROFILES, FETCH_PROFILE, SEND_TO_CRM, HIDE_ITEM } from '../actions/types'; // Waarom types? Zo weet de reducer welke state hij moet returnen?
+import {
+  FETCH_PROFILES,
+  FETCH_PROFILE,
+  SEND_TO_CRM, HIDE_ITEM,
+  GET_DATA_FROM_CRM
+} from '../actions/types'; // Waarom types? Zo weet de reducer welke state hij moet returnen?
 
 const initialState = {
   items: [], // Profiles from our action
-  item: [] // Single Profile, also array because api is structured like that, no object
+  item: [], // Single Profile, also array because api is structured like that, no object,
+
+  dataZoho: [],
 };
 
 export default function (state = initialState, action) {
@@ -26,6 +33,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         hiddenProfile: action.payload
+      }
+    case GET_DATA_FROM_CRM:
+      return {
+        ...state,
+        dataZoho: action.payload
       }
     default:
       return state;

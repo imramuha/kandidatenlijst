@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 
 export const getLocalStorage = () => {
@@ -18,8 +17,11 @@ export const sendTokenWithHeader = (token) => {
   }
 }
 
-// module.exports = {
-//   getLocalStorage,
-//   getIdFromProfile,
-//   sendTokenWithHeader,
-// }
+// Short form but not using it so far maybe later
+export const createConfig = () => {
+  const token = getLocalStorage();
+  let config;
+  return config = {
+    headers: { 'Authorization': token }
+  };
+}
