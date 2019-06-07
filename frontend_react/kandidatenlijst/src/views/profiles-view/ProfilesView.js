@@ -187,8 +187,10 @@ class ProfilesView extends Component {
     e.preventDefault();
     console.log('update data and send to crm')
     const { candidate_id } = this.state.profile.profiles;
-    const data = {
-      userData: this.state.profileZoho
+    const data = { // Name and email
+      name: this.state.profile.profiles.name,
+      email: this.state.profile.profiles.email,
+      adres: this.state.profile.profiles.adres
     }
     this.props.updateSpecificProfileZoho(candidate_id, data)
     /*
@@ -243,17 +245,18 @@ class ProfilesView extends Component {
                 {/* in een form cause we might send it to zoho, */}
 
                 <div className="newForm form"><h1>Aanpassen van profiel gegevens</h1> <br />
-                  <form>
+                  <form onSubmit={this.sendUpdateForm}>
                     <input type="text" name="name" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.name}></input> <br />
                     <input type="text" name="email" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.email}></input> <br />
                     <input type="text" name="adres" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.adres}></input> <br />
+                    <input type="submit" value="Send" />
                   </form>
                 </div>
 
               </div>
               <div className="form-buttons">
-                <button onClick={this.closeUpdateForm}>Cancel</button>
-                <button onClick={this.sendUpdateForm}>Send</button>
+                {/* <button onClick={this.closeUpdateForm}>Cancel</button> */}
+                {/* <button onClick={this.sendUpdateForm}>Send</button> */}
                 {/* <button onClick={}>Save to CRM</button> */}
               </div>
             </SkyLight>
