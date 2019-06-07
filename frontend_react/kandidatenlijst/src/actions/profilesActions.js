@@ -101,8 +101,9 @@ export const getSpecificProfileFromZoho = (id) => dispatch => {
 export const updateSpecificProfileZoho = (id, userData) => dispatch => {
   const token = getLocalStorage();
   let config = {
-    headers: { 'Authorization': token }
+    headers: { 'Authorization': token, "Content-Type": "application/x-www-form-urlencoded" }
   };
+  console.log(userData)
   axios.post(`http://vdab.i4m.be/profiles/profileZoho/${id}`, userData, config) // TODO
     .then(res => {
       // console.log(res);

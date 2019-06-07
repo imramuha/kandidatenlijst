@@ -25,17 +25,17 @@ class MailTrackingButton extends Component {
             <a className="action-button animate yellow">qsdqsd</a>
             <a className="action-button animate green">qsdqsd</a> */}
             <div className="button-and-modal">
-              <a className="action-button animate pink">Do Nothing</a>
-              <p>Ga door naar de volgende kandidaat.</p>
+              <a className="action-button animate pink">Persoon:</a>
+              <img src="#" alt="image"></img>
             </div>
-            <div className="button-and-modal">
+            {/* <div className="button-and-modal">
               <a className="action-button animate yellow">Update</a>
               <p>Pas de kandidaat zijn gegevens aan.</p>
             </div>
             <div className="button-and-modal">
               <a className="action-button animate green">Add</a>
               <p>Voeg de kandidaat toe aan Zoho CRM.</p>
-            </div>
+            </div> */}
           </div>
         </SkyLight>
       </React.Fragment>
