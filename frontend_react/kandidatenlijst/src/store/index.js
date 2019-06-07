@@ -12,7 +12,7 @@ const store = createStore(
   compose(
     applyMiddleware(...middleware),
     // Comment this in production
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 

@@ -1,3 +1,7 @@
+/* We only use redux for: post request and authentication, not get request. 
+For that we use the internal state of a component.
+*/
+
 import { LOGIN_USER, LOGOUT_USER, GET_ERRORS } from "./types";
 import axios from 'axios';
 import { sendTokenWithHeader } from "../helpers";
@@ -20,7 +24,7 @@ export const loginUser = (userData, history) => dispatch => {
     .catch(err =>
       // console.log(err.response.data)
       dispatch({
-        type: GET_ERRORS, // Aparte reducer voor errors
+        type: GET_ERRORS, // Aparte reducer voor errors, doesn't fully work yet TODO
         payload: err.response.data
       })
     );
