@@ -113,13 +113,13 @@ class ProfilesView extends Component {
         const { candidate_id } = this.state.profile.profiles;
         console.log(candidate_id);
         // Optionally the request above could also be done as
-        axios.get('https://recruit.zoho.com/recruit/private/json/Candidates/getRecordById?', {
-          params: {
-            "authtoken": "6b9f2097aa50b55830b3f2d717e8a7df",
-            "scope": "recruitapi",
-            "id": candidate_id
-          }
-        })
+        // TODO nog 2de api call voor andere data
+
+        const token = getLocalStorage();
+        let config = {
+          headers: { 'Authorization': token }
+        };
+        axios.get(`http://vdab.i4m.be/profiles/profileZoho/${candidate_id}`, config)
           .then((response) => {
             console.log("hierin doen wij de popups")
             this.customDialog.show()
@@ -182,7 +182,7 @@ class ProfilesView extends Component {
   }
 
   render() {
-    console.log(this.state.profileZoho)
+    // console.log(this.state.profileZoho)
 
     let leftBoxStyle = {
       // backgroundColor: 'rgb(41, 41, 41)',
@@ -215,7 +215,6 @@ class ProfilesView extends Component {
                     {this.state.profileZoho.data.response.result.Candidates.row.FL[6].content} &nbsp;
                     {this.state.profileZoho.data.response.result.Candidates.row.FL[7].content} &nbsp;
                     {this.state.profileZoho.data.response.result.Candidates.row.FL[8].content} &nbsp;
-
 
                   </div>
                 }
