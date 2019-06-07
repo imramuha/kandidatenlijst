@@ -4,7 +4,7 @@ import moment from 'moment';
 import './Cv.css'
 
 const Cv = ({ profile }) => {
-    console.log(profile.profiles)
+    //console.log(profile.profiles)
     return (
 
         <div className="cv">
@@ -35,25 +35,163 @@ const Cv = ({ profile }) => {
                 <div>
                     {profile.details &&
                         <section>
-                            <div className="sectionTitle">
-                                <h1>werk ervaring</h1>
-                            </div>
+                            {profile.details.reduce((result, current, i) => {
+                                if (current.detailtype_id === "1") {
+                                    result = <div className="sectionTitle"><h1>werk ervaring</h1></div>
+                                }
+                                return result;
+                            }, [])}
 
                             <div className="sectionContent werkErvaring">
                                 <div>
                                     <ul>
                                         {profile.details.map((detail) =>
                                             <div>
-                                                {detail.period_or_language === "" ?
-                                                    null :
-                                                    <li>{detail.period_or_language}</li>
+                                                {detail.detailtype_id === "1" &&
+                                                    <React.Fragment>
+                                                        <li>{detail.period_or_language}</li>
+                                                        <li>{detail.description}</li>
+                                                    </React.Fragment>
                                                 }
-                                                <li>{detail.description}</li>
                                             </div>
                                         )}
                                     </ul>
                                 </div>
 
+                            </div>
+                            <div className="clear"></div>
+
+                            {profile.details.reduce((result, current, i) => {
+                                if (current.detailtype_id === "2") {
+                                    result = <div className="sectionTitle"><h1>studies</h1></div>
+                                }
+                                return result;
+                            }, [])}
+
+                            <div className="sectionContent werkErvaring">
+                                <div>
+                                    <ul>
+                                        {profile.details.map((detail) =>
+                                            <div>
+                                                {detail.detailtype_id === "2" &&
+                                                    <React.Fragment>
+                                                        <li>{detail.period_or_language}</li>
+                                                        <li>{detail.description}</li>
+                                                    </React.Fragment>
+                                                }
+                                            </div>
+                                        )}
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                            <div className="clear"></div>
+
+
+                            {profile.details.reduce((result, current, i) => {
+                                if (current.detailtype_id === "3") {
+                                    result = <div className="sectionTitle"><h1>cursussen</h1></div>
+                                }
+                                return result;
+                            }, [])}
+
+
+                            <div className="sectionContent werkErvaring">
+                                <div>
+                                    <ul>
+                                        {profile.details.map((detail) =>
+                                            <div>
+                                                {detail.detailtype_id === "3" &&
+                                                    <React.Fragment>
+                                                        <li>{detail.period_or_language}</li>
+                                                        <li>{detail.description}</li>
+                                                    </React.Fragment>
+                                                }
+                                            </div>
+                                        )}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="clear"></div>
+
+
+                            {profile.details.reduce((result, current, i) => {
+                                if (current.detailtype_id === "4") {
+                                    result = <div className="sectionTitle"><h1>talen</h1></div>
+                                }
+                                return result;
+                            }, [])}
+
+
+                            <div className="sectionContent werkErvaring">
+                                <div>
+                                    <ul>
+                                        {profile.details.map((detail) =>
+                                            <div>
+                                                {detail.detailtype_id === "4" &&
+                                                    <React.Fragment>
+                                                        <li>{detail.period_or_language}</li>
+                                                        <li>{detail.description}</li>
+                                                    </React.Fragment>
+                                                }
+                                            </div>
+                                        )}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="clear"></div>
+
+                            {profile.details.reduce((result, current, i) => {
+                                if (current.detailtype_id === "5") {
+                                    result = <div className="sectionTitle"><h1>bijkomende competenties</h1></div>
+                                }
+                                return result;
+                            }, [])}
+
+                            <div className="sectionContent werkErvaring">
+                                <div>
+                                    <ul>
+                                        {profile.details.map((detail) =>
+                                            <div>
+                                                {detail.detailtype_id === "5" &&
+                                                    <React.Fragment>
+                                                        <li>{detail.period_or_language}</li>
+                                                        <li>{detail.description}</li>
+                                                    </React.Fragment>
+                                                }
+                                            </div>
+                                        )}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="clear"></div>
+
+                            {profile.details.reduce((result, current, i) => {
+                                if (current.detailtype_id === "6") {
+                                    result = <div className="sectionTitle"><h1>attesten</h1></div>
+                                }
+                                return result;
+                            }, [])}
+
+                            <div className="sectionContent werkErvaring">
+                                <div>
+                                    <ul>
+                                        {profile.details.map((detail) =>
+                                            <div>
+                                                {detail.detailtype_id === "6" &&
+                                                    <React.Fragment>
+                                                        <li>{detail.period_or_language}</li>
+                                                        <li>{detail.description}</li>
+                                                    </React.Fragment>
+                                                }
+                                            </div>
+                                        )}
+                                    </ul>
+                                </div>
                             </div>
                             <div className="clear"></div>
                         </section>

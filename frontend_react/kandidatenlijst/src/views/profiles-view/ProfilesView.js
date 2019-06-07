@@ -127,6 +127,9 @@ class ProfilesView extends Component {
 
         const { candidate_id } = this.state.profile.profiles;
         console.log(candidate_id);
+
+        // Optionally the request above could also be done as
+        // TODO nog 2de api call voor andere data
         const token = getLocalStorage();
         let config = {
           headers: { 'Authorization': token }
@@ -203,7 +206,7 @@ class ProfilesView extends Component {
   }
 
   render() {
-    console.log(this.state.profileZoho)
+    // console.log(this.state.profileZoho)
 
     let leftBoxStyle = {
       // backgroundColor: 'rgb(41, 41, 41)',
@@ -236,7 +239,6 @@ class ProfilesView extends Component {
                     {this.state.profileZoho.data.response.result.Candidates.row.FL[6].content} &nbsp;
                     {this.state.profileZoho.data.response.result.Candidates.row.FL[7].content} &nbsp;
                     {this.state.profileZoho.data.response.result.Candidates.row.FL[8].content} &nbsp;
-
 
                   </div>
                 }
