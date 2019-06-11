@@ -20,9 +20,6 @@ const UpdateForm = ({ profileChanges, updateForm }) => {
 
   return (
     <div>
-      <section>
-        <h1>React SkyLight</h1>
-      </section>
       <SkyLight dialogStyles={myBigGreenDialog} hideOnOverlayClicked ref={updateForm} title="A Custom Modal">
         I'm a custom modale!
         </SkyLight>
