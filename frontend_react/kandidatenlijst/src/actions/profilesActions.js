@@ -40,7 +40,7 @@ export const fetchProfile = (id) => dispatch => {
 
   axios.get(`http://vdab.i4m.be/profiles/profile/${id}`, config)
     .then(res => {
-      //console.log(res);
+      console.log(res);
       const person = res.data;
       console.log("profile fetched:", person)
       dispatch({
@@ -100,8 +100,10 @@ export const getSpecificProfileFromZoho = (id) => dispatch => {
 export const updateSpecificProfileZoho = (id, userData) => dispatch => {
   const token = getLocalStorage();
   let config = {
-    headers: { 'Authorization': token, }
+
+    headers: { 'Authorization': token }
   };
+  console.log(userData)
   axios.post(`http://vdab.i4m.be/profiles/profileZoho/${id}`, userData, "Content-Type: application/x-www-form-urlencoded")
     .then(res => {
       //console.log(res);

@@ -6,6 +6,9 @@ import LoginView from '../views/login-view/LoginView';
 import PrivateRoute from '../components/private/PrivateRoute';
 import ProfilesView from '../views/profiles-view/ProfilesView';
 
+import TrackingView from '../views/tracking-view/TrackingView';
+
+
 import { connect } from 'react-redux';
 
 class Main extends Component {
@@ -25,6 +28,9 @@ class Main extends Component {
 
           <Route exact path="/login" component={LoginView} />
           <PrivateRoute exact path="/profiles" component={ProfilesView} /> {/*  Alle profiles */}
+
+          <PrivateRoute exact path="/emails-tracking" component={TrackingView} />
+
         </Switch>
       </React.Fragment >
     )
