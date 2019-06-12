@@ -17,11 +17,24 @@ class TrackingView extends Component {
       trackingData: [],
       totalMails: null,
       openedMailsPercentage: null,
-      repliedMailsPercentage: null
+      repliedMailsPercentage: null,
+      paper: null,
     }
+
+    this.refreshstats = this.handleRefreshstats.bind(this);
+
   }
 
   componentDidMount() {
+    this.getTrackingData();
+
+
+    setTimeout(() => {
+      this.getTrackingData();
+    }, 2000)
+  }
+
+  getTrackingData() {
     const token = getLocalStorage();
     let config = {
       headers: { 'Authorization': token }
@@ -39,9 +52,17 @@ class TrackingView extends Component {
           trackingData,
           totalMails,
           openedMailsPercentage,
-          repliedMailsPercentage
+          repliedMailsPercentage,
         });
       })
+  }
+
+  handleRefreshstats(event) {
+    this.getTrackingData();
+
+    this.setState({
+      paper: "data"
+    });
   }
 
   render() {
@@ -64,6 +85,7 @@ class TrackingView extends Component {
         </tbody>
       )
     })
+
     // let moreItems;
     // if (open) {
     //   moreItems = (
@@ -71,7 +93,6 @@ class TrackingView extends Component {
     //        {mappedData.map(data => {
     //         return (
     //           <tbody>
-
     //             <tr>
     //               <td>{data.name}</td>
     //               <td>{data.subject}</td>
@@ -95,7 +116,6 @@ class TrackingView extends Component {
     //       })} 
     //       Minder items kunnen we tonen via slice
     //       {mappedData}
-
     //     </React.Fragment>
     //   )
     // }
@@ -109,6 +129,7 @@ class TrackingView extends Component {
           </div>
           <div>
             <i className="fa fa-envelope"></i>Mail Tracking
+            <a className="refresh-button animate purple" onClick={this.refreshstats}><i class="fa fa-sync" aria-hidden="true"></i></a>
           </div>
 
         </div>
@@ -121,7 +142,7 @@ class TrackingView extends Component {
               <span>
                 {totalMails} <br />
               </span>
-              Bijgehouden emails
+              Bijgehouden emails {this.state.paper}
             </div>
           </div>
           <div className="dashboard-card green-dashboard">
