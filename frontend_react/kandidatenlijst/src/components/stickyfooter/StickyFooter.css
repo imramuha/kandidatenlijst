@@ -36,17 +36,16 @@
     text-decoration: none;
   }
   
-  .info-button {
+  .mail-button {
     border-radius: 50%;
     font-family: 'Roboto';
-    padding: 8px 18px;
+    padding: 8px 11.5px;
     text-align: center;
     font-size: 18px;
     color: #FFF;
     text-decoration: none;
     cursor: pointer;
   }
-
     
   .logout-button {
     border-radius: 50%;
@@ -129,7 +128,7 @@
     color: rgb(117, 65, 115);
   }
   
-  .action-button:active, .info-button:active {
+  .action-button:active, .mail-button:active {
     transform: translate(0px, 5px);
     -webkit-transform: translate(0px, 5px);
     border-bottom: 1px solid;

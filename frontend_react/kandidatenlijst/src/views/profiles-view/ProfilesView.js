@@ -58,6 +58,15 @@ class ProfilesView extends Component {
         profile: this.props.profile,
       });
     }
+
+    if (prevProps.profiles[0] !== this.props.profiles[0]) {
+      this.setState({
+        selectedProfile: this.props.profiles[0].id,
+      });
+    }
+
+    console.log(this.state.selectedProfile)
+
   }
 
   /* Show a profile accordingly 
@@ -84,11 +93,18 @@ class ProfilesView extends Component {
   }
 
   handleAdd(event) {
-    const { id } = this.state.profile.profiles;
-    console.log(id);
-    // How to find the id from the profile we selected?
-    this.props.addToCrm(id, this.state.profile)
-    console.log("de add button works");
+
+    if (this.state.profile.length === 0) {
+      this.props.addToCrm(this.state.selectedProfile, this.props.profiles[0]);
+    } else {
+      this.props.addToCrm(this.state.selectedProfile, this.state.profile.profiles);
+    }
+
+    // 7ALERT 
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 400)
   }
 
   /* Open the pop-up windows and see the difference 
@@ -134,12 +150,19 @@ class ProfilesView extends Component {
   }
 
   handleHide() {
-    console.log('do nothing, set is_new to 0')
-    const { id } = this.state.profile.profiles;
-    const { is_new } = this.state.profile.profiles;
 
-    this.props.doNothing(id, this.state.profile);
-    console.log(is_new)
+    if (this.state.profile.length === 0) {
+      this.props.doNothing(this.state.selectedProfile, this.props.profiles[0]);
+    } else {
+      this.props.doNothing(this.state.selectedProfile, this.state.profile.profiles);
+    }
+
+    // 7ALERT 
+    //alert("De profiel staat nu op hidden.")
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 400)
   }
 
   OnChange(e) {
@@ -181,18 +204,6 @@ class ProfilesView extends Component {
       marginLeft: '-45%',
     };
 
-    if (this.state.profileZoho) {
-      const data = this.state.profileZoho.data.detail.response.result.Candidates.FL[1].TR;
-      data.map((tr) => {
-        console.log("Study:");
-
-        tr.TL.map((tl) => {
-          console.log(tl.content)
-        })
-
-      });
-    }
-
     return (
       <React.Fragment>
 
@@ -213,9 +224,19 @@ class ProfilesView extends Component {
                     {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[6].content} &nbsp;
                     {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[7].content} &nbsp;
                     {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[8].content} &nbsp;
-
-                    {this.state.profileZoho.data.detail.response.result.Candidates.FL[1]} &nbsp;
-
+                    <div className="Educaional">
+                      {this.state.profileZoho &&
+                        this.state.profileZoho.data.detail.response.result.Candidates.FL.map((TL) =>
+                          TL.TR.map((tr) =>
+                            <ul>
+                              {tr.TL && tr.TL.map((data) =>
+                                data.content && data.val !== "TABULARROWID" && <li>{data.content}</li>
+                              )}
+                            </ul>
+                          )
+                        )
+                      } &nbsp;
+                      </div>
                   </div>
                 }
 

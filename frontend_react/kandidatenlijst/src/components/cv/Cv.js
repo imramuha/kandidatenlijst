@@ -4,8 +4,6 @@ import moment from 'moment';
 import './Cv.css'
 
 const Cv = ({ profile, profiles }) => {
-    //console.log(profile.profiles)
-    console.log(profiles[0]);
 
     return (
 
@@ -24,8 +22,8 @@ const Cv = ({ profile, profiles }) => {
                         </div>
                         <div className="contactDetails">
                             <ul>
+                                {profile.profiles.img_url && <li><img src={`${profile.profiles.img_url}`} /></li>}
                                 <li><a href={`mailto:${profile.profiles.email}`} >{profile.profiles.email}</a> - <a href={`tel:${profile.profiles.gsm}`}> {profile.profiles.gsm}</a></li>
-                                <li></li>
                                 <li>{profile.profiles.adres}</li>
                             </ul>
                         </div>
