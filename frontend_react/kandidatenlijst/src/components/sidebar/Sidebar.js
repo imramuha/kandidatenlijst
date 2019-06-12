@@ -21,7 +21,7 @@ const Sidebar = ({ profiles, onClick, selectedProfile }) => {
       <h1 className="title-sidenav">PROFILES</h1>
       <ul>
         {profiles.map(profile => (
-          <a id={`${profile.id}`} onClick={onClick} style={selectedProfile === profile.id ? onselectedProfileStyle : selectedProfileStyle}>{profile.name}</a>
+          <a id={`${profile.id}`} onClick={onClick} style={selectedProfile === profile.id ? onselectedProfileStyle : selectedProfileStyle}>{profile.candidate_id && <i className="fas fa-check-circle"></i>}  {profile.name}</a>
         ))}
       </ul>
     </div>

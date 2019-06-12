@@ -70,6 +70,7 @@ export const doNothing = (id, userData) => dispatch => {
   let config = {
     headers: { 'Authorization': token }
   };
+  console.log(id);
   axios.post(`http://vdab.i4m.be/profiles/addorignoreinzoho/${id}/Left`, userData, config)
     .then(res => {
       // console.log(res);

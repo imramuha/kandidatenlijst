@@ -20,7 +20,8 @@ class MailTrackingButton extends Component {
     };
     return (
       <React.Fragment>
-        <Link to="/emails-tracking" className="info-button animate blue"><i className="fa fa-envelope"></i></Link>
+        <a onClick={() => this.simpleDialog.show()} className="mail-button animate blue"><i className="fa fa-envelope"></i></a>
+
         {/* <SkyLight
           dialogStyles={myBigGreenDialog}
           hideOnOverlayClicked
