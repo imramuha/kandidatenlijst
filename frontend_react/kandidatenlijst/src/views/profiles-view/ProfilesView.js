@@ -40,6 +40,7 @@ class ProfilesView extends Component {
     this.add = this.handleAdd.bind(this);
     this.update = this.handleUpdate.bind(this);
     this.hide = this.handleHide.bind(this);
+    this.refresh = this.handleRefresh.bind(this);
 
     // Form
     this.OnChange = this.OnChange.bind(this);
@@ -105,9 +106,10 @@ class ProfilesView extends Component {
     // 7ALERT 
 
     setTimeout(() => {
-      window.location.reload();
+      this.props.fetchProfiles()
     }, 400)
   }
+
 
   /* Open the pop-up windows and see the difference 
     between the data in the database and 
@@ -162,10 +164,14 @@ class ProfilesView extends Component {
 
     // 7ALERT 
     //alert("De profiel staat nu op hidden.")
-
+ 
     setTimeout(() => {
-      window.location.reload();
+      this.props.fetchProfiles()
     }, 400)
+  }
+
+  handleRefresh(event) {
+    this.props.fetchProfiles()
   }
 
   OnChange(e) {
@@ -264,7 +270,7 @@ class ProfilesView extends Component {
 
         {this.state.profileZoho && <UpdateForm profileChanges={this.state.profileZoho} />}
         <Sidebar profiles={this.props.profiles} onClick={this.onClick} selectedProfile={this.state.selectedProfile} />
-        <StickyFooter add={this.add} update={this.update} hide={this.hide} />
+        <StickyFooter add={this.add} update={this.update} hide={this.hide} refresh={this.refresh} />
         <Cv profile={this.state.profile} profiles={this.props.profiles} />
       </React.Fragment>
     )
