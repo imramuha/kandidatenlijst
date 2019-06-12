@@ -3,21 +3,20 @@ import moment from 'moment';
 
 import './Cv.css'
 
-const Cv = ({ profile }) => {
+const Cv = ({ profile, profiles }) => {
     //console.log(profile.profiles)
+    console.log(profiles[0]);
+
     return (
 
         <div className="cv">
 
             <div>
                 {/* if profiles.profiles exists... do the following */}
-                {profile.profiles &&
+                {profile.profiles ?
                     <div>
                         <div className="name">
-                            {/* <p>{profile.profiles.id}</p> */}
                             <p>{profile.profiles.name}</p>
-                            {/* Leeftijd */}
-                            {/* Format date to YYYY-MM-DD, nu is het DD-MM-YYYY */}
                             {profile.profiles.geboortedatum &&
                                 <p>{moment().diff(`"${profile.profiles.geboortedatum.split("-").reverse().join("-")}"`, 'years')} jaar</p>
                             }
@@ -31,13 +30,34 @@ const Cv = ({ profile }) => {
                             </ul>
                         </div>
                     </div>
-                }
+                    : <div>
+                        <div className="name">
+                            {profiles[0] === undefined ? "There's no data left" :
+                                <React.Fragment>
+                                    <p>{profiles[0].name}</p>
+                                    <p>{moment().diff(`"${profiles[0].geboortedatum.split("-").reverse().join("-")}"`, 'years')} jaar</p>
+                                </React.Fragment>
+                            }
+
+                        </div>
+                        <div className="contactDetails">
+                            <ul>
+                                {profiles[0] === undefined ? "There's no data left" :
+                                    <React.Fragment>
+                                        <li><a href={`mailto:${profiles[0].email}`} >{profiles[0].email}</a> - <a href={`tel:${profiles[0].gsm}`}> {profiles[0].gsm}</a></li>
+                                        <li></li>
+                                        <li>{profiles[0].adres}</li>
+                                    </React.Fragment>
+                                }
+                            </ul>
+                        </div>
+                    </div>}
                 <div>
                     {profile.details &&
                         <section>
                             {profile.details.reduce((result, current, i) => {
                                 if (current.detailtype_id === "1") {
-                                    result = <div className="sectionTitle"><h1>werk ervaring</h1></div>
+                                    result = <div className="sectionTitle"><h1>werk<br />ervaring</h1></div>
                                 }
                                 return result;
                             }, [])}
@@ -146,7 +166,7 @@ const Cv = ({ profile }) => {
 
                             {profile.details.reduce((result, current, i) => {
                                 if (current.detailtype_id === "5") {
-                                    result = <div className="sectionTitle"><h1>bijkomende competenties</h1></div>
+                                    result = <div className="sectionTitle"><h1>bijkomende<br />competenties</h1></div>
                                 }
                                 return result;
                             }, [])}
@@ -214,7 +234,7 @@ const Cv = ({ profile }) => {
                             {profile.profiles.gewenste_job === "" ? null :
                                 <section>
                                     <div className="sectionTitle">
-                                        <h1>gewenste job</h1>
+                                        <h1>gewenste<br />job</h1>
                                     </div>
                                     <div className="sectionContent">
                                         {profile.profiles.gewenste_job}
@@ -239,7 +259,7 @@ const Cv = ({ profile }) => {
                             {profile.profiles.extra_info === "" && profile.profiles.hobby === "" && profile.profiles.samenvatting === "" ? null :
                                 <section>
                                     <div className="sectionTitle">
-                                        <h1>extra info</h1>
+                                        <h1>extra<br />info</h1>
                                     </div>
                                     <div className="sectionContent">
                                         <p>{profile.profiles.extra_info}</p>
