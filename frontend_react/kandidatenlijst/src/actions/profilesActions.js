@@ -15,7 +15,6 @@ import { getLocalStorage } from '../helpers'
 
 // All profiles, with titels, telephone, email
 export const fetchProfiles = () => dispatch => {
-
   // TODO: put these two together, cleaner code
   const token = getLocalStorage();
   let config = {
@@ -87,7 +86,7 @@ export const getSpecificProfileFromZoho = (id) => dispatch => {
   let config = {
     headers: { 'Authorization': token }
   };
-  axios.get(`http://vdab.i4m.be/profiles/profileZoho/${id}`, config) // TODO
+  axios.get(`http://vdab.i4m.be/profiles/profileZoho/${id}`, config)
     .then(res => {
       // console.log(res);
       dispatch({
@@ -101,12 +100,13 @@ export const getSpecificProfileFromZoho = (id) => dispatch => {
 export const updateSpecificProfileZoho = (id, userData) => dispatch => {
   const token = getLocalStorage();
   let config = {
+
     headers: { 'Authorization': token }
   };
   console.log(userData)
-  axios.post(`http://vdab.i4m.be/profiles/profileZoho/${id}`, userData, "Content-Type: application/x-www-form-urlencoded") // TODO
+  axios.post(`http://vdab.i4m.be/profiles/profileZoho/${id}`, userData, "Content-Type: application/x-www-form-urlencoded")
     .then(res => {
-      // console.log(res);
+      //console.log(res);
       dispatch({
         type: UPDATE_DATA_FROM_CRM,
         payload: res.data
