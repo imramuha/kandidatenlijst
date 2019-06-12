@@ -47,55 +47,58 @@ class TrackingView extends Component {
   render() {
     const { open, trackingData, totalMails, openedMailsPercentage, repliedMailsPercentage } = this.state;
     const mappedData = trackingData.map((data, index) => {
+      const year = data.LastMailedTime.slice(0, 4);
+      const month = data.LastMailedTime.slice(4, 6);
+      const day = data.LastMailedTime.slice(6, 8);
       return (
         <tbody>
           <tr key={index}>
             <td>{data.name}</td>
             <td>{data.subject}</td>
-            <td>{moment(data.LastMailedTime).format("DD MMM YYYY hh:mm a")}</td> {/* TODO: Fix this date: YmdHi */}
-
+            <td>
+              {`${day}/${month}/${year}`}
+            </td>
             <td>{data.opened == 1 ? 'Ja' : 'Nee'}</td>
-
-            <td>{data.beantwoord == 1 ? 'Ja' : 'Nee'}</td>
+            <td>{data.reply == 1 ? 'Ja' : 'Nee'}</td>
           </tr>
         </tbody>
       )
     })
-    let moreItems;
-    if (open) {
-      moreItems = (
-        <React.Fragment>
-          {/* {mappedData.map(data => {
-            return (
-              <tbody>
+    // let moreItems;
+    // if (open) {
+    //   moreItems = (
+    //     <React.Fragment>
+    //        {mappedData.map(data => {
+    //         return (
+    //           <tbody>
 
-                <tr>
-                  <td>{data.name}</td>
-                  <td>{data.subject}</td>
-                  <td>{data.lastMailedTime}</td>
-                  <td><button>Detail</button></td>
-                </tr>
-                <tr>
-                  <td>John Doe</td>
-                  <td>Email van 9 July</td>
-                  <td>Geklikt July 10</td>
-                  <td><button>Detail</button></td>
-                </tr>
-                <tr>
-                  <td>John Doe</td>
-                  <td>Email van 9 July</td>
-                  <td>Geklikt July 10</td>
-                  <td><button>Detail</button></td>
-                </tr> 
-              </tbody>
-            )
-          })} */}
-          {/* Minder items kunnen we tonen via slice */}
-          {mappedData}
+    //             <tr>
+    //               <td>{data.name}</td>
+    //               <td>{data.subject}</td>
+    //               <td>{data.lastMailedTime}</td>
+    //               <td><button>Detail</button></td>
+    //             </tr>
+    //             <tr>
+    //               <td>John Doe</td>
+    //               <td>Email van 9 July</td>
+    //               <td>Geklikt July 10</td>
+    //               <td><button>Detail</button></td>
+    //             </tr>
+    //             <tr>
+    //               <td>John Doe</td>
+    //               <td>Email van 9 July</td>
+    //               <td>Geklikt July 10</td>
+    //               <td><button>Detail</button></td>
+    //             </tr> 
+    //           </tbody>
+    //         )
+    //       })} 
+    //       Minder items kunnen we tonen via slice
+    //       {mappedData}
 
-        </React.Fragment>
-      )
-    }
+    //     </React.Fragment>
+    //   )
+    // }
 
     return (
       <React.Fragment>
@@ -149,27 +152,27 @@ class TrackingView extends Component {
           <table>
             <tbody>
               <tr>
-                <th className="title">Ontvanger</th>
-                <th className="title">Onderwerp</th>
-                <th className="title">Datum</th>
-                <th className="title">Geopend</th>
-                <th className="title">Beantwoord</th>
+                <th className="title">Ontvanger<i class="fa fa-arrow-down"></i></th>
+                <th className="title">Onderwerp<i class="fa fa-arrow-down"></i></th>
+                <th className="title">Datum<i class="fa fa-arrow-down"></i></th>
+                <th className="title">Geopend<i class="fa fa-arrow-down"></i></th>
+                <th className="title">Beantwoord<i class="fa fa-arrow-down"></i></th>
               </tr>
               {/* <tr>
                 {mappedData}
               </tr> */}
             </tbody>
-            {moreItems}
-
+            {mappedData}
+            {/* Meer of minder knop */}
           </table>
         </div>
-        <div onClick={() => {
+        {/* <div onClick={() => {
           this.setState(prevState => ({
             open: !prevState.open
           }));
         }} style={{ color: '#fff', textAlign: 'center', cursor: 'pointer' }} className="dashboard-header green-dashboard">
           {this.state.open ? 'Toon minder emails' : 'Toon alle emails'}
-        </div>
+        </div> */}
       </React.Fragment>
     )
   }
