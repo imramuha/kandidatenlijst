@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { getLocalStorage } from '../../helpers';
 
 import axios from 'axios';
+import moment from 'moment';
 
 import './TrackingView.css';
 
@@ -15,7 +16,8 @@ class TrackingView extends Component {
       open: false,
       trackingData: [],
       totalMails: null,
-      openedMailsPercentage: null
+      openedMailsPercentage: null,
+      repliedMailsPercentage: null
     }
   }
 
@@ -29,28 +31,32 @@ class TrackingView extends Component {
         let trackingData = response.data.mails;
         let totalMails = response.data.aantalmails
         let openedMailsPercentage = response.data.geopend;
+        let repliedMailsPercentage = response.data.replyed;
 
         console.log(response)
 
         this.setState({
           trackingData,
           totalMails,
-          openedMailsPercentage
+          openedMailsPercentage,
+          repliedMailsPercentage
         });
       })
   }
 
   render() {
-    const { open, trackingData, totalMails, openedMailsPercentage } = this.state;
+    const { open, trackingData, totalMails, openedMailsPercentage, repliedMailsPercentage } = this.state;
     const mappedData = trackingData.map((data, index) => {
       return (
         <tbody>
           <tr key={index}>
             <td>{data.name}</td>
             <td>{data.subject}</td>
-            <td>{data.LastMailedTime}</td>
+            <td>{moment(data.LastMailedTime).format("DD MMM YYYY hh:mm a")}</td> {/* TODO: Fix this date: YmdHi */}
 
             <td>{data.opened == 1 ? 'Ja' : 'Nee'}</td>
+
+            <td>{data.beantwoord == 1 ? 'Ja' : 'Nee'}</td>
           </tr>
         </tbody>
       )
@@ -121,7 +127,7 @@ class TrackingView extends Component {
             </div>
             <div className="right">
               <span>
-                {openedMailsPercentage}% <br />
+                {openedMailsPercentage} % <br />
               </span>
               Geopend
             </div>
@@ -132,7 +138,7 @@ class TrackingView extends Component {
             </div>
             <div className="right">
               <span>
-                100 % <br />
+                {repliedMailsPercentage} % <br />
               </span>
               Beantwoord
             </div>
@@ -147,6 +153,7 @@ class TrackingView extends Component {
                 <th className="title">Onderwerp</th>
                 <th className="title">Datum</th>
                 <th className="title">Geopend</th>
+                <th className="title">Beantwoord</th>
               </tr>
               {/* <tr>
                 {mappedData}
