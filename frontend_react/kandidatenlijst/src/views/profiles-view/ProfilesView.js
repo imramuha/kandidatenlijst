@@ -20,6 +20,8 @@ import StickyFooter from '../../components/stickyfooter/StickyFooter'
 import Cv from '../../components/cv/Cv'
 import UpdateForm from '../../components/updateform/UpdateForm';
 
+import Alert from 'react-bootstrap/Alert';
+
 /* Helpers */
 import { getLocalStorage } from '../../helpers';
 
@@ -129,6 +131,7 @@ class ProfilesView extends Component {
       }
     } else {
       let errorMsg = "Please select a profiel before trying to update its content."
+      // < Alert > { errorMsg } < Alert />
       alert(errorMsg)
     }
   }
