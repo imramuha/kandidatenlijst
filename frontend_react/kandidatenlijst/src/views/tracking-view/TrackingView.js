@@ -33,6 +33,9 @@ class TrackingView extends Component {
     setTimeout(() => {
       this.getTrackingData();
     }, 2000)
+
+    // makes calls and rerenders data every 5 minutes
+    setInterval(() => this.getTrackingData(), 300000)
   }
 
   getTrackingData() {
@@ -47,8 +50,6 @@ class TrackingView extends Component {
         let openedMailsPercentage = response.data.geopend;
         let repliedMailsPercentage = response.data.replyed;
 
-        // TODO: make this so the filtering works for every field.
-        // Show the last recieved date first.
         let orderedData = orderBy(trackingData, ['LastMailedTime'], ['desc'])
         console.log(orderedData)
 

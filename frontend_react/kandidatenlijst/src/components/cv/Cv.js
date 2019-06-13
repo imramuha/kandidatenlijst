@@ -4,31 +4,33 @@ import moment from 'moment';
 import './Cv.css'
 
 const Cv = ({ profile, profiles }) => {
-    console.log(profiles)
-    console.log(profile)
 
     return (
 
         <div className="cv">
-
             <div>
                 {/* if profiles.profiles exists... do the following */}
                 {profile.profiles ?
-                    <div>
-                        <div className="name">
-                            <p>{profile.profiles.name}</p>
-                            {profile.profiles.geboortedatum &&
-                                <p>{moment().diff(`"${profile.profiles.geboortedatum.split("-").reverse().join("-")}"`, 'years')} jaar</p>
-                            }
+                    <div className="profileHeader">
+                        <div className="profileImage">
+                            {profile.profiles.img_url && <img src={`${profile.profiles.img_url}`} />}
+                        </div>
+                        <div className="profileData">
+                            <div className="name">
+                                <p>{profile.profiles.name}</p>
+                                {profile.profiles.geboortedatum &&
+                                    <p>{moment().diff(`"${profile.profiles.geboortedatum.split("-").reverse().join("-")}"`, 'years')} jaar</p>
+                                }
 
+                            </div>
+                            <div className="contactDetails">
+                                <ul>
+                                    <li><a href={`mailto:${profile.profiles.email}`} >{profile.profiles.email}</a> - <a href={`tel:${profile.profiles.gsm}`}> {profile.profiles.gsm}</a></li>
+                                    <li>{profile.profiles.adres}</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div className="contactDetails">
-                            <ul>
-                                {profile.profiles.img_url && <li><img src={`${profile.profiles.img_url}`} /></li>}
-                                <li><a href={`mailto:${profile.profiles.email}`} >{profile.profiles.email}</a> - <a href={`tel:${profile.profiles.gsm}`}> {profile.profiles.gsm}</a></li>
-                                <li>{profile.profiles.adres}</li>
-                            </ul>
-                        </div>
+
                     </div>
                     : <div className="name">
                         <p>ALLE PROFIELEN ZIJN BEHANDELD</p>
