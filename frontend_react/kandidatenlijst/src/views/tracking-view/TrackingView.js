@@ -60,8 +60,10 @@ class TrackingView extends Component {
   }
 
   render() {
-    const { open, trackingData, totalMails, openedMailsPercentage, repliedMailsPercentage } = this.state;
+    const { trackingData, totalMails, openedMailsPercentage, repliedMailsPercentage } = this.state;
     const mappedData = trackingData.map((data, index) => {
+      const hours = data.LastMailedTime.slice(8, 10);
+      const minutes = data.LastMailedTime.slice(10, 12);
       const year = data.LastMailedTime.slice(0, 4);
       const month = data.LastMailedTime.slice(4, 6);
       const day = data.LastMailedTime.slice(6, 8);
@@ -71,7 +73,7 @@ class TrackingView extends Component {
             <td>{data.name}</td>
             <td>{data.subject}</td>
             <td>
-              {`${day}/${month}/${year}`}
+              {`${day}/${month}/${year} ${hours}:${minutes}`}
             </td>
             <td>{data.opened == 1 ? 'Ja' : 'Nee'}</td>
             <td>{data.reply == 1 ? 'Ja' : 'Nee'}</td>
