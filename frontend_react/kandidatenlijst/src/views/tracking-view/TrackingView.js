@@ -18,7 +18,6 @@ class TrackingView extends Component {
       totalMails: null,
       openedMailsPercentage: null,
       repliedMailsPercentage: null,
-      paper: null,
     }
 
     this.refreshstats = this.handleRefreshstats.bind(this);
@@ -59,10 +58,6 @@ class TrackingView extends Component {
 
   handleRefreshstats(event) {
     this.getTrackingData();
-
-    this.setState({
-      paper: "data"
-    });
   }
 
   render() {
@@ -127,9 +122,9 @@ class TrackingView extends Component {
           <div>
             <Link to="/profiles"><i className="fa fa-user"></i>Home</Link>
           </div>
+          <a className="refreshstats" onClick={this.refreshstats}><i class="fa fa-sync" aria-hidden="true"></i></a>
           <div>
-            <i className="fa fa-envelope"></i>Mail Tracking
-            <a className="refresh-button animate purple" onClick={this.refreshstats}><i class="fa fa-sync" aria-hidden="true"></i></a>
+            Mail Tracking <i className="fa fa-envelope"></i>
           </div>
 
         </div>
@@ -139,10 +134,10 @@ class TrackingView extends Component {
               <i className="fa fa-envelope"></i>
             </div>
             <div className="right">
+            BIJGEHOUDEN &nbsp; 
               <span>
-                {totalMails} <br />
+                {totalMails}
               </span>
-              Bijgehouden emails {this.state.paper}
             </div>
           </div>
           <div className="dashboard-card green-dashboard">
@@ -150,10 +145,11 @@ class TrackingView extends Component {
               <i className="fa fa-eye"></i>
             </div>
             <div className="right">
+            GEOPEND &nbsp; 
               <span>
-                {openedMailsPercentage} % <br />
+                {openedMailsPercentage}%<br />
               </span>
-              Geopend
+            
             </div>
           </div>
           <div className="dashboard-card blue-dashboard">
@@ -161,23 +157,23 @@ class TrackingView extends Component {
               <i className="fas fa-chart-bar"></i>
             </div>
             <div className="right">
+            BEANTWOORD &nbsp; 
               <span>
-                {repliedMailsPercentage} % <br />
+                {repliedMailsPercentage}%<br />
               </span>
-              Beantwoord
             </div>
           </div>
         </div>
-        <div style={{ color: '#fff' }} className="dashboard-header orange-dashboard">Laatste emails</div>
+        <div style={{ color: '#fff' }} className="dashboard-header dark-dashboard">LAATSTE EMAILS</div>
         <div className="dashboard-table">
           <table>
             <tbody>
               <tr>
-                <th className="title">Ontvanger<i class="fa fa-arrow-down"></i></th>
-                <th className="title">Onderwerp<i class="fa fa-arrow-down"></i></th>
-                <th className="title">Datum<i class="fa fa-arrow-down"></i></th>
-                <th className="title">Geopend<i class="fa fa-arrow-down"></i></th>
-                <th className="title">Beantwoord<i class="fa fa-arrow-down"></i></th>
+                <th className="title">ontvanger<i class="fa fa-arrow-down"></i></th>
+                <th className="title">onderwerp<i class="fa fa-arrow-down"></i></th>
+                <th className="title">datum<i class="fa fa-arrow-down"></i></th>
+                <th className="title">geopend<i class="fa fa-arrow-down"></i></th>
+                <th className="title">beantwoord<i class="fa fa-arrow-down"></i></th>
               </tr>
               {/* <tr>
                 {mappedData}

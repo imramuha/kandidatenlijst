@@ -66,7 +66,11 @@ class ProfilesView extends Component {
       this.setState({
         selectedProfile: this.props.profiles[0].id,
       });
+
+      // to fetch profile onload
+      this.props.fetchProfile(this.props.profiles[0].id);
     }
+
 
     console.log(this.state.selectedProfile)
 
@@ -164,7 +168,7 @@ class ProfilesView extends Component {
 
     // 7ALERT 
     //alert("De profiel staat nu op hidden.")
- 
+
     setTimeout(() => {
       this.props.fetchProfiles()
     }, 400)
@@ -234,7 +238,7 @@ class ProfilesView extends Component {
                     {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[7].content} &nbsp;
                     {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[8].content} &nbsp;
                     <div className="Educaional">
-                      {this.state.profileZoho &&
+                      {this.state.profileZoho.data.detail.response.result.Candidates.FL[0].TL || this.state.profileZoho.data.detail.response.result.Candidates.FL[1].TL &&
                         this.state.profileZoho.data.detail.response.result.Candidates.FL.map((TL) =>
                           TL.TR.map((tr) =>
                             <ul>

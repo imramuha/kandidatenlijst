@@ -4,6 +4,8 @@ import moment from 'moment';
 import './Cv.css'
 
 const Cv = ({ profile, profiles }) => {
+    console.log(profiles)
+    console.log(profile)
 
     return (
 
@@ -28,28 +30,10 @@ const Cv = ({ profile, profiles }) => {
                             </ul>
                         </div>
                     </div>
-                    : <div>
-                        <div className="name">
-                            {profiles[0] === undefined ? "There's no data left" :
-                                <React.Fragment>
-                                    <p>{profiles[0].name}</p>
-                                    <p>{moment().diff(`"${profiles[0].geboortedatum.split("-").reverse().join("-")}"`, 'years')} jaar</p>
-                                </React.Fragment>
-                            }
-
-                        </div>
-                        <div className="contactDetails">
-                            <ul>
-                                {profiles[0] === undefined ? "There's no data left" :
-                                    <React.Fragment>
-                                        <li><a href={`mailto:${profiles[0].email}`} >{profiles[0].email}</a> - <a href={`tel:${profiles[0].gsm}`}> {profiles[0].gsm}</a></li>
-                                        <li></li>
-                                        <li>{profiles[0].adres}</li>
-                                    </React.Fragment>
-                                }
-                            </ul>
-                        </div>
+                    : <div className="name">
+                        <p>ALLE PROFIELEN ZIJN BEHANDELD</p>
                     </div>}
+
                 <div>
                     {profile.details &&
                         <section>

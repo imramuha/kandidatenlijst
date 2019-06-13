@@ -34,6 +34,7 @@
     font-variant: small-caps;
     color: #FFF !important;
     text-decoration: none;
+    cursor: pointer;
   }
   
   .mail-button {
@@ -110,7 +111,7 @@
   
   .pink {
     background-color: #1C1C1C;
-    border-bottom: 3px solid rgb(190, 64, 184);
+    border-bottom: 3px solid rgb(233, 119, 189);
   }
   
   .pink:hover {
@@ -128,7 +129,7 @@
     color: rgb(117, 65, 115);
   }
   
-  .action-button:active, .mail-button:active {
+  .action-button:active, .mail-button:active, .refresh-button:active, .logout-button:active {
     transform: translate(0px, 5px);
     -webkit-transform: translate(0px, 5px);
     border-bottom: 1px solid;
