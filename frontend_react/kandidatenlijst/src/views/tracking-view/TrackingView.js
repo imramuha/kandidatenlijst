@@ -81,6 +81,7 @@ class TrackingView extends Component {
             </td>
             <td>{data.opened == 1 ? 'Ja' : 'Nee'}</td>
             <td>{data.reply == 1 ? 'Ja' : 'Nee'}</td>
+            <td>{data.OS}</td>
           </tr>
         </tbody>
       )
@@ -179,6 +180,7 @@ class TrackingView extends Component {
                 <th className="title">datum<i class="fa fa-arrow-down"></i></th>
                 <th className="title">geopend<i class="fa fa-arrow-down"></i></th>
                 <th className="title">beantwoord<i class="fa fa-arrow-down"></i></th>
+                <th className="title">besturingssysteem<i class="fa fa-arrow-down"></i></th>
               </tr>
               {/* <tr>
                 {mappedData}
