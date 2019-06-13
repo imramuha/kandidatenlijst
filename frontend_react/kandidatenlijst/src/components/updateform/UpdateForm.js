@@ -4,10 +4,6 @@ import SkyLight from 'react-skylight';
 import './UpdateForm.css';
 
 const UpdateForm = ({ profileChanges, updateForm }) => {
-  // rest of your constructor
-  /*this.profileChanges = React.createRef();
-  this.profileChanges.show()
-  console.log(profileChanges)*/
 
   var myBigGreenDialog = {
     backgroundColor: '#00897B',
