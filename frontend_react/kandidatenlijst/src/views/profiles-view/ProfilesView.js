@@ -221,7 +221,7 @@ class ProfilesView extends Component {
       <React.Fragment>
 
         {this.state.profile.profiles &&
-          <div>
+    
             <SkyLight hideOnOverlayClicked dialogStyles={leftBoxStyle} transitionDuration={500} ref={ref => this.customDialog = ref}>
               <div className="updateForm">
                 {this.state.profileZoho &&
@@ -238,7 +238,7 @@ class ProfilesView extends Component {
                     {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[7].content} &nbsp;
                     {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[8].content} &nbsp;
                     <div className="Educaional">
-                      {this.state.profileZoho.data.detail.response.result.Candidates.FL[0].TL || this.state.profileZoho.data.detail.response.result.Candidates.FL[1].TL &&
+                      {this.state.profileZoho &&
                         this.state.profileZoho.data.detail.response.result.Candidates.FL.map((TL) =>
                           TL.TR.map((tr) =>
                             <ul>
@@ -269,10 +269,8 @@ class ProfilesView extends Component {
                 {/* <button onClick={}>Save to CRM</button> */}
               </div>
             </SkyLight>
-          </div>
+       
         }
-
-        {this.state.profileZoho && <UpdateForm profileChanges={this.state.profileZoho} />}
         <Sidebar profiles={this.props.profiles} onClick={this.onClick} selectedProfile={this.state.selectedProfile} />
         <StickyFooter add={this.add} update={this.update} hide={this.hide} refresh={this.refresh} />
         <Cv profile={this.state.profile} profiles={this.props.profiles} />
