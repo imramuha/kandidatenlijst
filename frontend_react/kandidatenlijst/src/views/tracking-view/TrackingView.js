@@ -31,6 +31,9 @@ class TrackingView extends Component {
     setTimeout(() => {
       this.getTrackingData();
     }, 2000)
+
+    // makes calls and rerenders data every 5 minutes
+    setInterval(() => this.getTrackingData(), 300000)
   }
 
   getTrackingData() {
