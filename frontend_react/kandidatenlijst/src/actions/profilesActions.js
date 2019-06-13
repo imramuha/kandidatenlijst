@@ -40,9 +40,7 @@ export const fetchProfile = (id) => dispatch => {
 
   axios.get(`http://vdab.i4m.be/profiles/profile/${id}`, config)
     .then(res => {
-      console.log(res);
       const person = res.data;
-      console.log("profile fetched:", person)
       dispatch({
         type: FETCH_PROFILE,
         payload: person
@@ -57,7 +55,6 @@ export const addToCrm = (id, userData) => dispatch => {
   };
   axios.post(`http://vdab.i4m.be/profiles/addorignoreinzoho/${id}/Right`, userData, config)
     .then(res => {
-      console.log(res);
       dispatch({
         type: SEND_TO_CRM,
         payload: res.data
@@ -70,7 +67,6 @@ export const doNothing = (id, userData) => dispatch => {
   let config = {
     headers: { 'Authorization': token }
   };
-  console.log(id);
   axios.post(`http://vdab.i4m.be/profiles/addorignoreinzoho/${id}/Left`, userData, config)
     .then(res => {
       // console.log(res);
@@ -104,7 +100,6 @@ export const updateSpecificProfileZoho = (id, userData) => dispatch => {
 
     headers: { 'Authorization': token }
   };
-  console.log(userData)
   axios.post(`http://vdab.i4m.be/profiles/profileZoho/${id}`, userData, "Content-Type: application/x-www-form-urlencoded")
     .then(res => {
       //console.log(res);

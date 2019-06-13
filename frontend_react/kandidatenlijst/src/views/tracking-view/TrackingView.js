@@ -48,8 +48,6 @@ class TrackingView extends Component {
         let openedMailsPercentage = response.data.geopend;
         let repliedMailsPercentage = response.data.replyed;
 
-        console.log(response)
-
         this.setState({
           trackingData,
           totalMails,

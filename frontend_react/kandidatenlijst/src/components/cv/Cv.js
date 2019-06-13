@@ -4,13 +4,10 @@ import moment from 'moment';
 import './Cv.css'
 
 const Cv = ({ profile, profiles }) => {
-    console.log(profiles)
-    console.log(profile)
 
     return (
 
         <div className="cv">
-
             <div>
                 {/* if profiles.profiles exists... do the following */}
                 {profile.profiles ?

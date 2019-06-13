@@ -71,9 +71,6 @@ class ProfilesView extends Component {
       this.props.fetchProfile(this.props.profiles[0].id);
     }
 
-
-    console.log(this.state.selectedProfile)
-
   }
 
   /* Show a profile accordingly 
@@ -125,17 +122,14 @@ class ProfilesView extends Component {
       if (this.state.profile.profiles.candidate_id) {
 
         const { candidate_id } = this.state.profile.profiles;
-        console.log(candidate_id);
+        //console.log(candidate_id);
 
-        // Optionally the request above could also be done as
-        // TODO nog 2de api call voor andere data
         const token = getLocalStorage();
         let config = {
           headers: { 'Authorization': token }
         };
         axios.get(`http://vdab.i4m.be/profiles/profileZoho/${candidate_id}`, config)
           .then((response) => {
-            console.log(response)
             this.customDialog.show()
 
             this.setState({
@@ -147,14 +141,11 @@ class ProfilesView extends Component {
             console.log(err);
           })
       } else {
-        let errorMsg = "Profiel doesn't exist in zoho, please add before you try to update it."
-        console.log(errorMsg)
-
+        let errorMsg = "De volgende profiel bestaat niet in Zoho, gelieve die eerst toe te voegen."
+        alert(errorMsg)
       }
     } else {
       let errorMsg = "Please select a profiel before trying to update its content."
-      // < Alert > { errorMsg } < Alert />
-      alert(errorMsg)
     }
   }
 
@@ -182,20 +173,13 @@ class ProfilesView extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  // OnSubmit(e) {
-  //   e.preventDefault();
-  //   console.log('send the form')
-
-  //   this.props.updateSpecificProfileZoho()
-  // }
-
   closeUpdateForm() {
     this.customDialog.hide()
   }
 
   sendUpdateForm(e) {
     e.preventDefault();
-    console.log('update data and send to crm')
+    //console.log('update data and send to crm')
     const { candidate_id } = this.state.profile.profiles;
     const data = { // Name and email
       name: this.state.profile.profiles.name,
@@ -221,26 +205,26 @@ class ProfilesView extends Component {
       <React.Fragment>
 
         {this.state.profile.profiles &&
-    
-            <SkyLight hideOnOverlayClicked dialogStyles={leftBoxStyle} transitionDuration={500} ref={ref => this.customDialog = ref}>
-              <div className="updateForm">
-                {this.state.profileZoho &&
-                  <div className="ZohoForm form "><h1>Profiel uit Zoho</h1> <br />
-                    {/* First name and last name */}
-                    {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[2].content} &nbsp;
+
+          <SkyLight hideOnOverlayClicked dialogStyles={leftBoxStyle} transitionDuration={500} ref={ref => this.customDialog = ref}>
+            <div className="updateForm">
+              {this.state.profileZoho &&
+                <div className="ZohoForm form "><h1>Profiel uit Zoho</h1> <br />
+                  {/* First name and last name */}
+                  {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[2].content} &nbsp;
                     {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[3].content} <br />
 
-                    {/* Email */}
-                    {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[4].content} <br />
+                  {/* Email */}
+                  {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[4].content} <br />
 
-                    {/* Adres */}
-                    {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[6].content} &nbsp;
+                  {/* Adres */}
+                  {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[6].content} &nbsp;
                     {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[7].content} &nbsp;
                     {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[8].content} &nbsp;
                     <div className="Educaional">
                       {this.state.profileZoho &&
                         this.state.profileZoho.data.detail.response.result.Candidates.FL.map((TL) =>
-                          TL.TR.map((tr) =>
+                          TL.TR && TL.TR.map((tr) =>
                             <ul>
                               {tr.TL && tr.TL.map((data) =>
                                 data.content && data.val !== "TABULARROWID" && <li>{data.content}</li>
@@ -250,26 +234,26 @@ class ProfilesView extends Component {
                         )
                       } &nbsp;
                       </div>
-                  </div>
-                }
-
-                <div className="newForm form"><h1>Aanpassen van profiel gegevens</h1> <br />
-                  <form onSubmit={this.sendUpdateForm}>
-                    <input type="text" name="name" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.name}></input> <br />
-                    <input type="text" name="email" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.email}></input> <br />
-                    <input type="text" name="adres" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.adres}></input> <br />
-                    <input type="submit" value="Send" />
-                  </form>
                 </div>
+              }
 
+              <div className="newForm form"><h1>Aanpassen van profiel gegevens</h1> <br />
+                <form onSubmit={this.sendUpdateForm}>
+                  <input type="text" name="name" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.name}></input> <br />
+                  <input type="text" name="email" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.email}></input> <br />
+                  <input type="text" name="adres" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.adres}></input> <br />
+                  <input type="submit" value="Send" />
+                </form>
               </div>
-              <div className="form-buttons">
-                {/* <button onClick={this.closeUpdateForm}>Cancel</button> */}
-                {/* <button onClick={this.sendUpdateForm}>Send</button> */}
-                {/* <button onClick={}>Save to CRM</button> */}
-              </div>
-            </SkyLight>
-       
+
+            </div>
+            <div className="form-buttons">
+              {/* <button onClick={this.closeUpdateForm}>Cancel</button> */}
+              {/* <button onClick={this.sendUpdateForm}>Send</button> */}
+              {/* <button onClick={}>Save to CRM</button> */}
+            </div>
+          </SkyLight>
+
         }
         <Sidebar profiles={this.props.profiles} onClick={this.onClick} selectedProfile={this.state.selectedProfile} />
         <StickyFooter add={this.add} update={this.update} hide={this.hide} refresh={this.refresh} />
