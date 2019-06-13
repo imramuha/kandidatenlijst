@@ -3,7 +3,7 @@ import {
   FETCH_PROFILE,
   SEND_TO_CRM, HIDE_ITEM,
   GET_DATA_FROM_CRM
-} from '../actions/types'; // Waarom types? Zo weet de reducer welke state hij moet returnen?
+} from '../actions/types';
 
 const initialState = {
   items: [], // Profiles from our action

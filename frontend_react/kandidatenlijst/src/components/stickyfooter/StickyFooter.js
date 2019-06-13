@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import MailTrackingButton from '../buttons/mailtrackingbutton/MailTrackingButton'
 import LogoutButton from './../buttons/logoutbutton/LogoutButton';
 
@@ -11,7 +11,7 @@ const StickyFooter = ({ id, add, update, hide, info, refresh, logout }) => {
       <a className="action-button animate green" onClick={add}>add</a>
       <a className="action-button animate pink" onClick={hide}>do nothing</a>
       <a className="action-button animate yellow" onClick={update}>update</a>
-      
+
 
       <LogoutButton />
       <a className="refresh-button animate purple" onClick={refresh}><i class="fa fa-sync" aria-hidden="true"></i></a>

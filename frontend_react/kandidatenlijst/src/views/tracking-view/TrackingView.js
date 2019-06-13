@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { getLocalStorage } from '../../helpers';
 
 import axios from 'axios';
-import moment from 'moment';
 
 import orderBy from 'lodash/orderBy';
 
@@ -15,7 +14,6 @@ class TrackingView extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      open: false,
       trackingData: [],
       totalMails: null,
       openedMailsPercentage: null,
@@ -29,12 +27,7 @@ class TrackingView extends Component {
   componentDidMount() {
     this.getTrackingData();
 
-
-    setTimeout(() => {
-      this.getTrackingData();
-    }, 2000)
-
-    // makes calls and rerenders data every 5 minutes
+    // recalls and rerenders data every 5 minutes
     setInterval(() => this.getTrackingData(), 300000)
   }
 
@@ -87,41 +80,6 @@ class TrackingView extends Component {
         </tbody>
       )
     })
-
-    // let moreItems;
-    // if (open) {
-    //   moreItems = (
-    //     <React.Fragment>
-    //        {mappedData.map(data => {
-    //         return (
-    //           <tbody>
-    //             <tr>
-    //               <td>{data.name}</td>
-    //               <td>{data.subject}</td>
-    //               <td>{data.lastMailedTime}</td>
-    //               <td><button>Detail</button></td>
-    //             </tr>
-    //             <tr>
-    //               <td>John Doe</td>
-    //               <td>Email van 9 July</td>
-    //               <td>Geklikt July 10</td>
-    //               <td><button>Detail</button></td>
-    //             </tr>
-    //             <tr>
-    //               <td>John Doe</td>
-    //               <td>Email van 9 July</td>
-    //               <td>Geklikt July 10</td>
-    //               <td><button>Detail</button></td>
-    //             </tr> 
-    //           </tbody>
-    //         )
-    //       })} 
-    //       Minder items kunnen we tonen via slice
-    //       {mappedData}
-    //     </React.Fragment>
-    //   )
-    // }
-
     return (
       <React.Fragment>
 
@@ -183,21 +141,10 @@ class TrackingView extends Component {
                 <th className="title">beantwoord<i class="fa fa-arrow-down"></i></th>
                 <th className="title">besturingssysteem<i class="fa fa-arrow-down"></i></th>
               </tr>
-              {/* <tr>
-                {mappedData}
-              </tr> */}
             </tbody>
             {mappedData}
-            {/* Meer of minder knop */}
           </table>
         </div>
-        {/* <div onClick={() => {
-          this.setState(prevState => ({
-            open: !prevState.open
-          }));
-        }} style={{ color: '#fff', textAlign: 'center', cursor: 'pointer' }} className="dashboard-header green-dashboard">
-          {this.state.open ? 'Toon minder emails' : 'Toon alle emails'}
-        </div> */}
       </React.Fragment>
     )
   }

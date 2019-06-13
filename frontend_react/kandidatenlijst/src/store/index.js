@@ -11,7 +11,7 @@ const store = createStore(
   initialState,
   compose(
     applyMiddleware(...middleware),
-    // Comment this in production
+    // Comment this in production, uncomment if you use the redux devtool
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
