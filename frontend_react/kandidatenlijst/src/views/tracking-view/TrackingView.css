@@ -139,4 +139,8 @@
   .dashboard-cards {
     flex-wrap: wrap;
   }
+
+  .dashboard-table {
+    overflow-x: auto;
+  }
 }

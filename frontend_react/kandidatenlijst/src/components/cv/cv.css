@@ -30,7 +30,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 html, body {
-    font-family: 'Raleway';
+    font-family: 'Raleway', sans-serif;
 }
 
 .clear {

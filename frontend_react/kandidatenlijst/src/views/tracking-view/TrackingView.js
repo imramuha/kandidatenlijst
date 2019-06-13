@@ -6,6 +6,8 @@ import { getLocalStorage } from '../../helpers';
 import axios from 'axios';
 import moment from 'moment';
 
+import orderBy from 'lodash/orderBy';
+
 import './TrackingView.css';
 
 class TrackingView extends Component {
@@ -45,10 +47,13 @@ class TrackingView extends Component {
         let openedMailsPercentage = response.data.geopend;
         let repliedMailsPercentage = response.data.replyed;
 
-        console.log(response)
+        // TODO: make this so the filtering works for every field.
+        // Show the last recieved date first.
+        let orderedData = orderBy(trackingData, ['LastMailedTime'], ['desc'])
+        console.log(orderedData)
 
         this.setState({
-          trackingData,
+          trackingData: orderedData,
           totalMails,
           openedMailsPercentage,
           repliedMailsPercentage,
@@ -134,7 +139,7 @@ class TrackingView extends Component {
               <i className="fa fa-envelope"></i>
             </div>
             <div className="right">
-            BIJGEHOUDEN &nbsp; 
+              BIJGEHOUDEN &nbsp;
               <span>
                 {totalMails}
               </span>
@@ -145,11 +150,11 @@ class TrackingView extends Component {
               <i className="fa fa-eye"></i>
             </div>
             <div className="right">
-            GEOPEND &nbsp; 
+              GEOPEND &nbsp;
               <span>
                 {openedMailsPercentage}%<br />
               </span>
-            
+
             </div>
           </div>
           <div className="dashboard-card blue-dashboard">
@@ -157,7 +162,7 @@ class TrackingView extends Component {
               <i className="fas fa-chart-bar"></i>
             </div>
             <div className="right">
-            BEANTWOORD &nbsp; 
+              BEANTWOORD &nbsp;
               <span>
                 {repliedMailsPercentage}%<br />
               </span>
