@@ -1,31 +1,17 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
+/* Redux */
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions'
 
-import { withRouter } from 'react-router-dom';
-
 import './LoginView.css';
-
-// Oude api:
-// yes123
-// yesterday
-
-// Nieuwe api:
-// yesterday
-// yes123
-
 class LoginView extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
       username: '',
-      password: '',
-      // error: '',
-      // errors: []
-      errors: {}
+      password: ''
     }
 
     this.OnChange = this.OnChange.bind(this);
@@ -41,16 +27,13 @@ class LoginView extends Component {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push('/profiles');
     }
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
-    }
   }
 
   OnChange(e) {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  OnSubmit(e) { // Put this to LoginUser in redux
+  OnSubmit(e) {
     e.preventDefault();
 
     const data = {
@@ -61,8 +44,6 @@ class LoginView extends Component {
   }
 
   render() {
-    // const { isAuthenticated } = this.props.auth; voor in header dynamish logout knop te tonen
-    const { errors } = this.props;
     return (
       <React.Fragment>
         <div className="grid">
@@ -83,10 +64,6 @@ class LoginView extends Component {
                 </div>
               </div>
             </form>
-            {/* <div className="error-msg">{errors && <p>Verkeerde gegevens!</p>}</div> */}
-            {/* {errors.map(err => (<div>{err}</div>))} */}
-            {/* <div className="error-msg">{errors.error}</div> */}
-            {/* doesn't work yet */}
           </div>
         </div>
       </React.Fragment>
@@ -96,7 +73,6 @@ class LoginView extends Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
 })
 
 export default connect(mapStateToProps, { loginUser })(LoginView)
