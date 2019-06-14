@@ -2,7 +2,7 @@
 For that we use the internal state of a component.
 */
 
-import { LOGIN_USER, LOGOUT_USER, GET_ERRORS } from "./types";
+import { LOGIN_USER, LOGOUT_USER } from "./types";
 import axios from 'axios';
 import { sendTokenWithHeader } from "../helpers";
 
@@ -22,20 +22,8 @@ export const loginUser = (userData, history) => dispatch => {
     })
 
     .catch(err =>
-      // console.log(err.response.data)
-      dispatch({
-        type: GET_ERRORS, // Aparte reducer voor errors, doesn't fully work yet TODO
-        payload: err.response.data
-      })
+      console.log(err)
     );
-
-  // this.setState({
-  //   error: true
-  // })
-  // return {
-  //   type: LOGIN_USER,
-  //   payload: userData
-  // }
 }
 
 export const logoutUser = () => dispatch => {

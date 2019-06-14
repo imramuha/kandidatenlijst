@@ -15,7 +15,6 @@ import { getLocalStorage } from '../helpers'
 
 // All profiles, with titels, telephone, email
 export const fetchProfiles = () => dispatch => {
-  // TODO: put these two together, cleaner code
   const token = getLocalStorage();
   let config = {
     headers: { 'Authorization': token }
@@ -97,7 +96,6 @@ export const getSpecificProfileFromZoho = (id) => dispatch => {
 export const updateSpecificProfileZoho = (id, userData) => dispatch => {
   const token = getLocalStorage();
   let config = {
-
     headers: { 'Authorization': token }
   };
   axios.post(`http://vdab.i4m.be/profiles/profileZoho/${id}`, userData, "Content-Type: application/x-www-form-urlencoded")

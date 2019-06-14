@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, } from 'react-router-dom'
-import './App.css';
+import { BrowserRouter } from 'react-router-dom'
 import Main from './layout/Main';
 
 import { Provider } from 'react-redux';
 import store from './store';
 
-import { sendTokenWithHeader } from './helpers';
+import './App.css';
 
-// if (localStorage.token) {
-//   sendTokenWithHeader(localStorage.token);
-// }
 
 class App extends Component {
 

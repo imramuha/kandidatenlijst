@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+/* Libraries */
 import axios from 'axios'
 
 /* Redux */
@@ -18,7 +20,6 @@ import Spinner from '../../components/spinner/Spinner'
 import Sidebar from '../../components/sidebar/Sidebar'
 import StickyFooter from '../../components/stickyfooter/StickyFooter'
 import Cv from '../../components/cv/Cv'
-import UpdateForm from '../../components/updateform/UpdateForm';
 
 import Alert from 'react-bootstrap/Alert';
 
@@ -227,17 +228,17 @@ class ProfilesView extends Component {
                     {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[7].content} &nbsp;
                     {this.state.profileZoho.data.profile.response.result.Candidates.row.FL[8].content} &nbsp;
                     <div className="Educaional">
-                      {this.state.profileZoho &&
-                        this.state.profileZoho.data.detail.response.result.Candidates.FL.map((TL) =>
-                          TL.TR && TL.TR.map((tr) =>
-                            <ul>
-                              {tr.TL && tr.TL.map((data) =>
-                                data.content && data.val !== "TABULARROWID" && <li>{data.content}</li>
-                              )}
-                            </ul>
-                          )
+                    {this.state.profileZoho &&
+                      this.state.profileZoho.data.detail.response.result.Candidates.FL.map((TL) =>
+                        TL.TR && TL.TR.map((tr) =>
+                          <ul>
+                            {tr.TL && tr.TL.map((data) =>
+                              data.content && data.val !== "TABULARROWID" && <li>{data.content}</li>
+                            )}
+                          </ul>
                         )
-                      } &nbsp;
+                      )
+                    } &nbsp;
                       </div>
                 </div>
               }
