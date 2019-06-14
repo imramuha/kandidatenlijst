@@ -38,6 +38,11 @@
   font-size: 1.2rem;
 }
 
+.dashboard-button:hover {
+  color: #70E2EA !important;
+  text-decoration: none;
+}
+
 .dashboard-cards {
   display: flex;
   justify-content: space-evenly;
@@ -105,11 +110,12 @@
   font-variant: small-caps;
 }
 
+/*
 .dashboard-table th.title:hover {
   color: #4863af;
   transition: 0.5s;
   cursor: pointer;
-}
+}*/
 
 .dashboard-table th.title i {
   margin-left: 10px;
@@ -134,6 +140,11 @@
 .refreshstats {
   color: #24CCFF !important;
 }
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+ 
 
 @media (max-width: 800px) {
   .dashboard-cards {
