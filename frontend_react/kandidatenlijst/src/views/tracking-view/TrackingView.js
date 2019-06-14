@@ -5,6 +5,7 @@ import { getLocalStorage } from '../../helpers';
 
 import axios from 'axios';
 import moment from 'moment';
+import Spinner from '../../components/spinner/Spinner'
 
 import './TrackingView.css';
 
@@ -18,6 +19,9 @@ class TrackingView extends Component {
       totalMails: null,
       openedMailsPercentage: null,
       repliedMailsPercentage: null,
+      spinner: {
+        animation: "spinner linear paused"
+      }
     }
 
     this.refreshstats = this.handleRefreshstats.bind(this);
@@ -26,14 +30,33 @@ class TrackingView extends Component {
 
   componentDidMount() {
     this.getTrackingData();
-
-
-    setTimeout(() => {
-      this.getTrackingData();
-    }, 2000)
+    this.loadingAnimation();
+    this.loadingAnimationCancel();  
 
     // makes calls and rerenders data every 5 minutes
-    setInterval(() => this.getTrackingData(), 300000)
+    setInterval(() => { 
+      this.getTrackingData();
+      this.loadingAnimation();
+      this.loadingAnimationCancel();  
+    }, 300000)  
+  }
+
+  loadingAnimation () {
+    this.setState({      
+      spinner:  {
+        animation: "spinner 1s linear infinite running"
+      }
+    });
+  }
+
+  loadingAnimationCancel () {
+    setTimeout(() => {
+      this.setState({      
+        spinner:   {
+          animation: "paused"
+        }
+      })
+    }, 2000);
   }
 
   getTrackingData() {
@@ -58,7 +81,11 @@ class TrackingView extends Component {
   }
 
   handleRefreshstats(event) {
+
     this.getTrackingData();
+
+    this.loadingAnimation();
+    this.loadingAnimationCancel();
   }
 
   render() {
@@ -81,6 +108,7 @@ class TrackingView extends Component {
         </tbody>
       )
     })
+
 
     // let moreItems;
     // if (open) {
@@ -121,9 +149,11 @@ class TrackingView extends Component {
 
         <div className="dashboard-header space-between grey-dashboard">
           <div>
-            <Link to="/profiles"><i className="fa fa-user"></i>Home</Link>
+            <Link className="dashboard-button" to="/profiles"><i className="fa fa-user"></i>Home</Link>
           </div>
-          <a className="refreshstats" onClick={this.refreshstats}><i class="fa fa-sync" aria-hidden="true"></i></a>
+
+          <a className="refreshstats" onClick={this.refreshstats} style={this.state.spinner}><i class="fa fa-sync" aria-hidden="true"></i></a>
+
           <div>
             Mail Tracking <i className="fa fa-envelope"></i>
           </div>
@@ -135,7 +165,7 @@ class TrackingView extends Component {
               <i className="fa fa-envelope"></i>
             </div>
             <div className="right">
-            BIJGEHOUDEN &nbsp; 
+              BIJGEHOUDEN &nbsp;
               <span>
                 {totalMails}
               </span>
@@ -146,11 +176,11 @@ class TrackingView extends Component {
               <i className="fa fa-eye"></i>
             </div>
             <div className="right">
-            GEOPEND &nbsp; 
+              GEOPEND &nbsp;
               <span>
                 {openedMailsPercentage}%<br />
               </span>
-            
+
             </div>
           </div>
           <div className="dashboard-card blue-dashboard">
@@ -158,7 +188,7 @@ class TrackingView extends Component {
               <i className="fas fa-chart-bar"></i>
             </div>
             <div className="right">
-            BEANTWOORD &nbsp; 
+              BEANTWOORD &nbsp;
               <span>
                 {repliedMailsPercentage}%<br />
               </span>
@@ -170,11 +200,11 @@ class TrackingView extends Component {
           <table>
             <tbody>
               <tr>
-                <th className="title">ontvanger<i class="fa fa-arrow-down"></i></th>
-                <th className="title">onderwerp<i class="fa fa-arrow-down"></i></th>
+                <th className="title">ontvanger</th>
+                <th className="title">onderwerp</th>
                 <th className="title">datum<i class="fa fa-arrow-down"></i></th>
-                <th className="title">geopend<i class="fa fa-arrow-down"></i></th>
-                <th className="title">beantwoord<i class="fa fa-arrow-down"></i></th>
+                <th className="title">geopend</th>
+                <th className="title">beantwoord</th>
               </tr>
               {/* <tr>
                 {mappedData}
