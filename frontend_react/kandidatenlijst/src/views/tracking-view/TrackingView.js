@@ -13,6 +13,8 @@ import orderBy from 'lodash/orderBy';
 
 import './TrackingView.css';
 
+import CountUp from 'react-countup';
+
 class TrackingView extends Component {
 
   constructor(props) {
@@ -87,7 +89,8 @@ class TrackingView extends Component {
       })
   }
 
-  handleRefreshstats(event) {
+
+  handleRefreshstats() {
 
     this.getTrackingData();
 
@@ -124,13 +127,15 @@ class TrackingView extends Component {
 
         <div className="dashboard-header space-between grey-dashboard">
           <div>
+
             <Link className="dashboard-button" to="/profiles"><i className="fa fa-user"></i>Home</Link>
+
           </div>
 
           <a className="refreshstats" onClick={this.refreshstats} style={this.state.spinner}><i class="fa fa-sync" aria-hidden="true"></i></a>
 
           <div>
-            Mail Tracking <i className="fa fa-envelope"></i>
+            Mail Tracking <i style={{ cursor: "auto" }} className="fa fa-envelope"></i>
           </div>
 
         </div>
@@ -140,9 +145,9 @@ class TrackingView extends Component {
               <i className="fa fa-envelope"></i>
             </div>
             <div className="right">
-              BIJGEHOUDEN &nbsp;
+              BIJGEHOUDEN &nbsp; <br />
               <span>
-                {totalMails}
+                <CountUp start={0} end={totalMails} />
               </span>
             </div>
           </div>
@@ -151,9 +156,10 @@ class TrackingView extends Component {
               <i className="fa fa-eye"></i>
             </div>
             <div className="right">
-              GEOPEND &nbsp;
+              GEOPEND <br />
               <span>
-                {openedMailsPercentage}%<br />
+                <CountUp start={0} end={openedMailsPercentage} />% <br />
+                {/* {openedMailsPercentage}%<br /> */}
               </span>
 
             </div>
@@ -163,9 +169,9 @@ class TrackingView extends Component {
               <i className="fas fa-chart-bar"></i>
             </div>
             <div className="right">
-              BEANTWOORD &nbsp;
+              BEANTWOORD &nbsp; <br />
               <span>
-                {repliedMailsPercentage}%<br />
+                <CountUp start={0} end={repliedMailsPercentage} />%<br />
               </span>
             </div>
           </div>
