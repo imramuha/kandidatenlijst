@@ -202,6 +202,11 @@ class ProfilesView extends Component {
       marginLeft: '-45%',
     };
 
+    console.log(leftBoxStyle)
+
+    console.log(this.state.profile.profiles)
+    console.log(this.state.profile.details)
+
     return (
       <React.Fragment>
 
@@ -243,6 +248,9 @@ class ProfilesView extends Component {
                   <input type="text" name="name" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.name}></input> <br />
                   <input type="text" name="email" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.email}></input> <br />
                   <input type="text" name="adres" onChange={e => this.OnChange(e)} value={this.state.profile.profiles.adres}></input> <br />
+                  {this.state.profile.profiles.beschikbaarheid}
+                  {this.state.profile.profiles.geslacht}
+                  {this.state.profile.profiles.extra_info}
                   <input type="submit" value="Send" />
                 </form>
               </div>

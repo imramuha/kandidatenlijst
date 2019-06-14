@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom';
 import { getLocalStorage } from '../../helpers';
 
 import axios from 'axios';
+import moment from 'moment';
+import Spinner from '../../components/spinner/Spinner'
+
 
 import orderBy from 'lodash/orderBy';
+
 
 import './TrackingView.css';
 
@@ -20,6 +24,9 @@ class TrackingView extends Component {
       totalMails: null,
       openedMailsPercentage: null,
       repliedMailsPercentage: null,
+      spinner: {
+        animation: "spinner linear paused"
+      }
     }
 
     this.refreshstats = this.handleRefreshstats.bind(this);
@@ -28,9 +35,34 @@ class TrackingView extends Component {
 
   componentDidMount() {
     this.getTrackingData();
+    this.loadingAnimation();
+    this.loadingAnimationCancel();  
 
-    // recalls and rerenders data every 5 minutes
-    setInterval(() => this.getTrackingData(), 300000)
+    // makes calls and rerenders data every 5 minutes
+    setInterval(() => { 
+      this.getTrackingData();
+      this.loadingAnimation();
+      this.loadingAnimationCancel();  
+    }, 300000)  
+  }
+
+  loadingAnimation () {
+    this.setState({      
+      spinner:  {
+        animation: "spinner 1s linear infinite running"
+      }
+    });
+  }
+
+  loadingAnimationCancel () {
+    setTimeout(() => {
+      this.setState({      
+        spinner:   {
+          animation: "paused"
+        }
+      })
+    }, 2000);
+
   }
 
   getTrackingData() {
@@ -57,8 +89,13 @@ class TrackingView extends Component {
       })
   }
 
+
   handleRefreshstats() {
+
     this.getTrackingData();
+
+    this.loadingAnimation();
+    this.loadingAnimationCancel();
   }
 
   render() {
@@ -84,14 +121,19 @@ class TrackingView extends Component {
         </tbody>
       )
     })
+
     return (
       <React.Fragment>
 
         <div className="dashboard-header space-between grey-dashboard">
           <div>
-            <Link style={{ textDecoration: "none", color: "inherit" }} to="/profiles"><i className="fa fa-user"></i>Home</Link>
+
+            <Link className="dashboard-button" to="/profiles"><i className="fa fa-user"></i>Home</Link>
+
           </div>
-          <a className="refreshstats" onClick={this.refreshstats}><i class="fa fa-sync" aria-hidden="true"></i></a>
+
+          <a className="refreshstats" onClick={this.refreshstats} style={this.state.spinner}><i class="fa fa-sync" aria-hidden="true"></i></a>
+
           <div>
             Mail Tracking <i style={{ cursor: "auto" }} className="fa fa-envelope"></i>
           </div>
@@ -139,12 +181,12 @@ class TrackingView extends Component {
           <table>
             <tbody>
               <tr>
-                <th className="title">ontvanger<i class="fa fa-arrow-down"></i></th>
-                <th className="title">onderwerp<i class="fa fa-arrow-down"></i></th>
+                <th className="title">ontvanger</th>
+                <th className="title">onderwerp</th>
                 <th className="title">datum<i class="fa fa-arrow-down"></i></th>
-                <th className="title">geopend<i class="fa fa-arrow-down"></i></th>
-                <th className="title">beantwoord<i class="fa fa-arrow-down"></i></th>
-                <th className="title">besturingssysteem<i class="fa fa-arrow-down"></i></th>
+                <th className="title">geopend</th>
+                <th className="title">beantwoord</th>
+
               </tr>
             </tbody>
             {mappedData}
